@@ -1,7 +1,9 @@
 NeoNextion
 ==========
 
-An Arduino library for the [Nextion](wiki.iteadstudio.com/Nextion_HMI_Solution)
+[![Build Status](https://travis-ci.org/DanNixon/NeoNextion.svg?branch=master)](https://travis-ci.org/DanNixon/NeoNextion)
+
+An Arduino library for the [Nextion](http://wiki.iteadstudio.com/Nextion_HMI_Solution)
 line of displays.
 
 The code is heavily based on the [official library](https://github.com/itead/ITEADLIB_Arduino_Nextion)
