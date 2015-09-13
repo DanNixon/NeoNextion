@@ -22,6 +22,20 @@
 #define NEX_RET_INVALID_VARIABLE            (0x1A)
 #define NEX_RET_INVALID_OPERATION           (0x1B)
 
+enum NextionFontAlignment
+{
+  NEX_FA_LEFT_UP    = 0,
+  NEX_FA_CENTRE     = 1,
+  NEX_FA_RIGHT_DOWN = 2
+};
+
+enum NextionBackground
+{
+  NEX_BG_CROPIMAGE    = 0,
+  NEX_BG_SOLIDCOLOUR  = 1,
+  NEW_BG_IMAGE        = 2
+};
+
 class INextionTouchable;
 
 struct ITouchableListItem
@@ -53,7 +67,9 @@ class Nextion
     bool clear(uint32_t colour=WHITE);
     bool drawPicture(uint16_t x, uint16_t y, uint8_t id);
     bool drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t id);
-    bool drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t fontID, char * str, uint8_t xCentre, uint8_t yCentre, uint32_t bgColour, uint32_t fgColour, uint8_t bgType);
+    bool drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t fontID, char * str,
+                 uint32_t bgColour = BLACK, uint32_t fgColour = WHITE, uint8_t bgType = NEX_BG_SOLIDCOLOUR,
+                 NextionFontAlignment xCentre = NEX_FA_CENTRE, NextionFontAlignment yCentre = NEX_FA_CENTRE);
     bool drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint32_t colour);
     bool drawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, bool filled, uint32_t colour);
     bool drawCircle(uint16_t x, uint16_t y, uint16_t r, uint32_t colour);
