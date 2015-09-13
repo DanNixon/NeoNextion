@@ -27,7 +27,7 @@ void setup()
   button.getText(buffer, 50);
   /* Serial.println(buffer); */
   
-  button.setBackgroundColour(BLUE);
+  button.setBackgroundColour(NEX_COL_BLUE);
 }
 
 void loop()

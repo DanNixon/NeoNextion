@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include "Nextion.h"
 #include "INextionWidget.h"
-#include "NextionColour.h"
+#include "NextionTypes.h"
 
 class INextionColourable: public virtual INextionWidget
 {

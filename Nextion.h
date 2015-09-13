@@ -2,39 +2,8 @@
 #define __NEONEXTION_NEXTION
 
 #include <Arduino.h>
-#include "NextionColour.h"
+#include "NextionTypes.h"
 
-#define NEX_RET_CMD_FINISHED                (0x01)
-#define NEX_RET_EVENT_LAUNCHED              (0x88)
-#define NEX_RET_EVENT_UPGRADED              (0x89)
-#define NEX_RET_EVENT_TOUCH_HEAD            (0x65)
-#define NEX_RET_EVENT_POSITION_HEAD         (0x67)
-#define NEX_RET_EVENT_SLEEP_POSITION_HEAD   (0x68)
-#define NEX_RET_CURRENT_PAGE_ID_HEAD        (0x66)
-#define NEX_RET_STRING_HEAD                 (0x70)
-#define NEX_RET_NUMBER_HEAD                 (0x71)
-#define NEX_RET_INVALID_CMD                 (0x00)
-#define NEX_RET_INVALID_COMPONENT_ID        (0x02)
-#define NEX_RET_INVALID_PAGE_ID             (0x03)
-#define NEX_RET_INVALID_PICTURE_ID          (0x04)
-#define NEX_RET_INVALID_FONT_ID             (0x05)
-#define NEX_RET_INVALID_BAUD                (0x11)
-#define NEX_RET_INVALID_VARIABLE            (0x1A)
-#define NEX_RET_INVALID_OPERATION           (0x1B)
-
-enum NextionFontAlignment
-{
-  NEX_FA_LEFT_UP    = 0,
-  NEX_FA_CENTRE     = 1,
-  NEX_FA_RIGHT_DOWN = 2
-};
-
-enum NextionBackground
-{
-  NEX_BG_CROPIMAGE    = 0,
-  NEX_BG_SOLIDCOLOUR  = 1,
-  NEW_BG_IMAGE        = 2
-};
 
 class INextionTouchable;
 
@@ -64,11 +33,11 @@ class Nextion
     
     uint8_t getCurrentPage();
     
-    bool clear(uint32_t colour=WHITE);
+    bool clear(uint32_t colour=NEX_COL_WHITE);
     bool drawPicture(uint16_t x, uint16_t y, uint8_t id);
     bool drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t id);
     bool drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t fontID, char * str,
-                 uint32_t bgColour = BLACK, uint32_t fgColour = WHITE, uint8_t bgType = NEX_BG_SOLIDCOLOUR,
+                 uint32_t bgColour = NEX_COL_BLACK, uint32_t fgColour = NEX_COL_WHITE, uint8_t bgType = NEX_BG_SOLIDCOLOUR,
                  NextionFontAlignment xCentre = NEX_FA_CENTRE, NextionFontAlignment yCentre = NEX_FA_CENTRE);
     bool drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint32_t colour);
     bool drawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, bool filled, uint32_t colour);
