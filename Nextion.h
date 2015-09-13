@@ -38,6 +38,9 @@ class Nextion
     bool init();
     void poll();
     void registerTouchable(INextionTouchable *touchable);
+	
+    bool refresh();
+    bool refresh(const char *objectName);
 
     void sendCommand(char *command);
     bool checkCommandComplete();

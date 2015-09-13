@@ -10,7 +10,7 @@
 
 typedef void (* NextionCallback)(INextionTouchable *);
 
-class INextionTouchable: public INextionWidget
+class INextionTouchable: public virtual INextionWidget
 {
   public:
     INextionTouchable(Nextion* nex, uint8_t page, uint8_t component, const char *name):

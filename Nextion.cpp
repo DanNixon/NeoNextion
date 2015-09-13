@@ -69,6 +69,21 @@ void Nextion::registerTouchable(INextionTouchable *touchable)
     m_touchableList->next = newListItem;
 }
 
+bool Nextion::refresh()
+{
+  sendCommand("ref 0");
+  return checkCommandComplete();
+}
+
+bool Nextion::refresh(const char * objectName)
+{
+  size_t commandLen = 4 + strlen(objectName);
+  char comandBuffer[commandLen];
+  snprintf(comandBuffer, commandLen, "ref %s", objectName);
+  sendCommand(comandBuffer);
+  return checkCommandComplete();
+}
+
 void Nextion::sendCommand(char *command)
 {
   while(m_serialPort.available())

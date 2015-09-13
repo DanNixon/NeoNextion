@@ -22,6 +22,8 @@ void setup()
   char buffer[50];
   button.getText(buffer, 50);
   /* Serial.println(buffer); */
+  
+  button.setBackgroundColour(BLUE);
 }
 
 void loop()
