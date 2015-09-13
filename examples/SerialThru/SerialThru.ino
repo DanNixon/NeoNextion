@@ -1,3 +1,9 @@
+/*
+ * A simple script to allow programming and debugging
+ * of a display device using the Nextion editor when
+ * the display its self is still connected in situ.
+ */
+
 #define HOST_PORT Serial
 #define NEXTION_PORT Serial1
 

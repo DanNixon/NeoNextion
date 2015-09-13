@@ -1,7 +1,7 @@
 #include <Nextion.h>
 #include <NextionButton.h>
 
-#define NEXTION_PORT Serial1
+#define NEXTION_PORT Serial
 
 Nextion nex(NEXTION_PORT);
 NextionButton button(&nex, 0, 1, "button1");
@@ -18,10 +18,10 @@ void setup()
   
   button.setText("Press me!");
   
-  Serial.begin(9600);
+  /* Serial.begin(9600); */
   char buffer[50];
   button.getText(buffer, 50);
-  Serial.println(buffer);
+  /* Serial.println(buffer); */
 }
 
 void loop()
