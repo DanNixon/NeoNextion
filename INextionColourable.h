@@ -4,18 +4,7 @@
 #include <Arduino.h>
 #include "Nextion.h"
 #include "INextionWidget.h"
-
-enum NextionColour
-{
-  BLACK   = 0,
-  WHITE   = 65535,
-  RED     = 63488,
-  GREEN   = 2016,
-  BLUE    = 31,
-  GRAY    = 33840,
-  BROWN   = 48192,
-  YELLOW  = 65504
-};
+#include "NextionColour.h"
 
 class INextionColourable: public virtual INextionWidget
 {
@@ -25,11 +14,11 @@ class INextionColourable: public virtual INextionWidget
     {
     }
 
-  bool setForegroundColour(uint16_t colour, bool refresh=true);
-  bool setEventForegroundColour(uint16_t colour, bool refresh=true);
+  bool setForegroundColour(uint32_t colour, bool refresh=true);
+  bool setEventForegroundColour(uint32_t colour, bool refresh=true);
   
-  bool setBackgroundColour(uint16_t colour, bool refresh=true);
-  bool setEventBackgroundColour(uint16_t colour, bool refresh=true);
+  bool setBackgroundColour(uint32_t colour, bool refresh=true);
+  bool setEventBackgroundColour(uint32_t colour, bool refresh=true);
   
   bool afterSet(bool refresh);
 

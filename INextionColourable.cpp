@@ -1,37 +1,37 @@
 #include "INextionColourable.h"
 
-bool INextionColourable::setForegroundColour(uint16_t colour, bool refresh)
+bool INextionColourable::setForegroundColour(uint32_t colour, bool refresh)
 {
   size_t commandLen = 10 + strlen(m_name);
   char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.pco=%d", m_name, colour);
+  snprintf(comandBuffer, commandLen, "%s.pco=%ld", m_name, colour);
   m_nextion->sendCommand(comandBuffer);
   return afterSet(refresh);
 }
 
-bool INextionColourable::setEventForegroundColour(uint16_t colour, bool refresh)
+bool INextionColourable::setEventForegroundColour(uint32_t colour, bool refresh)
 {
   size_t commandLen = 10 + strlen(m_name);
   char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.pco2=%d", m_name, colour);
+  snprintf(comandBuffer, commandLen, "%s.pco2=%ld", m_name, colour);
   m_nextion->sendCommand(comandBuffer);
   return afterSet(refresh);
 }
   
-bool INextionColourable::setBackgroundColour(uint16_t colour, bool refresh)
+bool INextionColourable::setBackgroundColour(uint32_t colour, bool refresh)
 {
   size_t commandLen = 10 + strlen(m_name);
   char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.bco=%d", m_name, colour);
+  snprintf(comandBuffer, commandLen, "%s.bco=%ld", m_name, colour);
   m_nextion->sendCommand(comandBuffer);
   return afterSet(refresh);
 }
 
-bool INextionColourable::setEventBackgroundColour(uint16_t colour, bool refresh)
+bool INextionColourable::setEventBackgroundColour(uint32_t colour, bool refresh)
 {
   size_t commandLen = 10 + strlen(m_name);
   char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.bco2=%d", m_name, colour);
+  snprintf(comandBuffer, commandLen, "%s.bco2=%ld", m_name, colour);
   m_nextion->sendCommand(comandBuffer);
   return afterSet(refresh);
 }

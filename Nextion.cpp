@@ -84,10 +84,69 @@ bool Nextion::refresh(const char * objectName)
   return checkCommandComplete();
 }
 
+bool Nextion::clear(uint32_t colour)
+{
+  size_t commandLen = 9;
+  char comandBuffer[commandLen];
+  snprintf(comandBuffer, commandLen, "cls %ld", colour);
+  sendCommand(comandBuffer);
+  return checkCommandComplete();
+}
+
+bool Nextion::drawPicture(uint16_t x, uint16_t y, uint8_t id)
+{
+  //TODO
+  return checkCommandComplete();
+}
+
+bool Nextion::drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t id)
+{
+  //TODO
+  return checkCommandComplete();
+}
+
+bool Nextion::drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t fontID, char * str, uint8_t xCentre, uint8_t yCentre, uint32_t bgColour, uint32_t fgColour, uint8_t bgType)
+{
+  //TODO
+  return checkCommandComplete();
+}
+
+bool Nextion::drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint32_t colour)
+{
+  size_t commandLen = 34;
+  char comandBuffer[commandLen];
+  snprintf(comandBuffer, commandLen, "line %d,%d,%d,%d,%ld", x1, y1, x2, y2, colour);
+  sendCommand(comandBuffer);
+  return checkCommandComplete();
+}
+
+bool Nextion::drawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, bool filled, uint32_t colour)
+{
+  size_t commandLen = 34;
+  char comandBuffer[commandLen];
+  if(filled)
+    snprintf(comandBuffer, commandLen, "draw %d,%d,%d,%d,%ld", x, y, x+w, y+h, colour);
+  else
+    snprintf(comandBuffer, commandLen, "fill %d,%d,%d,%d,%ld", x, y, w, h, colour);
+  sendCommand(comandBuffer);
+  return checkCommandComplete();
+}
+
+bool Nextion::drawCircle(uint16_t x, uint16_t y, uint16_t r, uint32_t colour)
+{
+  size_t commandLen = 27;
+  char comandBuffer[commandLen];
+  snprintf(comandBuffer, commandLen, "cir %d,%d,%d,%ld", x, y, r, colour);
+  sendCommand(comandBuffer);
+  return checkCommandComplete();
+}
+
 void Nextion::sendCommand(char *command)
 {
   while(m_serialPort.available())
     m_serialPort.read();
+  
+  Serial.println(command);
 
   m_serialPort.print(command);
   m_serialPort.write(0xFF);

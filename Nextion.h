@@ -2,6 +2,7 @@
 #define __NEONEXTION_NEXTION
 
 #include <Arduino.h>
+#include "NextionColour.h"
 
 #define NEX_RET_CMD_FINISHED                (0x01)
 #define NEX_RET_EVENT_LAUNCHED              (0x88)
@@ -41,6 +42,14 @@ class Nextion
 	
     bool refresh();
     bool refresh(const char *objectName);
+    
+    bool clear(uint32_t colour=WHITE);
+    bool drawPicture(uint16_t x, uint16_t y, uint8_t id);
+    bool drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t id);
+    bool drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t fontID, char * str, uint8_t xCentre, uint8_t yCentre, uint32_t bgColour, uint32_t fgColour, uint8_t bgType);
+    bool drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint32_t colour);
+    bool drawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, bool filled, uint32_t colour);
+    bool drawCircle(uint16_t x, uint16_t y, uint16_t r, uint32_t colour);
 
     void sendCommand(char *command);
     bool checkCommandComplete();
