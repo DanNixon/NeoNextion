@@ -38,10 +38,17 @@ class Nextion
 
     bool init();
     void poll();
+    
     void registerTouchable(INextionTouchable *touchable);
 	
     bool refresh();
     bool refresh(const char *objectName);
+    
+    bool sleep();
+    bool wake();
+    
+    uint16_t getBrightness();
+    bool setBrightness(uint16_t val, bool persist=false);
     
     bool clear(uint32_t colour=WHITE);
     bool drawPicture(uint16_t x, uint16_t y, uint8_t id);

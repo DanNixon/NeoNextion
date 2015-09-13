@@ -75,6 +75,40 @@ bool Nextion::refresh()
   return checkCommandComplete();
 }
 
+bool Nextion::sleep()
+{
+  sendCommand("sleep=1");
+  return checkCommandComplete();  
+}
+
+bool Nextion::wake()
+{
+  sendCommand("sleep=0");
+  return checkCommandComplete();
+}
+
+uint16_t Nextion::getBrightness()
+{
+  sendCommand("get dim");
+  uint32_t val;
+  if(receiveNumber(&val))
+    return val;
+  else
+    return 0;
+}
+
+bool Nextion::setBrightness(uint16_t val, bool persist)
+{
+  size_t commandLen = 10;
+  char comandBuffer[commandLen];
+  if(persist)
+    snprintf(comandBuffer, commandLen, "dims=%d", val);
+  else
+    snprintf(comandBuffer, commandLen, "dim=%d", val);
+  sendCommand(comandBuffer);
+  return checkCommandComplete();
+}
+
 bool Nextion::refresh(const char * objectName)
 {
   size_t commandLen = 4 + strlen(objectName);
@@ -145,8 +179,6 @@ void Nextion::sendCommand(char *command)
 {
   while(m_serialPort.available())
     m_serialPort.read();
-  
-  Serial.println(command);
 
   m_serialPort.print(command);
   m_serialPort.write(0xFF);
