@@ -14,7 +14,7 @@ void setup()
   NEXTION_PORT.begin(9600);  
   nex.init();
   
-  nex.clear(BLUE);
+  nex.clear(NEX_COL_BLUE);
   
   nex.sleep();
   delay(1000);
