@@ -57,21 +57,18 @@ void Nextion::poll()
   }
 }
 
-void Nextion::registerTouchable(INextionTouchable *touchable)
-{
-  ITouchableListItem *newListItem = new ITouchableListItem;
-  newListItem->item = touchable;
-  newListItem->next = NULL;
-
-  if(m_touchableList == NULL)
-    m_touchableList = newListItem;
-  else
-    m_touchableList->next = newListItem;
-}
-
 bool Nextion::refresh()
 {
   sendCommand("ref 0");
+  return checkCommandComplete();
+}
+
+bool Nextion::refresh(const char * objectName)
+{
+  size_t commandLen = 4 + strlen(objectName);
+  char comandBuffer[commandLen];
+  snprintf(comandBuffer, commandLen, "ref %s", objectName);
+  sendCommand(comandBuffer);
   return checkCommandComplete();
 }
 
@@ -109,13 +106,22 @@ bool Nextion::setBrightness(uint16_t val, bool persist)
   return checkCommandComplete();
 }
 
-bool Nextion::refresh(const char * objectName)
+uint8_t Nextion::getCurrentPage()
 {
-  size_t commandLen = 4 + strlen(objectName);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "ref %s", objectName);
-  sendCommand(comandBuffer);
-  return checkCommandComplete();
+  sendCommand("sendme");
+  
+  uint8_t temp[5] = {0};
+
+  if(sizeof(temp) != m_serialPort.readBytes((char *)temp, sizeof(temp)))
+    return 0;
+
+  if(temp[0] == NEX_RET_CURRENT_PAGE_ID_HEAD &&
+     temp[2] == 0xFF &&
+     temp[3] == 0xFF &&
+     temp[4] == 0xFF)
+    return temp[1];
+
+  return 0;
 }
 
 bool Nextion::clear(uint32_t colour)
@@ -175,22 +181,16 @@ bool Nextion::drawCircle(uint16_t x, uint16_t y, uint16_t r, uint32_t colour)
   return checkCommandComplete();
 }
 
-uint8_t Nextion::getCurrentPage()
+void Nextion::registerTouchable(INextionTouchable *touchable)
 {
-  sendCommand("sendme");
-  
-  uint8_t temp[5] = {0};
+  ITouchableListItem *newListItem = new ITouchableListItem;
+  newListItem->item = touchable;
+  newListItem->next = NULL;
 
-  if(sizeof(temp) != m_serialPort.readBytes((char *)temp, sizeof(temp)))
-    return 0;
-
-  if(temp[0] == NEX_RET_CURRENT_PAGE_ID_HEAD &&
-     temp[2] == 0xFF &&
-     temp[3] == 0xFF &&
-     temp[4] == 0xFF)
-    return temp[1];
-
-  return 0;
+  if(m_touchableList == NULL)
+    m_touchableList = newListItem;
+  else
+    m_touchableList->next = newListItem;
 }
 
 void Nextion::sendCommand(char *command)

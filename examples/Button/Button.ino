@@ -1,10 +1,12 @@
 #include <Nextion.h>
+#include <NextionPage.h>
 #include <NextionButton.h>
 
 #define NEXTION_PORT Serial
 
 Nextion nex(NEXTION_PORT);
-NextionButton button(&nex, 0, 1, "button1");
+NextionPage pgButton(&nex, 0, 0, "pgButton");
+NextionButton button(&nex, 0, 1, "bEgButton");
 
 void setup()
 {
@@ -12,6 +14,8 @@ void setup()
   
   NEXTION_PORT.begin(9600);  
   nex.init();
+  
+  pgButton.show();
 
   button.attachPressEvent(&press_callback);
   button.attachReleaseEvent(&release_callback);
