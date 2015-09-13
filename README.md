@@ -1,6 +1,8 @@
 NeoNextion
 ==========
 
+[![Build Status](https://travis-ci.org/DanNixon/NeoNextion.svg?branch=master)](https://travis-ci.org/DanNixon/NeoNextion)
+
 An Arduino library for the [Nextion](http://wiki.iteadstudio.com/Nextion_HMI_Solution)
 line of displays.
 
