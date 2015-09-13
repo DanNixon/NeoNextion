@@ -175,6 +175,24 @@ bool Nextion::drawCircle(uint16_t x, uint16_t y, uint16_t r, uint32_t colour)
   return checkCommandComplete();
 }
 
+uint8_t Nextion::getCurrentPage()
+{
+  sendCommand("sendme");
+  
+  uint8_t temp[5] = {0};
+
+  if(sizeof(temp) != m_serialPort.readBytes((char *)temp, sizeof(temp)))
+    return 0;
+
+  if(temp[0] == NEX_RET_CURRENT_PAGE_ID_HEAD &&
+     temp[2] == 0xFF &&
+     temp[3] == 0xFF &&
+     temp[4] == 0xFF)
+    return temp[1];
+
+  return 0;
+}
+
 void Nextion::sendCommand(char *command)
 {
   while(m_serialPort.available())

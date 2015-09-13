@@ -58,6 +58,8 @@ class Nextion
     bool drawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, bool filled, uint32_t colour);
     bool drawCircle(uint16_t x, uint16_t y, uint16_t r, uint32_t colour);
 
+    uint8_t getCurrentPage();
+    
     void sendCommand(char *command);
     bool checkCommandComplete();
     bool receiveNumber(uint32_t *number);
