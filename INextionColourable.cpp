@@ -1,7 +1,8 @@
 #include "INextionColourable.h"
 
-INextionColourable::INextionColourable(Nextion* nex, uint8_t page, uint8_t component, const char *name):
-  INextionWidget(nex, page, component, name)
+INextionColourable::INextionColourable(Nextion *nex, uint8_t page,
+                                       uint8_t component, const char *name)
+    : INextionWidget(nex, page, component, name)
 {
 }
 
@@ -21,7 +22,7 @@ uint32_t INextionColourable::getForegroundColour()
   snprintf(comandBuffer, commandLen, "get %s.pco", m_name);
   m_nextion->sendCommand(comandBuffer);
   uint32_t colour;
-  if(m_nextion->receiveNumber(&colour))
+  if (m_nextion->receiveNumber(&colour))
     return colour;
   else
     return NEX_COL_BLACK;
@@ -43,7 +44,7 @@ uint32_t INextionColourable::getEventForegroundColour()
   snprintf(comandBuffer, commandLen, "get %s.pco2", m_name);
   m_nextion->sendCommand(comandBuffer);
   uint32_t colour;
-  if(m_nextion->receiveNumber(&colour))
+  if (m_nextion->receiveNumber(&colour))
     return colour;
   else
     return NEX_COL_BLACK;
@@ -65,7 +66,7 @@ uint32_t INextionColourable::getBackgroundColour()
   snprintf(comandBuffer, commandLen, "get %s.bco", m_name);
   m_nextion->sendCommand(comandBuffer);
   uint32_t colour;
-  if(m_nextion->receiveNumber(&colour))
+  if (m_nextion->receiveNumber(&colour))
     return colour;
   else
     return NEX_COL_BLACK;
@@ -87,7 +88,7 @@ uint32_t INextionColourable::getEventBackgroundColour()
   snprintf(comandBuffer, commandLen, "get %s.bco2", m_name);
   m_nextion->sendCommand(comandBuffer);
   uint32_t colour;
-  if(m_nextion->receiveNumber(&colour))
+  if (m_nextion->receiveNumber(&colour))
     return colour;
   else
     return NEX_COL_BLACK;
@@ -95,9 +96,9 @@ uint32_t INextionColourable::getEventBackgroundColour()
 
 bool INextionColourable::afterSet(bool refresh)
 {
-  if(m_nextion->checkCommandComplete())
+  if (m_nextion->checkCommandComplete())
   {
-    if(refresh)
+    if (refresh)
     {
       m_nextion->refresh(m_name);
       return m_nextion->checkCommandComplete();

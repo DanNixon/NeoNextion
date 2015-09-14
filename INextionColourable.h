@@ -6,25 +6,25 @@
 #include "INextionWidget.h"
 #include "NextionTypes.h"
 
-class INextionColourable: public virtual INextionWidget
+class INextionColourable : public virtual INextionWidget
 {
-  public:
-    INextionColourable(Nextion* nex, uint8_t page, uint8_t component, const char *name);
+public:
+  INextionColourable(Nextion *nex, uint8_t page, uint8_t component,
+                     const char *name);
 
-    bool setForegroundColour(uint32_t colour, bool refresh = true);
-    uint32_t getForegroundColour();
+  bool setForegroundColour(uint32_t colour, bool refresh = true);
+  uint32_t getForegroundColour();
 
-    bool setEventForegroundColour(uint32_t colour, bool refresh = true);
-    uint32_t getEventForegroundColour();
+  bool setEventForegroundColour(uint32_t colour, bool refresh = true);
+  uint32_t getEventForegroundColour();
 
-    bool setBackgroundColour(uint32_t colour, bool refresh = true);
-    uint32_t getBackgroundColour();
+  bool setBackgroundColour(uint32_t colour, bool refresh = true);
+  uint32_t getBackgroundColour();
 
-    bool setEventBackgroundColour(uint32_t colour, bool refresh = true);
-    uint32_t getEventBackgroundColour();
+  bool setEventBackgroundColour(uint32_t colour, bool refresh = true);
+  uint32_t getEventBackgroundColour();
 
-    bool afterSet(bool refresh);
-
+  bool afterSet(bool refresh);
 };
 
 #endif

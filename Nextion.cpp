@@ -1,11 +1,11 @@
 #include "Nextion.h"
 #include "INextionTouchable.h"
 
-Nextion::Nextion(Stream &stream, bool flushSerialBeforeTx):
-  m_serialPort(stream),
-  m_timeout(500),
-  m_flushSerialBeforeTx(flushSerialBeforeTx),
-  m_touchableList(NULL)
+Nextion::Nextion(Stream &stream, bool flushSerialBeforeTx)
+    : m_serialPort(stream)
+    , m_timeout(500)
+    , m_flushSerialBeforeTx(flushSerialBeforeTx)
+    , m_touchableList(NULL)
 {
 }
 
@@ -24,30 +24,28 @@ bool Nextion::init()
 
 void Nextion::poll()
 {
-  while(m_serialPort.available() > 0)
+  while (m_serialPort.available() > 0)
   {
     char c = m_serialPort.read();
 
-    if(c == NEX_RET_EVENT_TOUCH_HEAD)
-	{
+    if (c == NEX_RET_EVENT_TOUCH_HEAD)
+    {
       delay(10);
 
-      if(m_serialPort.available() >= 6)
+      if (m_serialPort.available() >= 6)
       {
         static uint8_t buffer[8];
         buffer[0] = c;
 
         uint8_t i;
-        for(i = 1; i < 7; i++)
+        for (i = 1; i < 7; i++)
           buffer[i] = m_serialPort.read();
         buffer[i] = 0x00;
 
-        if(buffer[4] == 0xFF &&
-		   buffer[5] == 0xFF &&
-		   buffer[6] == 0xFF)
+        if (buffer[4] == 0xFF && buffer[5] == 0xFF && buffer[6] == 0xFF)
         {
           ITouchableListItem *item = m_touchableList;
-          while(item != NULL)
+          while (item != NULL)
           {
             item->item->processEvent(buffer[1], buffer[2], buffer[3]);
             item = item->next;
@@ -64,7 +62,7 @@ bool Nextion::refresh()
   return checkCommandComplete();
 }
 
-bool Nextion::refresh(const char * objectName)
+bool Nextion::refresh(const char *objectName)
 {
   size_t commandLen = 4 + strlen(objectName);
   char comandBuffer[commandLen];
@@ -89,7 +87,7 @@ uint16_t Nextion::getBrightness()
 {
   sendCommand("get dim");
   uint32_t val;
-  if(receiveNumber(&val))
+  if (receiveNumber(&val))
     return val;
   else
     return 0;
@@ -99,7 +97,7 @@ bool Nextion::setBrightness(uint16_t val, bool persist)
 {
   size_t commandLen = 10;
   char comandBuffer[commandLen];
-  if(persist)
+  if (persist)
     snprintf(comandBuffer, commandLen, "dims=%d", val);
   else
     snprintf(comandBuffer, commandLen, "dim=%d", val);
@@ -113,13 +111,11 @@ uint8_t Nextion::getCurrentPage()
 
   uint8_t temp[5] = {0};
 
-  if(sizeof(temp) != m_serialPort.readBytes((char *)temp, sizeof(temp)))
+  if (sizeof(temp) != m_serialPort.readBytes((char *)temp, sizeof(temp)))
     return 0;
 
-  if(temp[0] == NEX_RET_CURRENT_PAGE_ID_HEAD &&
-     temp[2] == 0xFF &&
-     temp[3] == 0xFF &&
-     temp[4] == 0xFF)
+  if (temp[0] == NEX_RET_CURRENT_PAGE_ID_HEAD && temp[2] == 0xFF &&
+      temp[3] == 0xFF && temp[4] == 0xFF)
     return temp[1];
 
   return 0;
@@ -143,7 +139,8 @@ bool Nextion::drawPicture(uint16_t x, uint16_t y, uint8_t id)
   return checkCommandComplete();
 }
 
-bool Nextion::drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t id)
+bool Nextion::drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
+                          uint8_t id)
 {
   size_t commandLen = 35;
   char comandBuffer[commandLen];
@@ -152,35 +149,43 @@ bool Nextion::drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_
   return checkCommandComplete();
 }
 
-bool Nextion::drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t fontID, char * str,
-                 uint32_t bgColour, uint32_t fgColour, uint8_t bgType,
-                 NextionFontAlignment xCentre, NextionFontAlignment yCentre)
+bool Nextion::drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
+                      uint8_t fontID, char *str, uint32_t bgColour,
+                      uint32_t fgColour, uint8_t bgType,
+                      NextionFontAlignment xCentre,
+                      NextionFontAlignment yCentre)
 {
   size_t commandLen = 65 + strlen(str);
   char comandBuffer[commandLen];
   snprintf(comandBuffer, commandLen, "xstr %d,%d,%d,%d,%d,%ld,%ld,%d,%d,%d,%s",
-           x, y, w, h, fontID, fgColour, bgColour, xCentre, yCentre, bgType, str);
+           x, y, w, h, fontID, fgColour, bgColour, xCentre, yCentre, bgType,
+           str);
   sendCommand(comandBuffer);
   return checkCommandComplete();
 }
 
-bool Nextion::drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint32_t colour)
+bool Nextion::drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2,
+                       uint32_t colour)
 {
   size_t commandLen = 35;
   char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "line %d,%d,%d,%d,%ld", x1, y1, x2, y2, colour);
+  snprintf(comandBuffer, commandLen, "line %d,%d,%d,%d,%ld", x1, y1, x2, y2,
+           colour);
   sendCommand(comandBuffer);
   return checkCommandComplete();
 }
 
-bool Nextion::drawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, bool filled, uint32_t colour)
+bool Nextion::drawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
+                       bool filled, uint32_t colour)
 {
   size_t commandLen = 35;
   char comandBuffer[commandLen];
-  if(filled)
-    snprintf(comandBuffer, commandLen, "draw %d,%d,%d,%d,%ld", x, y, x+w, y+h, colour);
+  if (filled)
+    snprintf(comandBuffer, commandLen, "draw %d,%d,%d,%d,%ld", x, y, x + w,
+             y + h, colour);
   else
-    snprintf(comandBuffer, commandLen, "fill %d,%d,%d,%d,%ld", x, y, w, h, colour);
+    snprintf(comandBuffer, commandLen, "fill %d,%d,%d,%d,%ld", x, y, w, h,
+             colour);
   sendCommand(comandBuffer);
   return checkCommandComplete();
 }
@@ -200,7 +205,7 @@ void Nextion::registerTouchable(INextionTouchable *touchable)
   newListItem->item = touchable;
   newListItem->next = NULL;
 
-  if(m_touchableList == NULL)
+  if (m_touchableList == NULL)
     m_touchableList = newListItem;
   else
     m_touchableList->next = newListItem;
@@ -208,7 +213,7 @@ void Nextion::registerTouchable(INextionTouchable *touchable)
 
 void Nextion::sendCommand(char *command)
 {
-  if(m_flushSerialBeforeTx)
+  if (m_flushSerialBeforeTx)
     m_serialPort.flush();
 
   m_serialPort.print(command);
@@ -222,13 +227,11 @@ bool Nextion::checkCommandComplete()
   bool ret = false;
   uint8_t temp[4] = {0};
 
-  if(sizeof(temp) != m_serialPort.readBytes((char *)temp, sizeof(temp)))
+  if (sizeof(temp) != m_serialPort.readBytes((char *)temp, sizeof(temp)))
     ret = false;
 
-  if(temp[0] == NEX_RET_CMD_FINISHED &&
-     temp[1] == 0xFF &&
-     temp[2] == 0xFF &&
-     temp[3] == 0xFF)
+  if (temp[0] == NEX_RET_CMD_FINISHED && temp[1] == 0xFF && temp[2] == 0xFF &&
+      temp[3] == 0xFF)
     ret = true;
 
   return ret;
@@ -238,19 +241,17 @@ bool Nextion::receiveNumber(uint32_t *number)
 {
   uint8_t temp[8] = {0};
 
-  if(!number)
+  if (!number)
     return false;
 
-  if(sizeof(temp) != m_serialPort.readBytes((char *)temp, sizeof(temp)))
+  if (sizeof(temp) != m_serialPort.readBytes((char *)temp, sizeof(temp)))
     return false;
 
-  if(temp[0] == NEX_RET_NUMBER_HEAD &&
-     temp[5] == 0xFF &&
-     temp[6] == 0xFF &&
-     temp[7] == 0xFF)
+  if (temp[0] == NEX_RET_NUMBER_HEAD && temp[5] == 0xFF && temp[6] == 0xFF &&
+      temp[7] == 0xFF)
   {
     *number = (temp[4] << 24) | (temp[3] << 16) | (temp[2] << 8) | (temp[1]);
-	return true;
+    return true;
   }
 
   return false;
@@ -264,36 +265,36 @@ size_t Nextion::receiveString(char *buffer, size_t len)
   uint8_t flag_count = 0;
   size_t pos = 0;
 
-  if(!buffer || len == 0)
+  if (!buffer || len == 0)
     return false;
 
   uint32_t start = millis();
   while (millis() - start <= m_timeout)
   {
-    while(m_serialPort.available())
+    while (m_serialPort.available())
     {
       char c = m_serialPort.read();
-      if(have_header_flag)
+      if (have_header_flag)
       {
-        if(c == 0xFF || c == 0xFFFFFFFF)
+        if (c == 0xFF || c == 0xFFFFFFFF)
         {
           flag_count++;
           if (flag_count >= 3)
             break;
         }
         else
-		{
+        {
           buffer[pos] = c;
-		  pos++;
-		  if(pos == len-1)
+          pos++;
+          if (pos == len - 1)
             break;
-		}
+        }
       }
-      else if(c == NEX_RET_STRING_HEAD)
+      else if (c == NEX_RET_STRING_HEAD)
         have_header_flag = true;
     }
 
-    if(flag_count >= 3)
+    if (flag_count >= 3)
       break;
   }
 
