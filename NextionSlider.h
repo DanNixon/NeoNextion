@@ -4,8 +4,9 @@
 #include <Arduino.h>
 #include "Nextion.h"
 #include "INextionTouchable.h"
+#include "INextionColourable.h"
 
-class NextionSlider: public INextionTouchable
+class NextionSlider: public INextionTouchable, public INextionColourable
 {
   public:
     NextionSlider(Nextion* nex, uint8_t page, uint8_t component, const char *name);
