@@ -1,9 +1,10 @@
 #include "Nextion.h"
 #include "INextionTouchable.h"
 
-Nextion::Nextion(Stream &stream):
+Nextion::Nextion(Stream &stream, bool flushSerialBeforeTx):
   m_serialPort(stream),
   m_timeout(500),
+  m_flushSerialBeforeTx(flushSerialBeforeTx),
   m_touchableList(NULL)
 {
 }
@@ -207,8 +208,8 @@ void Nextion::registerTouchable(INextionTouchable *touchable)
 
 void Nextion::sendCommand(char *command)
 {
-  while(m_serialPort.available())
-    m_serialPort.read();
+  if(m_flushSerialBeforeTx)
+    m_serialPort.flush();
 
   m_serialPort.print(command);
   m_serialPort.write(0xFF);

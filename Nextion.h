@@ -17,7 +17,7 @@ struct ITouchableListItem
 class Nextion
 {
   public:
-    Nextion(Stream &stream);
+    Nextion(Stream &stream, bool flushSerialBeforeTx = true);
 
     bool init();
     void poll();
@@ -33,7 +33,7 @@ class Nextion
 
     uint8_t getCurrentPage();
 
-    bool clear(uint32_t colour=NEX_COL_WHITE);
+    bool clear(uint32_t colour = NEX_COL_WHITE);
     bool drawPicture(uint16_t x, uint16_t y, uint8_t id);
     bool drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t id);
     bool drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t fontID, char * str,
@@ -52,6 +52,7 @@ class Nextion
   private:
     Stream &m_serialPort;
     uint32_t m_timeout;
+    bool m_flushSerialBeforeTx;
     ITouchableListItem *m_touchableList;
 
 };
