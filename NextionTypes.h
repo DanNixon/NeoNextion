@@ -24,6 +24,7 @@ enum NextionValue
 
 enum NextionFontAlignment
 {
+  NEX_FA_NONE       = -1,
   NEX_FA_LEFT_UP    = 0,
   NEX_FA_CENTRE     = 1,
   NEX_FA_RIGHT_DOWN = 2
@@ -31,6 +32,7 @@ enum NextionFontAlignment
 
 enum NextionBackground
 {
+  NEX_BG_NONE         = -1,
   NEX_BG_CROPIMAGE    = 0,
   NEX_BG_SOLIDCOLOUR  = 1,
   NEW_BG_IMAGE        = 2
@@ -38,6 +40,7 @@ enum NextionBackground
 
 enum NextionColour
 {
+  NEX_COL_NONE    = -1,
   NEX_COL_BLACK   = 0,
   NEX_COL_WHITE   = 65535,
   NEX_COL_RED     = 63488,

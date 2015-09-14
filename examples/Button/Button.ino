@@ -20,6 +20,9 @@ void setup()
   button.attachPressEvent(&press_callback);
   button.attachReleaseEvent(&release_callback);
 
+  button.setHAlignment(NEX_FA_LEFT_UP);
+  button.setVAlignment(NEX_FA_LEFT_UP);
+  button.setFont(1);
   button.setText("Press me!");
 
   /* Serial.begin(9600); */
