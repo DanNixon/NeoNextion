@@ -5,32 +5,28 @@
 #include "Nextion.h"
 #include "INextionWidget.h"
 
-#define NEX_EVENT_PUSH  (0x01)
-#define NEX_EVENT_POP   (0x00)
+#define NEX_EVENT_PUSH (0x01)
+#define NEX_EVENT_POP (0x00)
 
-typedef void (* NextionCallback)(INextionTouchable *);
+typedef void (*NextionCallback)(INextionTouchable *);
 
-class INextionTouchable: public virtual INextionWidget
+class INextionTouchable : public virtual INextionWidget
 {
-  public:
-    INextionTouchable(Nextion* nex, uint8_t page, uint8_t component, const char *name):
-      INextionWidget(nex, page, component, name)
-    {
-      nex->registerTouchable(this);
-    }
+public:
+  INextionTouchable(Nextion *nex, uint8_t page, uint8_t component,
+                    const char *name);
 
-    bool processEvent(uint8_t pageID, uint8_t componentID, uint8_t eventType);
+  bool processEvent(uint8_t pageID, uint8_t componentID, uint8_t eventType);
 
-    bool attachPressEvent(NextionCallback cb);
-    void detachPressEvent();
+  bool attachPressEvent(NextionCallback cb);
+  void detachPressEvent();
 
-    bool attachReleaseEvent(NextionCallback cb);
-    void detachReleaseEvent();
+  bool attachReleaseEvent(NextionCallback cb);
+  void detachReleaseEvent();
 
-  private:
-    NextionCallback m_pressEvent;
-    NextionCallback m_releaseEvent;
-
+private:
+  NextionCallback m_pressEvent;
+  NextionCallback m_releaseEvent;
 };
 
 #endif

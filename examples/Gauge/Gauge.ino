@@ -34,14 +34,14 @@ void loop()
 {
   nex.poll();
 
-  if(millis() - startTime > 500)
+  if (millis() - startTime > 500)
   {
     uint16_t value = gauge.getValue();
     value += 10;
-    if(value > 400)
+    if (value > 400)
       value = 0;
     gauge.setValue(value);
-    startTime= millis();
+    startTime = millis();
   }
 }
 

@@ -6,22 +6,22 @@
 #include "INextionWidget.h"
 #include "NextionTypes.h"
 
-class INextionFontStyleable: public virtual INextionWidget
+class INextionFontStyleable : public virtual INextionWidget
 {
-  public:
-    INextionFontStyleable(Nextion* nex, uint8_t page, uint8_t component, const char *name);
+public:
+  INextionFontStyleable(Nextion *nex, uint8_t page, uint8_t component,
+                        const char *name);
 
-    bool setFont(uint8_t id, bool refresh = true);
-    uint8_t getFont();
-    
-    bool setHAlignment(NextionFontAlignment align, bool refresh = true);
-    NextionFontAlignment getHAlignment();
-    
-    bool setVAlignment(NextionFontAlignment align, bool refresh = true);
-    NextionFontAlignment getVAlignment();
+  bool setFont(uint8_t id, bool refresh = true);
+  uint8_t getFont();
 
-    bool afterSet(bool refresh);
+  bool setHAlignment(NextionFontAlignment align, bool refresh = true);
+  NextionFontAlignment getHAlignment();
 
+  bool setVAlignment(NextionFontAlignment align, bool refresh = true);
+  NextionFontAlignment getVAlignment();
+
+  bool afterSet(bool refresh);
 };
 
 #endif

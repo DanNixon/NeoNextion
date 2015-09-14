@@ -1,9 +1,10 @@
 #include "NextionCrop.h"
 #include "INextionWidget.h"
 
-NextionCrop::NextionCrop(Nextion* nex, uint8_t page, uint8_t component, const char *name):
-  INextionWidget(nex, page, component, name),
-  INextionTouchable(nex, page, component, name)
+NextionCrop::NextionCrop(Nextion *nex, uint8_t page, uint8_t component,
+                         const char *name)
+    : INextionWidget(nex, page, component, name)
+    , INextionTouchable(nex, page, component, name)
 {
 }
 
@@ -14,7 +15,7 @@ uint16_t NextionCrop::getPictureID()
   snprintf(comandBuffer, commandLen, "get %s.picc", m_name);
   m_nextion->sendCommand(comandBuffer);
   uint32_t id;
-  if(m_nextion->receiveNumber(&id))
+  if (m_nextion->receiveNumber(&id))
     return id;
   else
     return 0;

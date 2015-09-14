@@ -1,7 +1,9 @@
 #include "INextionFontStyleable.h"
 
-INextionFontStyleable::INextionFontStyleable(Nextion* nex, uint8_t page, uint8_t component, const char *name):
-  INextionWidget(nex, page, component, name)
+INextionFontStyleable::INextionFontStyleable(Nextion *nex, uint8_t page,
+                                             uint8_t component,
+                                             const char *name)
+    : INextionWidget(nex, page, component, name)
 {
 }
 
@@ -21,13 +23,14 @@ uint8_t INextionFontStyleable::getFont()
   snprintf(comandBuffer, commandLen, "get %s.font", m_name);
   m_nextion->sendCommand(comandBuffer);
   uint32_t id;
-  if(m_nextion->receiveNumber(&id))
+  if (m_nextion->receiveNumber(&id))
     return id;
   else
     return NEX_FA_NONE;
 }
-    
-bool INextionFontStyleable::setHAlignment(NextionFontAlignment align, bool refresh)
+
+bool INextionFontStyleable::setHAlignment(NextionFontAlignment align,
+                                          bool refresh)
 {
   size_t commandLen = 12 + strlen(m_name);
   char comandBuffer[commandLen];
@@ -43,13 +46,14 @@ NextionFontAlignment INextionFontStyleable::getHAlignment()
   snprintf(comandBuffer, commandLen, "get %s.xcen", m_name);
   m_nextion->sendCommand(comandBuffer);
   uint32_t align;
-  if(m_nextion->receiveNumber(&align))
-    return (NextionFontAlignment) align;
+  if (m_nextion->receiveNumber(&align))
+    return (NextionFontAlignment)align;
   else
     return NEX_FA_NONE;
 }
-    
-bool INextionFontStyleable::setVAlignment(NextionFontAlignment align, bool refresh)
+
+bool INextionFontStyleable::setVAlignment(NextionFontAlignment align,
+                                          bool refresh)
 {
   size_t commandLen = 12 + strlen(m_name);
   char comandBuffer[commandLen];
@@ -65,17 +69,17 @@ NextionFontAlignment INextionFontStyleable::getVAlignment()
   snprintf(comandBuffer, commandLen, "get %s.ycen", m_name);
   m_nextion->sendCommand(comandBuffer);
   uint32_t align;
-  if(m_nextion->receiveNumber(&align))
-    return (NextionFontAlignment) align;
+  if (m_nextion->receiveNumber(&align))
+    return (NextionFontAlignment)align;
   else
     return NEX_FA_NONE;
 }
 
 bool INextionFontStyleable::afterSet(bool refresh)
 {
-  if(m_nextion->checkCommandComplete())
+  if (m_nextion->checkCommandComplete())
   {
-    if(refresh)
+    if (refresh)
     {
       m_nextion->refresh(m_name);
       return m_nextion->checkCommandComplete();

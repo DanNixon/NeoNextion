@@ -1,12 +1,13 @@
 #include "NextionTimer.h"
 
-NextionTimer::NextionTimer(Nextion* nex, uint8_t page, uint8_t component, const char *name):
-  INextionWidget(nex, page, component, name),
-  INextionTouchable(nex, page, component, name)
+NextionTimer::NextionTimer(Nextion *nex, uint8_t page, uint8_t component,
+                           const char *name)
+    : INextionWidget(nex, page, component, name)
+    , INextionTouchable(nex, page, component, name)
 {
 }
 
-//TODO: The callbacks are not working
+// TODO: The callbacks are not working
 
 bool NextionTimer::attachEvent(NextionCallback cb)
 {
@@ -25,7 +26,7 @@ uint32_t NextionTimer::getCycle()
   snprintf(comandBuffer, commandLen, "get %s.tim", m_name);
   m_nextion->sendCommand(comandBuffer);
   uint32_t id;
-  if(m_nextion->receiveNumber(&id))
+  if (m_nextion->receiveNumber(&id))
     return id;
   else
     return 0;
@@ -33,7 +34,7 @@ uint32_t NextionTimer::getCycle()
 
 bool NextionTimer::setCycle(uint32_t cycle)
 {
-  if(cycle < 50)
+  if (cycle < 50)
     return false;
 
   size_t commandLen = 11 + strlen(m_name);
