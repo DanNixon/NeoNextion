@@ -17,7 +17,6 @@ bool NextionWaveform::addValue(uint8_t channel, uint8_t value)
   char comandBuffer[commandLen];
   snprintf(comandBuffer, commandLen, "add %d,%d,%d",
            m_componentID, channel, value);
-  Serial.println(comandBuffer);
   m_nextion->sendCommand(comandBuffer);
   return m_nextion->checkCommandComplete();
 }

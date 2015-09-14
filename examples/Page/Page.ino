@@ -1,9 +1,10 @@
 #include <Nextion.h>
 #include <NextionPage.h>
+#include <SoftwareSerial.h>
 
-#define NEXTION_PORT Serial
+SoftwareSerial nextionSerial(10, 11); // RX, TX
 
-Nextion nex(NEXTION_PORT);
+Nextion nex(nextionSerial);
 
 NextionPage pgButton      (&nex, 0,  0, "pgButton");
 NextionPage pgText        (&nex, 1,  0, "pgText");
@@ -19,17 +20,16 @@ NextionPage pgVariable    (&nex, 10, 0, "pgVariable");
 
 void setup()
 {
-  pinMode(13, OUTPUT);
+	Serial.begin(9600);
   
-  NEXTION_PORT.begin(9600);  
+  nextionSerial.begin(9600);  
   nex.init();
   
-  pgGauge.show();
+  Serial.println(pgGauge.show());
   
-  /* Serial.begin(9600); */
-  /* Serial.println(nex.getCurrentPage()); */
-  /* Serial.println(pgGauge.isShown()); */
-  /* Serial.println(pgButton.isShown()); */
+  Serial.println(nex.getCurrentPage());
+  Serial.println(pgGauge.isShown());
+  Serial.println(pgButton.isShown());
 }
 
 void loop()

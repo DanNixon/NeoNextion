@@ -1,28 +1,30 @@
 #include <Nextion.h>
 #include <NextionPage.h>
 #include <NextionText.h>
+#include <SoftwareSerial.h>
 
-#define NEXTION_PORT Serial
+SoftwareSerial nextionSerial(10, 11); // RX, TX
 
-Nextion nex(NEXTION_PORT);
+Nextion nex(nextionSerial);
 NextionPage pgText(&nex, 1, 0, "pgText");
 NextionText text(&nex, 1, 2, "tExText");
 
 void setup()
 {
+	Serial.begin(9600);
   pinMode(13, OUTPUT);
 
-  NEXTION_PORT.begin(9600);
+  nextionSerial.begin(9600);
   nex.init();
 
-  pgText.show();
+  Serial.println(pgText.show());
 
-  text.attachPressEvent(&press_callback);
-  text.attachReleaseEvent(&release_callback);
+  Serial.println(text.attachPressEvent(&press_callback));
+  Serial.println(text.attachReleaseEvent(&release_callback));
 
-  text.setText("Press me!");
+  Serial.println(text.setText("Press me!"));
 
-  text.setBackgroundColour(NEX_COL_BLUE);
+  Serial.println(text.setBackgroundColour(NEX_COL_BLUE));
 }
 
 void loop()

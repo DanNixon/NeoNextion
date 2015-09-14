@@ -1,10 +1,11 @@
 #include <Nextion.h>
 #include <NextionPage.h>
 #include <NextionGauge.h>
+#include <SoftwareSerial.h>
 
-#define NEXTION_PORT Serial
+SoftwareSerial nextionSerial(10, 11); // RX, TX
 
-Nextion nex(NEXTION_PORT);
+Nextion nex(nextionSerial);
 NextionPage pgGauge(&nex, 6, 0, "pgGauge");
 NextionGauge gauge(&nex, 6, 2, "gExGauge");
 
@@ -12,18 +13,19 @@ uint32_t startTime = 0;
 
 void setup()
 {
+	Serial.begin(9600);
   pinMode(13, OUTPUT);
 
-  NEXTION_PORT.begin(9600);
+  nextionSerial.begin(9600);
   nex.init();
 
-  pgGauge.show();
+  Serial.println(pgGauge.show());
 
-  gauge.attachPressEvent(&press_callback);
-  gauge.attachReleaseEvent(&release_callback);
+  Serial.println(gauge.attachPressEvent(&press_callback));
+  Serial.println(gauge.attachReleaseEvent(&release_callback));
 
-  gauge.setBackgroundColour(NEX_COL_BLACK);
-  gauge.setForegroundColour(NEX_COL_RED);
+  Serial.println(gauge.setBackgroundColour(NEX_COL_BLACK));
+  Serial.println(gauge.setForegroundColour(NEX_COL_RED));
 
   startTime = millis();
 }

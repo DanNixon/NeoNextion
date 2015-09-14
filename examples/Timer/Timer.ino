@@ -1,25 +1,27 @@
 #include <Nextion.h>
 #include <NextionPage.h>
 #include <NextionTimer.h>
+#include <SoftwareSerial.h>
 
-#define NEXTION_PORT Serial
+SoftwareSerial nextionSerial(10, 11); // RX, TX
 
-Nextion nex(NEXTION_PORT);
+Nextion nex(nextionSerial);
 NextionPage pgTimer(&nex, 9, 0, "pgTimer");
 NextionTimer timer(&nex, 9, 2, "tmExTimer");
 
 void setup()
 {
+  Serial.begin(9600);
   pinMode(13, OUTPUT);
 
-  NEXTION_PORT.begin(9600);
+  nextionSerial.begin(9600);
   nex.init();
 
-  pgTimer.show();
+  Serial.println(pgTimer.show());
 
-  timer.attachEvent(&timer_callback);
-  timer.setCycle(1000);
-  timer.enable();
+  Serial.println(timer.attachEvent(&timer_callback));
+  Serial.println(timer.setCycle(1000));
+  Serial.println(timer.enable());
 }
 
 void loop()

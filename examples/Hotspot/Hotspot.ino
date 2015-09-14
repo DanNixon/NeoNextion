@@ -1,24 +1,26 @@
 #include <Nextion.h>
 #include <NextionPage.h>
 #include <NextionHotspot.h>
+#include <SoftwareSerial.h>
 
-#define NEXTION_PORT Serial
+SoftwareSerial nextionSerial(10, 11); // RX, TX
 
-Nextion nex(NEXTION_PORT);
+Nextion nex(nextionSerial);
 NextionPage pgHotspot(&nex, 5, 0, "pgHotspot");
 NextionHotspot hotspot(&nex, 5, 2, "hsExHotspot");
 
 void setup()
 {
+  Serial.begin(9600);
   pinMode(13, OUTPUT);
   
-  NEXTION_PORT.begin(9600);  
+  nextionSerial.begin(9600);  
   nex.init();
   
-  pgHotspot.show();
+  Serial.println(pgHotspot.show());
 
-  hotspot.attachPressEvent(&press_callback);
-  hotspot.attachReleaseEvent(&release_callback);
+  Serial.println(hotspot.attachPressEvent(&press_callback));
+  Serial.println(hotspot.attachReleaseEvent(&release_callback));
 }
 
 void loop()

@@ -1,28 +1,29 @@
 #include <Nextion.h>
 #include <INextionColourable.h>
+#include <SoftwareSerial.h>
 
-#define NEXTION_PORT Serial
+SoftwareSerial nextionSerial(10, 11); // RX, TX
 
-Nextion nex(NEXTION_PORT);
+Nextion nex(nextionSerial);
 
 void setup()
 {
-  pinMode(13, OUTPUT);
-  
   Serial.begin(9600);
   
-  NEXTION_PORT.begin(9600);  
+  nextionSerial.begin(9600);  
   nex.init();
   
-  nex.clear(NEX_COL_BLUE);
+  Serial.println(nex.clear(NEX_COL_BLUE));
   
-  nex.sleep();
+  Serial.println(nex.sleep());
   delay(1000);
-  nex.wake();
+  Serial.println(nex.wake());
   delay(1000);
-  nex.setBrightness(50);
+  Serial.println(nex.setBrightness(50));
+	Serial.println(nex.getBrightness());
   delay(1000);
-  nex.setBrightness(20, true);
+  Serial.println(nex.setBrightness(20, true));
+	Serial.println(nex.getBrightness());
 }
 
 void loop()

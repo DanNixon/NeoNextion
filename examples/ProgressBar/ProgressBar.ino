@@ -1,10 +1,11 @@
 #include <Nextion.h>
 #include <NextionPage.h>
 #include <NextionProgressBar.h>
+#include <SoftwareSerial.h>
 
-#define NEXTION_PORT Serial
+SoftwareSerial nextionSerial(10, 11); // RX, TX
 
-Nextion nex(NEXTION_PORT);
+Nextion nex(nextionSerial);
 NextionPage pgProgressBar(&nex, 2, 0, "pgProgressBar");
 NextionProgressBar progressBar(&nex, 2, 2, "pbExProgBar");
 
@@ -12,18 +13,19 @@ uint32_t startTime = 0;
 
 void setup()
 {
+  Serial.begin(9600);
   pinMode(13, OUTPUT);
 
-  NEXTION_PORT.begin(9600);
+  nextionSerial.begin(9600);
   nex.init();
 
-  pgProgressBar.show();
+  Serial.println(pgProgressBar.show());
 
-  progressBar.attachPressEvent(&press_callback);
-  progressBar.attachReleaseEvent(&release_callback);
+  Serial.println(progressBar.attachPressEvent(&press_callback));
+  Serial.println(progressBar.attachReleaseEvent(&release_callback));
 
-  progressBar.setBackgroundColour(NEX_COL_YELLOW);
-  progressBar.setForegroundColour(NEX_COL_BLACK);
+  Serial.println(progressBar.setBackgroundColour(NEX_COL_YELLOW));
+  Serial.println(progressBar.setForegroundColour(NEX_COL_BLACK));
 
   startTime = millis();
 }

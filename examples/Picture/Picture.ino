@@ -1,26 +1,28 @@
 #include <Nextion.h>
 #include <NextionPage.h>
 #include <NextionPicture.h>
+#include <SoftwareSerial.h>
 
-#define NEXTION_PORT Serial
+SoftwareSerial nextionSerial(10, 11); // RX, TX
 
-Nextion nex(NEXTION_PORT);
+Nextion nex(nextionSerial);
 NextionPage pgPicture(&nex, 3, 0, "pgPicture");
 NextionPicture picture(&nex, 3, 2, "pExPicture");
 
 void setup()
 {
+	Serial.begin(9600);
   pinMode(13, OUTPUT);
 
-  NEXTION_PORT.begin(9600);
+  nextionSerial.begin(9600);
   nex.init();
 
-  pgPicture.show();
+  Serial.println(pgPicture.show());
 
-  picture.attachPressEvent(&press_callback);
-  picture.attachReleaseEvent(&release_callback);
+  Serial.println(picture.attachPressEvent(&press_callback));
+  Serial.println(picture.attachReleaseEvent(&release_callback));
 
-  picture.setPictureID(1);
+  Serial.println(picture.setPictureID(1));
 }
 
 void loop()

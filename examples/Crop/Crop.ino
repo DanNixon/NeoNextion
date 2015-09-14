@@ -1,24 +1,26 @@
 #include <Nextion.h>
 #include <NextionPage.h>
 #include <NextionCrop.h>
+#include <SoftwareSerial.h>
 
-#define NEXTION_PORT Serial
+SoftwareSerial nextionSerial(10, 11); // RX, TX
 
-Nextion nex(NEXTION_PORT);
+Nextion nex(nextionSerial);
 NextionPage pgCrop(&nex, 4, 0, "pgCrop");
 NextionCrop crop(&nex, 4, 2, "crExCrop");
 
 void setup()
 {
+	Serial.begin(9600);
   pinMode(13, OUTPUT);
 
-  NEXTION_PORT.begin(9600);
+  nextionSerial.begin(9600);
   nex.init();
 
-  pgCrop.show();
+  Serial.println(pgCrop.show());
 
-  crop.attachPressEvent(&press_callback);
-  crop.attachReleaseEvent(&release_callback);
+  Serial.println(crop.attachPressEvent(&press_callback));
+  Serial.println(crop.attachReleaseEvent(&release_callback));
 }
 
 void loop()
