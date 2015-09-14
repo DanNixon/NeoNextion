@@ -3,9 +3,10 @@
 
 #include <Arduino.h>
 #include "Nextion.h"
-#include "INextionWidget.h"
+#include "INextionTouchable.h"
+#include "INextionColourable.h"
 
-class NextionProgressBar: public INextionWidget
+class NextionProgressBar: public INextionTouchable, public INextionColourable
 {
   public:
     NextionProgressBar(Nextion* nex, uint8_t page, uint8_t component, const char *name);
