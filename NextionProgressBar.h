@@ -1,15 +1,19 @@
-#ifndef __NEONEXTION_NEXTIONVARIABLENUMERIC
-#define __NEONEXTION_NEXTIONVARIABLENUMERIC
+#ifndef __NEONEXTION_NEXTIONPROGRESSBAR
+#define __NEONEXTION_NEXTIONPROGRESSBAR
 
 #include <Arduino.h>
 #include "Nextion.h"
+#include "INextionTouchable.h"
+#include "INextionColourable.h"
 #include "INextionNumericalValued.h"
 
-class NextionVariableNumeric: public INextionNumericalValued
+class NextionProgressBar: public INextionTouchable, public INextionColourable, public INextionNumericalValued
 {
   public:
-    NextionVariableNumeric(Nextion* nex, uint8_t page, uint8_t component, const char *name):
+    NextionProgressBar(Nextion* nex, uint8_t page, uint8_t component, const char *name):
       INextionWidget(nex, page, component, name),
+      INextionTouchable(nex, page, component, name),
+      INextionColourable(nex, page, component, name),
       INextionNumericalValued(nex, page, component, name)
     {}
 
