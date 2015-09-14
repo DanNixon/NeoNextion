@@ -1,24 +1,25 @@
 #include <Nextion.h>
 #include <NextionPage.h>
-#include <NextionHotspot.h>
+#include <NextionTimer.h>
 
 #define NEXTION_PORT Serial
 
 Nextion nex(NEXTION_PORT);
-NextionPage pgHotspot(&nex, 5, 0, "pgHotspot");
-NextionHotspot hotspot(&nex, 5, 2, "hsExHotspot");
+NextionPage pgTimer(&nex, 9, 0, "pgTimer");
+NextionTimer timer(&nex, 9, 2, "tmExTimer");
 
 void setup()
 {
   pinMode(13, OUTPUT);
-  
-  NEXTION_PORT.begin(9600);  
-  nex.init();
-  
-  pgHotspot.show();
 
-  hotspot.attachPressEvent(&press_callback);
-  hotspot.attachReleaseEvent(&release_callback);
+  NEXTION_PORT.begin(9600);
+  nex.init();
+
+  pgTimer.show();
+
+  timer.attachEvent(&timer_callback);
+  timer.setCycle(1000);
+  timer.enable();
 }
 
 void loop()
@@ -26,12 +27,7 @@ void loop()
   nex.poll();
 }
 
-void press_callback(INextionTouchable *widget)
+void timer_callback(INextionTouchable *widget)
 {
-  digitalWrite(13, HIGH);
-}
-
-void release_callback(INextionTouchable *widget)
-{
-  digitalWrite(13, LOW);
+  digitalWrite(13, !digitalRead(13));
 }

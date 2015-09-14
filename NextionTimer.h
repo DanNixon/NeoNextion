@@ -10,14 +10,15 @@ class NextionTimer: public virtual INextionTouchable
   public:
     NextionTimer(Nextion* nex, uint8_t page, uint8_t component, const char *name);
 
-    void attachTimer(NextionCallback cb);
-    void detachTimer();
+    bool attachEvent(NextionCallback cb);
+    void detachEvent();
 
     uint32_t getCycle();
     bool setCycle(uint32_t cycle);
 
     bool enable();
     bool disable();
+
 };
 
 #endif
