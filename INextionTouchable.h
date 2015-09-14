@@ -13,11 +13,7 @@ typedef void (* NextionCallback)(INextionTouchable *);
 class INextionTouchable: public virtual INextionWidget
 {
   public:
-    INextionTouchable(Nextion* nex, uint8_t page, uint8_t component, const char *name):
-      INextionWidget(nex, page, component, name)
-    {
-      nex->registerTouchable(this);
-    }
+    INextionTouchable(Nextion* nex, uint8_t page, uint8_t component, const char *name);
 
     bool processEvent(uint8_t pageID, uint8_t componentID, uint8_t eventType);
 

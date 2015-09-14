@@ -1,5 +1,10 @@
 #include "INextionNumericalValued.h"
 
+INextionNumericalValued::INextionNumericalValued(Nextion* nex, uint8_t page, uint8_t component, const char *name):
+  INextionWidget(nex, page, component, name)
+{
+}
+
 uint32_t INextionNumericalValued::getValue()
 {
   size_t commandLen = 9 + strlen(m_name);

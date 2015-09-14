@@ -26,7 +26,7 @@ uint8_t INextionFontStyleable::getFont()
   else
     return NEX_FA_NONE;
 }
-    
+
 bool INextionFontStyleable::setHAlignment(NextionFontAlignment align, bool refresh)
 {
   size_t commandLen = 12 + strlen(m_name);
@@ -48,7 +48,7 @@ NextionFontAlignment INextionFontStyleable::getHAlignment()
   else
     return NEX_FA_NONE;
 }
-    
+
 bool INextionFontStyleable::setVAlignment(NextionFontAlignment align, bool refresh)
 {
   size_t commandLen = 12 + strlen(m_name);

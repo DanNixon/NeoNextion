@@ -1,5 +1,10 @@
 #include "INextionStringValued.h"
 
+INextionStringValued::INextionStringValued(Nextion* nex, uint8_t page, uint8_t component, const char *name):
+  INextionWidget(nex, page, component, name)
+{
+}
+
 size_t INextionStringValued::getText(char *buffer, size_t len)
 {
   size_t commandLen = 9 + strlen(m_name);

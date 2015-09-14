@@ -20,12 +20,12 @@ NextionPage pgVariable    (&nex, 10, 0, "pgVariable");
 void setup()
 {
   pinMode(13, OUTPUT);
-  
-  NEXTION_PORT.begin(9600);  
+
+  NEXTION_PORT.begin(9600);
   nex.init();
-  
+
   pgGauge.show();
-  
+
   /* Serial.begin(9600); */
   /* Serial.println(nex.getCurrentPage()); */
   /* Serial.println(pgGauge.isShown()); */

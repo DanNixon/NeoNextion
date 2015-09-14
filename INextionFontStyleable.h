@@ -13,10 +13,10 @@ class INextionFontStyleable: public virtual INextionWidget
 
     bool setFont(uint8_t id, bool refresh = true);
     uint8_t getFont();
-    
+
     bool setHAlignment(NextionFontAlignment align, bool refresh = true);
     NextionFontAlignment getHAlignment();
-    
+
     bool setVAlignment(NextionFontAlignment align, bool refresh = true);
     NextionFontAlignment getVAlignment();
 

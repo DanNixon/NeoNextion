@@ -13,13 +13,13 @@ class INextionColourable: public virtual INextionWidget
 
     bool setForegroundColour(uint32_t colour, bool refresh = true);
     uint32_t getForegroundColour();
-    
+
     bool setEventForegroundColour(uint32_t colour, bool refresh = true);
     uint32_t getEventForegroundColour();
 
     bool setBackgroundColour(uint32_t colour, bool refresh = true);
     uint32_t getBackgroundColour();
-    
+
     bool setEventBackgroundColour(uint32_t colour, bool refresh = true);
     uint32_t getEventBackgroundColour();
 

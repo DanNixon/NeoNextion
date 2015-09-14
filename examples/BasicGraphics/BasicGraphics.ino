@@ -8,14 +8,14 @@ Nextion nex(NEXTION_PORT);
 void setup()
 {
   pinMode(13, OUTPUT);
-  
+
   Serial.begin(9600);
-  
-  NEXTION_PORT.begin(9600);  
+
+  NEXTION_PORT.begin(9600);
   nex.init();
-  
+
   nex.clear(NEX_COL_BLUE);
-  
+
   nex.drawCircle(50, 30, 10, NEX_COL_WHITE);
   nex.drawRect(70, 40, 15, 5, false, NEX_COL_GREEN);
   nex.drawRect(20, 60, 15, 5, true, NEX_COL_RED);

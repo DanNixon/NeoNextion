@@ -11,10 +11,10 @@ NextionHotspot hotspot(&nex, 5, 2, "hsExHotspot");
 void setup()
 {
   pinMode(13, OUTPUT);
-  
-  NEXTION_PORT.begin(9600);  
+
+  NEXTION_PORT.begin(9600);
   nex.init();
-  
+
   pgHotspot.show();
 
   hotspot.attachPressEvent(&press_callback);
