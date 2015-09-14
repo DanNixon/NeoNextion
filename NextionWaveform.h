@@ -3,9 +3,9 @@
 
 #include <Arduino.h>
 #include "Nextion.h"
-#include "INextionWidget.h"
+#include "INextionTouchable.h"
 
-class NextionWaveform: public virtual INextionWidget
+class NextionWaveform: public virtual INextionTouchable
 {
   public:
     NextionWaveform(Nextion* nex, uint8_t page, uint8_t component, const char *name);

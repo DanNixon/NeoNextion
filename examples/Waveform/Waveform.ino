@@ -1,24 +1,30 @@
 #include <Nextion.h>
 #include <NextionPage.h>
-#include <NextionHotspot.h>
+#include <NextionWaveform.h>
 
 #define NEXTION_PORT Serial
 
 Nextion nex(NEXTION_PORT);
-NextionPage pgHotspot(&nex, 5, 0, "pgHotspot");
-NextionHotspot hotspot(&nex, 5, 2, "hsExHotspot");
+NextionPage pgWaveform(&nex, 7, 0, "pgWaveform");
+NextionWaveform waveform(&nex, 7, 2, "wExWaveform");
 
 void setup()
 {
   pinMode(13, OUTPUT);
-  
-  NEXTION_PORT.begin(9600);  
-  nex.init();
-  
-  pgHotspot.show();
 
-  hotspot.attachPressEvent(&press_callback);
-  hotspot.attachReleaseEvent(&release_callback);
+  NEXTION_PORT.begin(9600);
+  nex.init();
+
+  pgWaveform.show();
+
+  waveform.attachPressEvent(&press_callback);
+  waveform.attachReleaseEvent(&release_callback);
+
+  /* Serial.begin(9600); */
+  /* Serial.println(waveform.addValue(0, 5)); */
+  /* Serial.println(waveform.addValue(1, 2)); */
+  /* Serial.println(waveform.addValue(2, 4)); */
+  /* Serial.println(waveform.addValue(3, 2)); */
 }
 
 void loop()

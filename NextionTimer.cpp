@@ -6,6 +6,8 @@ NextionTimer::NextionTimer(Nextion* nex, uint8_t page, uint8_t component, const 
 {
 }
 
+//TODO: The callbacks are not working
+
 bool NextionTimer::attachEvent(NextionCallback cb)
 {
   return attachReleaseEvent(cb);
