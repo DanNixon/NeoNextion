@@ -1,14 +1,6 @@
-#include "NextionSlider.h"
-#include "INextionWidget.h"
+#include "INextionNumericalValued.h"
 
-NextionSlider::NextionSlider(Nextion* nex, uint8_t page, uint8_t component, const char *name):
-  INextionWidget(nex, page, component, name),
-  INextionTouchable(nex, page, component, name),
-  INextionColourable(nex, page, component, name)
-{
-}
-
-uint32_t NextionSlider::getValue()
+uint32_t INextionNumericalValued::getValue()
 {
   size_t commandLen = 9 + strlen(m_name);
   char comandBuffer[commandLen];
@@ -21,7 +13,7 @@ uint32_t NextionSlider::getValue()
     return 0;
 }
 
-bool NextionSlider::setValue(uint32_t value)
+bool INextionNumericalValued::setValue(uint32_t value)
 {
   size_t commandLen = 11 + strlen(m_name);
   char comandBuffer[commandLen];
