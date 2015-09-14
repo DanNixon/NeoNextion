@@ -30,7 +30,7 @@ void Nextion::poll()
     if(c == NEX_RET_EVENT_TOUCH_HEAD)
 	{
       delay(10);
-	  
+
       if(m_serialPort.available() >= 6)
       {
         static uint8_t buffer[8];
@@ -75,7 +75,7 @@ bool Nextion::refresh(const char * objectName)
 bool Nextion::sleep()
 {
   sendCommand("sleep=1");
-  return checkCommandComplete();  
+  return checkCommandComplete();
 }
 
 bool Nextion::wake()
@@ -109,7 +109,7 @@ bool Nextion::setBrightness(uint16_t val, bool persist)
 uint8_t Nextion::getCurrentPage()
 {
   sendCommand("sendme");
-  
+
   uint8_t temp[5] = {0};
 
   if(sizeof(temp) != m_serialPort.readBytes((char *)temp, sizeof(temp)))
@@ -258,7 +258,7 @@ bool Nextion::receiveNumber(uint32_t *number)
 size_t Nextion::receiveString(char *buffer, size_t len)
 {
   memset(buffer, 0, len);
-	
+
   bool have_header_flag = false;
   uint8_t flag_count = 0;
   size_t pos = 0;
@@ -295,7 +295,7 @@ size_t Nextion::receiveString(char *buffer, size_t len)
     if(flag_count >= 3)
       break;
   }
-  
+
   pos++;
   buffer[pos] = '\0';
   return pos;

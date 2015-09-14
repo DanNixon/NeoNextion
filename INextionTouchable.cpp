@@ -1,7 +1,7 @@
 #include "INextionTouchable.h"
 
 bool INextionTouchable::processEvent(uint8_t pageID, uint8_t componentID, uint8_t eventType)
-{	
+{
   if(pageID != m_pageID)
     return false;
 
@@ -11,12 +11,12 @@ bool INextionTouchable::processEvent(uint8_t pageID, uint8_t componentID, uint8_
   switch(eventType)
   {
     case NEX_EVENT_PUSH:
-	  if(m_pressEvent)
+    if(m_pressEvent)
         m_pressEvent(this);
       return true;
 
     case NEX_EVENT_POP:
-	  if(m_releaseEvent)
+    if(m_releaseEvent)
         m_releaseEvent(this);
       return true;
 

@@ -21,18 +21,18 @@ class Nextion
 
     bool init();
     void poll();
-	
+
     bool refresh();
     bool refresh(const char *objectName);
-    
+
     bool sleep();
     bool wake();
-    
+
     uint16_t getBrightness();
     bool setBrightness(uint16_t val, bool persist=false);
-    
+
     uint8_t getCurrentPage();
-    
+
     bool clear(uint32_t colour=NEX_COL_WHITE);
     bool drawPicture(uint16_t x, uint16_t y, uint8_t id);
     bool drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t id);
@@ -42,7 +42,7 @@ class Nextion
     bool drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint32_t colour);
     bool drawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, bool filled, uint32_t colour);
     bool drawCircle(uint16_t x, uint16_t y, uint16_t r, uint32_t colour);
-    
+
     void registerTouchable(INextionTouchable *touchable);
     void sendCommand(char *command);
     bool checkCommandComplete();

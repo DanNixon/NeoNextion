@@ -17,7 +17,7 @@ bool INextionColourable::setEventForegroundColour(uint32_t colour, bool refresh)
   m_nextion->sendCommand(comandBuffer);
   return afterSet(refresh);
 }
-  
+
 bool INextionColourable::setBackgroundColour(uint32_t colour, bool refresh)
 {
   size_t commandLen = 10 + strlen(m_name);

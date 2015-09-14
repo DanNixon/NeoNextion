@@ -1,12 +1,12 @@
 #include <Nextion.h>
 #include <NextionPage.h>
-#include <NextionHotspot.h>
+#include <NextionCrop.h>
 
 #define NEXTION_PORT Serial
 
 Nextion nex(NEXTION_PORT);
-NextionPage pgHotspot(&nex, 5, 0, "pgHotspot");
-NextionHotspot hotspot(&nex, 5, 2, "hsExHotspot");
+NextionPage pgCrop(&nex, 4, 0, "pgCrop");
+NextionCrop crop(&nex, 4, 2, "crExCrop");
 
 void setup()
 {
@@ -15,10 +15,10 @@ void setup()
   NEXTION_PORT.begin(9600);
   nex.init();
 
-  pgHotspot.show();
+  pgCrop.show();
 
-  hotspot.attachPressEvent(&press_callback);
-  hotspot.attachReleaseEvent(&release_callback);
+  crop.attachPressEvent(&press_callback);
+  crop.attachReleaseEvent(&release_callback);
 }
 
 void loop()
