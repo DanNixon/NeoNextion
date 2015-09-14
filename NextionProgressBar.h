@@ -5,7 +5,7 @@
 #include "Nextion.h"
 #include "INextionWidget.h"
 
-class NextionProgressBar: public virtual INextionWidget
+class NextionProgressBar: public INextionWidget
 {
   public:
     NextionProgressBar(Nextion* nex, uint8_t page, uint8_t component, const char *name);

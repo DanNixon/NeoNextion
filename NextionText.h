@@ -5,7 +5,7 @@
 #include "Nextion.h"
 #include "INextionTouchable.h"
 
-class NextionText: public virtual INextionTouchable
+class NextionText: public INextionTouchable
 {
   public:
     NextionText(Nextion* nex, uint8_t page, uint8_t component, const char *name);

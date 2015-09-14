@@ -5,7 +5,7 @@
 #include "Nextion.h"
 #include "INextionTouchable.h"
 
-class NextionTimer: public virtual INextionTouchable
+class NextionTimer: public INextionTouchable
 {
   public:
     NextionTimer(Nextion* nex, uint8_t page, uint8_t component, const char *name);

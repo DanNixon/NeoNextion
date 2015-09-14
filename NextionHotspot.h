@@ -6,7 +6,7 @@
 #include "INextionWidget.h"
 #include "INextionTouchable.h"
 
-class NextionHotspot: public virtual INextionTouchable
+class NextionHotspot: public INextionTouchable
 {
   public:
     NextionHotspot(Nextion* nex, uint8_t page, uint8_t component, const char *name):

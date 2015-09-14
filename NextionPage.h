@@ -5,7 +5,7 @@
 #include "Nextion.h"
 #include "INextionWidget.h"
 
-class NextionPage: public virtual INextionWidget
+class NextionPage: public INextionWidget
 {
   public:
     NextionPage(Nextion* nex, uint8_t page, uint8_t component, const char *name);
