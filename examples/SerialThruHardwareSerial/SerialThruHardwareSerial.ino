@@ -4,25 +4,22 @@
  * the display its self is still connected in situ.
  */
 
-#include <SoftwareSerial.h>
-
-SoftwareSerial nextionSerial(10, 11); // RX, TX
- 
 #define HOST_PORT Serial
+#define NEXTION_PORT Serial1
 
 #define BAUD 9600
 
 void setup()
 {
   HOST_PORT.begin(BAUD);
-  nextionSerial.begin(BAUD);
+  NEXTION_PORT.begin(BAUD);
 }
 
 void loop()
 {
   while(HOST_PORT.available())
-    nextionSerial.write(HOST_PORT.read());
+    NEXTION_PORT.write(HOST_PORT.read());
 
-  while(nextionSerial.available())
-    HOST_PORT.write(nextionSerial.read());
+  while(NEXTION_PORT.available())
+    HOST_PORT.write(NEXTION_PORT.read());
 }
