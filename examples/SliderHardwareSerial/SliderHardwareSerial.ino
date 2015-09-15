@@ -1,7 +1,6 @@
 #include <Nextion.h>
 #include <NextionPage.h>
 #include <NextionSlider.h>
-#include <SoftwareSerial.h>
 
 #define NEXTION_PORT Serial1
 

@@ -13,7 +13,7 @@ void setup()
 	Serial.begin(9600);
 	pinMode(13, OUTPUT);
 
-  nextionSerial.begin(9600);
+  NEXTION_PORT.begin(9600);
   nex.init();
 
   Serial.println(pgButton.show());
