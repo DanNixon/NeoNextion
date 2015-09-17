@@ -21,8 +21,6 @@ void setup()
 
   Serial.println(button.attachPressEvent(&press_callback));
   Serial.println(button.attachReleaseEvent(&release_callback));
-
-  Serial.println(button.setBackgroundColour(NEX_COL_BLUE));
 	
 	Serial.println(button.isActive());
 	Serial.println(button.setActive(true));
@@ -42,4 +40,5 @@ void press_callback(INextionTouchable *widget)
 void release_callback(INextionTouchable *widget)
 {
   digitalWrite(13, LOW);
+	Serial.println(button.isActive());
 }
