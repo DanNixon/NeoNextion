@@ -11,6 +11,11 @@ NextionPage pgVariable(&nex, 10, 0, "pgVariable");
 NextionVariableNumeric var1(&nex, 10, 2, "vaExVariableN");
 NextionVariableString var2(&nex, 10, 3, "vaExVariableS");
 
+/* This example should print the following to the serial port: */
+/* 1  			*/
+/* 4  			*/
+/* Hello!  	*/
+
 void setup()
 {
   Serial.begin(9600);
