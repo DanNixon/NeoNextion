@@ -9,7 +9,7 @@ INextionWidget::INextionWidget(Nextion *nex, uint8_t page, uint8_t component,
 {
 }
 
-bool INextionWidget::setNumberProperty(char * propertyName, uint32_t value)
+bool INextionWidget::setNumberProperty(char *propertyName, uint32_t value)
 {
   size_t commandLen = 8 + strlen(m_name) + strlen(propertyName);
   char comandBuffer[commandLen];
@@ -18,7 +18,7 @@ bool INextionWidget::setNumberProperty(char * propertyName, uint32_t value)
   return m_nextion->checkCommandComplete();
 }
 
-uint32_t INextionWidget::getNumberProperty(char * propertyName)
+uint32_t INextionWidget::getNumberProperty(char *propertyName)
 {
   size_t commandLen = 6 + strlen(m_name) + strlen(propertyName);
   char comandBuffer[commandLen];
@@ -31,7 +31,7 @@ uint32_t INextionWidget::getNumberProperty(char * propertyName)
     return 0;
 }
 
-bool INextionWidget::setStringProperty(char * propertyName, char * value)
+bool INextionWidget::setStringProperty(char *propertyName, char *value)
 {
   size_t commandLen = 7 + strlen(m_name) + strlen(propertyName) + strlen(value);
   char command[commandLen];
@@ -40,7 +40,8 @@ bool INextionWidget::setStringProperty(char * propertyName, char * value)
   return m_nextion->checkCommandComplete();
 }
 
-size_t INextionWidget::getStringProperty(char * propertyName, char * value, size_t len)
+size_t INextionWidget::getStringProperty(char *propertyName, char *value,
+                                         size_t len)
 {
   size_t commandLen = 6 + strlen(m_name) + strlen(propertyName);
   char command[commandLen];

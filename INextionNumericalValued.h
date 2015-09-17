@@ -9,10 +9,9 @@
 class INextionNumericalValued : public virtual INextionWidget
 {
 public:
-  INextionNumericalValued(Nextion *nex, uint8_t page,
-                          uint8_t component,
+  INextionNumericalValued(Nextion *nex, uint8_t page, uint8_t component,
                           const char *name)
-    : INextionWidget(nex, page, component, name)
+      : INextionWidget(nex, page, component, name)
   {
   }
 
@@ -20,7 +19,7 @@ public:
   {
     return getNumberProperty("val");
   }
-  
+
   bool setValue(uint32_t value)
   {
     return setNumberProperty("val", value);

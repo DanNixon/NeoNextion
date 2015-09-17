@@ -9,11 +9,11 @@ class INextionWidget
 public:
   INextionWidget(Nextion *nex, uint8_t page, uint8_t component,
                  const char *name);
-                 
-  bool setNumberProperty(char * propertyName, uint32_t value);
-  uint32_t getNumberProperty(char * propertyName);
-  bool setStringProperty(char * propertyName, char * value);
-  size_t getStringProperty(char * propertyName, char * buffer, size_t len);
+
+  bool setNumberProperty(char *propertyName, uint32_t value);
+  uint32_t getNumberProperty(char *propertyName);
+  bool setStringProperty(char *propertyName, char *value);
+  size_t getStringProperty(char *propertyName, char *buffer, size_t len);
 
 protected:
   Nextion *m_nextion;
