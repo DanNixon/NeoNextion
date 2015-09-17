@@ -21,6 +21,9 @@ void setup()
 
   Serial.println(slider.setBackgroundColour(NEX_COL_BLUE));
   Serial.println(slider.setForegroundColour(NEX_COL_YELLOW));
+	
+	Serial.println(slider.getBackgroundColour());
+  Serial.println(slider.getForegroundColour());
 
   Serial.println(slider.attachPressEvent(&press_callback));
   Serial.println(slider.attachReleaseEvent(&release_callback));

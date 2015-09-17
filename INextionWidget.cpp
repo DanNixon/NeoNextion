@@ -13,7 +13,7 @@ bool INextionWidget::setNumberProperty(char * propertyName, uint32_t value)
 {
   size_t commandLen = 8 + strlen(m_name) + strlen(propertyName);
   char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.%s=%d", m_name, propertyName, value);
+  snprintf(comandBuffer, commandLen, "%s.%s=%ld", m_name, propertyName, value);
   m_nextion->sendCommand(comandBuffer);
   return m_nextion->checkCommandComplete();
 }

@@ -21,7 +21,7 @@ public:
   bool setVAlignment(NextionFontAlignment align, bool refresh = true);
   NextionFontAlignment getVAlignment();
 
-  bool afterSet(bool refresh);
+  bool afterSet(bool result, bool refresh);
 };
 
 #endif

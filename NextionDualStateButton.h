@@ -24,7 +24,7 @@ public:
   {
     return getValue();
   }
-  
+
   bool setActive(bool active)
   {
     return setValue((uint32_t)active);

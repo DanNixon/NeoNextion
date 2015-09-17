@@ -9,34 +9,18 @@ INextionFontStyleable::INextionFontStyleable(Nextion *nex, uint8_t page,
 
 bool INextionFontStyleable::setFont(uint8_t id, bool refresh)
 {
-  size_t commandLen = 12 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.font=%d", m_name, id);
-  m_nextion->sendCommand(comandBuffer);
-  return afterSet(refresh);
+  return afterSet(setNumberProperty("font", id), refresh);
 }
 
 uint8_t INextionFontStyleable::getFont()
 {
-  size_t commandLen = 10 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "get %s.font", m_name);
-  m_nextion->sendCommand(comandBuffer);
-  uint32_t id;
-  if (m_nextion->receiveNumber(&id))
-    return id;
-  else
-    return NEX_FA_NONE;
+  return getNumberProperty("font");
 }
 
 bool INextionFontStyleable::setHAlignment(NextionFontAlignment align,
                                           bool refresh)
 {
-  size_t commandLen = 12 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.xcen=%d", m_name, align);
-  m_nextion->sendCommand(comandBuffer);
-  return afterSet(refresh);
+  return afterSet(setNumberProperty("xcen", align), refresh);
 }
 
 NextionFontAlignment INextionFontStyleable::getHAlignment()
@@ -55,11 +39,7 @@ NextionFontAlignment INextionFontStyleable::getHAlignment()
 bool INextionFontStyleable::setVAlignment(NextionFontAlignment align,
                                           bool refresh)
 {
-  size_t commandLen = 12 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.ycen=%d", m_name, align);
-  m_nextion->sendCommand(comandBuffer);
-  return afterSet(refresh);
+  return afterSet(setNumberProperty("ycen", align), refresh);
 }
 
 NextionFontAlignment INextionFontStyleable::getVAlignment()
@@ -75,9 +55,9 @@ NextionFontAlignment INextionFontStyleable::getVAlignment()
     return NEX_FA_NONE;
 }
 
-bool INextionFontStyleable::afterSet(bool refresh)
+bool INextionFontStyleable::afterSet(bool result, bool refresh)
 {
-  if (m_nextion->checkCommandComplete())
+  if (result)
   {
     if (refresh)
     {
@@ -87,4 +67,6 @@ bool INextionFontStyleable::afterSet(bool refresh)
     else
       return true;
   }
+  else
+    return false;
 }

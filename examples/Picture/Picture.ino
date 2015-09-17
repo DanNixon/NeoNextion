@@ -22,7 +22,9 @@ void setup()
   Serial.println(picture.attachPressEvent(&press_callback));
   Serial.println(picture.attachReleaseEvent(&release_callback));
 
+	Serial.println(picture.getPictureID());
   Serial.println(picture.setPictureID(1));
+	Serial.println(picture.getPictureID());
 }
 
 void loop()

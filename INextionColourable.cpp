@@ -8,95 +8,47 @@ INextionColourable::INextionColourable(Nextion *nex, uint8_t page,
 
 bool INextionColourable::setForegroundColour(uint32_t colour, bool refresh)
 {
-  size_t commandLen = 11 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.pco=%ld", m_name, colour);
-  m_nextion->sendCommand(comandBuffer);
-  return afterSet(refresh);
+  return afterSet(setNumberProperty("pco", colour), refresh);
 }
 
 uint32_t INextionColourable::getForegroundColour()
 {
-  size_t commandLen = 9 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "get %s.pco", m_name);
-  m_nextion->sendCommand(comandBuffer);
-  uint32_t colour;
-  if (m_nextion->receiveNumber(&colour))
-    return colour;
-  else
-    return NEX_COL_BLACK;
+  return getNumberProperty("pco");
 }
 
 bool INextionColourable::setEventForegroundColour(uint32_t colour, bool refresh)
 {
-  size_t commandLen = 11 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.pco2=%ld", m_name, colour);
-  m_nextion->sendCommand(comandBuffer);
-  return afterSet(refresh);
+  return afterSet(setNumberProperty("pco2", colour), refresh);
 }
 
 uint32_t INextionColourable::getEventForegroundColour()
 {
-  size_t commandLen = 10 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "get %s.pco2", m_name);
-  m_nextion->sendCommand(comandBuffer);
-  uint32_t colour;
-  if (m_nextion->receiveNumber(&colour))
-    return colour;
-  else
-    return NEX_COL_BLACK;
+  return getNumberProperty("pco2");
 }
 
 bool INextionColourable::setBackgroundColour(uint32_t colour, bool refresh)
 {
-  size_t commandLen = 11 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.bco=%ld", m_name, colour);
-  m_nextion->sendCommand(comandBuffer);
-  return afterSet(refresh);
+  return afterSet(setNumberProperty("bco", colour), refresh);
 }
 
 uint32_t INextionColourable::getBackgroundColour()
 {
-  size_t commandLen = 9 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "get %s.bco", m_name);
-  m_nextion->sendCommand(comandBuffer);
-  uint32_t colour;
-  if (m_nextion->receiveNumber(&colour))
-    return colour;
-  else
-    return NEX_COL_BLACK;
+  return getNumberProperty("bco");
 }
 
 bool INextionColourable::setEventBackgroundColour(uint32_t colour, bool refresh)
 {
-  size_t commandLen = 11 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.bco2=%ld", m_name, colour);
-  m_nextion->sendCommand(comandBuffer);
-  return afterSet(refresh);
+  return afterSet(setNumberProperty("bco2", colour), refresh);
 }
 
 uint32_t INextionColourable::getEventBackgroundColour()
 {
-  size_t commandLen = 10 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "get %s.bco2", m_name);
-  m_nextion->sendCommand(comandBuffer);
-  uint32_t colour;
-  if (m_nextion->receiveNumber(&colour))
-    return colour;
-  else
-    return NEX_COL_BLACK;
+  return getNumberProperty("bco2");
 }
 
-bool INextionColourable::afterSet(bool refresh)
+bool INextionColourable::afterSet(bool result, bool refresh)
 {
-  if (m_nextion->checkCommandComplete())
+  if (result)
   {
     if (refresh)
     {
@@ -106,4 +58,6 @@ bool INextionColourable::afterSet(bool refresh)
     else
       return true;
   }
+  else
+    return false;
 }

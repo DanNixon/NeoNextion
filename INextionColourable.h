@@ -24,7 +24,7 @@ public:
   bool setEventBackgroundColour(uint32_t colour, bool refresh = true);
   uint32_t getEventBackgroundColour();
 
-  bool afterSet(bool refresh);
+  bool afterSet(bool result, bool refresh);
 };
 
 #endif
