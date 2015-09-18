@@ -1,6 +1,6 @@
 #######################################
 # Syntax Coloring Map For NeoNextion
-####################################### 
+#######################################
 # Class
 #######################################
 
@@ -24,10 +24,11 @@ NextionTimer	KEYWORD1
 NextionVariableNumeric	KEYWORD1
 NextionVariableString	KEYWORD1
 NextionWaveform	KEYWORD1
+NextionDualStateButton	KEYWORD1
 
 #######################################
-# Methods and Functions 
-#######################################	
+# Methods and Functions
+#######################################
 
 # Nextion
 init	KEYWORD2
@@ -83,6 +84,10 @@ setPictureID	KEYWORD2
 
 # NextionPage
 show	KEYWORD2
+
+# NextionDualStateButton
+isActive	KEYWORD2
+setActive	KEYWORD2
 
 #######################################
 # Constants

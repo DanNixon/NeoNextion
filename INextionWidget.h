@@ -12,11 +12,11 @@ public:
   
   uint8_t getPageID();
   uint8_t getComponentID();
-  
-  bool setNumberProperty(char * propertyName, uint32_t value);
-  uint32_t getNumberProperty(char * propertyName);
-  bool setStringProperty(char * propertyName, char * value);
-  size_t getStringProperty(char * propertyName, char * buffer, size_t len);
+
+  bool setNumberProperty(char *propertyName, uint32_t value);
+  uint32_t getNumberProperty(char *propertyName);
+  bool setStringProperty(char *propertyName, char *value);
+  size_t getStringProperty(char *propertyName, char *value, size_t len);
 
 protected:
   Nextion &m_nextion;
