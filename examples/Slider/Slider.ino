@@ -6,7 +6,8 @@
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionSlider channelSlider(nex, 0, 6, "cChSlider");
+NextionPage pgSlider(nex, 8, 0, "pgSlider");
+NextionSlider slider(nex, 8, 2, "sExSlider");
 
 void setup()
 {
