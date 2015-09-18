@@ -5,8 +5,8 @@
 #define NEXTION_PORT Serial1
 
 Nextion nex(NEXTION_PORT);
-NextionPage pgSlider(&nex, 8, 0, "pgSlider");
-NextionSlider slider(&nex, 8, 2, "sExSlider");
+NextionPage pgSlider(nex, 8, 0, "pgSlider");
+NextionSlider slider(nex, 8, 2, "sExSlider");
 
 void setup()
 {

@@ -6,8 +6,8 @@
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgHotspot(&nex, 5, 0, "pgHotspot");
-NextionHotspot hotspot(&nex, 5, 2, "hsExHotspot");
+NextionPage pgHotspot(nex, 5, 0, "pgHotspot");
+NextionHotspot hotspot(nex, 5, 2, "hsExHotspot");
 
 void setup()
 {

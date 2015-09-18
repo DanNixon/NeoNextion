@@ -6,8 +6,8 @@
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgWaveform(&nex, 7, 0, "pgWaveform");
-NextionWaveform waveform(&nex, 7, 2, "wExWaveform");
+NextionPage pgWaveform(nex, 7, 0, "pgWaveform");
+NextionWaveform waveform(nex, 7, 2, "wExWaveform");
 
 void setup()
 {

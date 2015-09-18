@@ -5,8 +5,8 @@
 #define NEXTION_PORT Serial1
 
 Nextion nex(NEXTION_PORT);
-NextionPage pgButton(&nex, 0, 0, "pgButton");
-NextionButton button(&nex, 0, 1, "bEgButton");
+NextionPage pgButton(nex, 0, 0, "pgButton");
+NextionButton button(nex, 0, 1, "bEgButton");
 
 void setup()
 {

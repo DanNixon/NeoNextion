@@ -6,8 +6,8 @@
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgProgressBar(&nex, 2, 0, "pgProgressBar");
-NextionProgressBar progressBar(&nex, 2, 2, "pbExProgBar");
+NextionPage pgProgressBar(nex, 2, 0, "pgProgressBar");
+NextionProgressBar progressBar(nex, 2, 2, "pbExProgBar");
 
 uint32_t startTime = 0;
 

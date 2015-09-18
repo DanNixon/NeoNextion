@@ -6,8 +6,8 @@
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgTimer(&nex, 9, 0, "pgTimer");
-NextionTimer timer(&nex, 9, 2, "tmExTimer");
+NextionPage pgTimer(nex, 9, 0, "pgTimer");
+NextionTimer timer(nex, 9, 2, "tmExTimer");
 
 void setup()
 {

@@ -6,8 +6,8 @@
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgPicture(&nex, 3, 0, "pgPicture");
-NextionPicture picture(&nex, 3, 2, "pExPicture");
+NextionPage pgPicture(nex, 3, 0, "pgPicture");
+NextionPicture picture(nex, 3, 2, "pExPicture");
 
 void setup()
 {

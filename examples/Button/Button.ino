@@ -6,8 +6,8 @@
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgButton(&nex, 0, 0, "pgButton");
-NextionButton button(&nex, 0, 1, "bEgButton");
+NextionPage pgButton(nex, 0, 0, "pgButton");
+NextionButton button(nex, 0, 1, "bEgButton");
 
 void setup()
 {

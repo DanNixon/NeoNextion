@@ -1,10 +1,10 @@
 #include "INextionTouchable.h"
 
-INextionTouchable::INextionTouchable(Nextion *nex, uint8_t page,
+INextionTouchable::INextionTouchable(Nextion &nex, uint8_t page,
                                      uint8_t component, const char *name)
     : INextionWidget(nex, page, component, name)
 {
-  nex->registerTouchable(this);
+  nex.registerTouchable(this);
 }
 
 bool INextionTouchable::processEvent(uint8_t pageID, uint8_t componentID,

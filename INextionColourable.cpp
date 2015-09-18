@@ -1,6 +1,6 @@
 #include "INextionColourable.h"
 
-INextionColourable::INextionColourable(Nextion *nex, uint8_t page,
+INextionColourable::INextionColourable(Nextion &nex, uint8_t page,
                                        uint8_t component, const char *name)
     : INextionWidget(nex, page, component, name)
 {
@@ -52,8 +52,8 @@ bool INextionColourable::afterSet(bool result, bool refresh)
   {
     if (refresh)
     {
-      m_nextion->refresh(m_name);
-      return m_nextion->checkCommandComplete();
+      m_nextion.refresh(m_name);
+      return m_nextion.checkCommandComplete();
     }
     else
       return true;

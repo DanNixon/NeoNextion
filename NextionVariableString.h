@@ -9,7 +9,7 @@
 class NextionVariableString : public INextionStringValued
 {
 public:
-  NextionVariableString(Nextion *nex, uint8_t page, uint8_t component,
+  NextionVariableString(Nextion &nex, uint8_t page, uint8_t component,
                         const char *name)
       : INextionWidget(nex, page, component, name)
       , INextionStringValued(nex, page, component, name)

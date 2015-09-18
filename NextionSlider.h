@@ -12,7 +12,7 @@ class NextionSlider : public INextionTouchable,
                       public INextionNumericalValued
 {
 public:
-  NextionSlider(Nextion *nex, uint8_t page, uint8_t component, const char *name)
+  NextionSlider(Nextion &nex, uint8_t page, uint8_t component, const char *name)
       : INextionWidget(nex, page, component, name)
       , INextionTouchable(nex, page, component, name)
       , INextionColourable(nex, page, component, name)

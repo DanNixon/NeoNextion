@@ -1,7 +1,7 @@
 #include "NextionWaveform.h"
 #include "INextionWidget.h"
 
-NextionWaveform::NextionWaveform(Nextion *nex, uint8_t page, uint8_t component,
+NextionWaveform::NextionWaveform(Nextion &nex, uint8_t page, uint8_t component,
                                  const char *name)
     : INextionWidget(nex, page, component, name)
     , INextionTouchable(nex, page, component, name)
@@ -18,6 +18,6 @@ bool NextionWaveform::addValue(uint8_t channel, uint8_t value)
   char comandBuffer[commandLen];
   snprintf(comandBuffer, commandLen, "add %d,%d,%d", m_componentID, channel,
            value);
-  m_nextion->sendCommand(comandBuffer);
-  return m_nextion->checkCommandComplete();
+  m_nextion.sendCommand(comandBuffer);
+  return m_nextion.checkCommandComplete();
 }

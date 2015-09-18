@@ -6,8 +6,8 @@
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgText(&nex, 1, 0, "pgText");
-NextionText text(&nex, 1, 2, "tExText");
+NextionPage pgText(nex, 1, 0, "pgText");
+NextionText text(nex, 1, 2, "tExText");
 
 void setup()
 {

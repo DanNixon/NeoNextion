@@ -6,8 +6,8 @@
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgDsButton(&nex, 11, 0, "pgDsButton");
-NextionDualStateButton button(&nex, 11, 2, "bExDsButton");
+NextionPage pgDsButton(nex, 11, 0, "pgDsButton");
+NextionDualStateButton button(nex, 11, 2, "bExDsButton");
 
 void setup()
 {

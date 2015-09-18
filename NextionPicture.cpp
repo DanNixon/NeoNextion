@@ -1,7 +1,7 @@
 #include "NextionPicture.h"
 #include "INextionWidget.h"
 
-NextionPicture::NextionPicture(Nextion *nex, uint8_t page, uint8_t component,
+NextionPicture::NextionPicture(Nextion &nex, uint8_t page, uint8_t component,
                                const char *name)
     : INextionWidget(nex, page, component, name)
     , INextionTouchable(nex, page, component, name)

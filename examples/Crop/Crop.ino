@@ -6,8 +6,8 @@
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgCrop(&nex, 4, 0, "pgCrop");
-NextionCrop crop(&nex, 4, 2, "crExCrop");
+NextionPage pgCrop(nex, 4, 0, "pgCrop");
+NextionCrop crop(nex, 4, 2, "crExCrop");
 
 void setup()
 {

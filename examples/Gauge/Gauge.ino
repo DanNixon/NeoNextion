@@ -6,8 +6,8 @@
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgGauge(&nex, 6, 0, "pgGauge");
-NextionGauge gauge(&nex, 6, 2, "gExGauge");
+NextionPage pgGauge(nex, 6, 0, "pgGauge");
+NextionGauge gauge(nex, 6, 2, "gExGauge");
 
 uint32_t startTime = 0;
 

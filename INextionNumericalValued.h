@@ -9,7 +9,7 @@
 class INextionNumericalValued : public virtual INextionWidget
 {
 public:
-  INextionNumericalValued(Nextion *nex, uint8_t page,
+  INextionNumericalValued(Nextion &nex, uint8_t page,
                           uint8_t component,
                           const char *name)
     : INextionWidget(nex, page, component, name)

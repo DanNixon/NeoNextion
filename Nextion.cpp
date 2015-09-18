@@ -208,7 +208,12 @@ void Nextion::registerTouchable(INextionTouchable *touchable)
   if (m_touchableList == NULL)
     m_touchableList = newListItem;
   else
-    m_touchableList->next = newListItem;
+  {
+    ITouchableListItem *item = m_touchableList;
+    while(item->next != NULL)
+      item = item->next;
+    item->next = newListItem;
+  }
 }
 
 void Nextion::sendCommand(char *command)
