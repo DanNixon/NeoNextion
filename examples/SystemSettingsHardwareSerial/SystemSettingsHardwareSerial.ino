@@ -8,12 +8,12 @@ Nextion nex(NEXTION_PORT);
 void setup()
 {
   Serial.begin(9600);
-  
-  NEXTION_PORT.begin(9600);  
+
+  NEXTION_PORT.begin(9600);
   nex.init();
-  
+
   Serial.println(nex.clear(NEX_COL_BLUE));
-  
+
   Serial.println(nex.sleep());
   delay(1000);
   Serial.println(nex.wake());

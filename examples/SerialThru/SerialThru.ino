@@ -7,7 +7,7 @@
 #include <SoftwareSerial.h>
 
 SoftwareSerial nextionSerial(10, 11); // RX, TX
- 
+
 #define HOST_PORT Serial
 
 #define BAUD 9600

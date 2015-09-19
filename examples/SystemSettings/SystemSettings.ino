@@ -9,12 +9,12 @@ Nextion nex(nextionSerial);
 void setup()
 {
   Serial.begin(9600);
-  
-  nextionSerial.begin(9600);  
+
+  nextionSerial.begin(9600);
   nex.init();
-  
+
   Serial.println(nex.clear(NEX_COL_BLUE));
-  
+
   Serial.println(nex.sleep());
   delay(1000);
   Serial.println(nex.wake());

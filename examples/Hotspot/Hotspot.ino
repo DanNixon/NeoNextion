@@ -13,10 +13,10 @@ void setup()
 {
   Serial.begin(9600);
   pinMode(13, OUTPUT);
-  
-  nextionSerial.begin(9600);  
+
+  nextionSerial.begin(9600);
   nex.init();
-  
+
   Serial.println(pgHotspot.show());
 
   Serial.println(hotspot.attachPressEvent(&press_callback));

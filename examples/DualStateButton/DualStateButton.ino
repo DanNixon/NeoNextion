@@ -21,7 +21,7 @@ void setup()
 
   Serial.println(button.attachPressEvent(&press_callback));
   Serial.println(button.attachReleaseEvent(&release_callback));
-	
+
 	Serial.println(button.isActive());
 	Serial.println(button.setActive(true));
 	Serial.println(button.isActive());

@@ -21,12 +21,12 @@ NextionPage pgVariable    (nex, 10, 0, "pgVariable");
 void setup()
 {
 	Serial.begin(9600);
-  
-  nextionSerial.begin(9600);  
+
+  nextionSerial.begin(9600);
   nex.init();
-  
+
   Serial.println(pgGauge.show());
-  
+
   Serial.println(nex.getCurrentPage());
   Serial.println(pgGauge.isShown());
   Serial.println(pgButton.isShown());

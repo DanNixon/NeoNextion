@@ -23,14 +23,14 @@ public:
   {
     return setStringProperty("txt", buffer);
   }
-  
+
   bool setTextAsNumber(uint32_t value)
   {
     char buffer[8];
     snprintf(buffer, 8, "%ld", value);
     return setStringProperty("txt", buffer);
   }
-  
+
   uint32_t getTextAsNumber()
   {
     char buffer[8];
