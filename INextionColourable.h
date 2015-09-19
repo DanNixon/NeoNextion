@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_INEXTIONCOLOURABLE
 #define __NEONEXTION_INEXTIONCOLOURABLE
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionWidget.h"
 #include "NextionTypes.h"

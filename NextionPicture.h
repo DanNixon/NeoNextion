@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_NEXTIONPICTURE
 #define __NEONEXTION_NEXTIONPICTURE
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionTouchable.h"
 

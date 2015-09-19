@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_NEXTIONWAVEFORM
 #define __NEONEXTION_NEXTIONWAVEFORM
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionTouchable.h"
 

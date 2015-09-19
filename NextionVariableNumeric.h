@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_NEXTIONVARIABLENUMERIC
 #define __NEONEXTION_NEXTIONVARIABLENUMERIC
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionNumericalValued.h"
 

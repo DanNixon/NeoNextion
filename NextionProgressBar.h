@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_NEXTIONPROGRESSBAR
 #define __NEONEXTION_NEXTIONPROGRESSBAR
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionTouchable.h"
 #include "INextionColourable.h"

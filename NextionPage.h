@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_NEXTIONPAGE
 #define __NEONEXTION_NEXTIONPAGE
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionWidget.h"
 

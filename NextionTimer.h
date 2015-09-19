@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_NEXTIONTIMER
 #define __NEONEXTION_NEXTIONTIMER
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionTouchable.h"
 

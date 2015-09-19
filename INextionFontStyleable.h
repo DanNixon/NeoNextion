@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_INEXTIONFONTSTYLEABLE
 #define __NEONEXTION_INEXTIONFONTSTYLEABLE
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionWidget.h"
 #include "NextionTypes.h"

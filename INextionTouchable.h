@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_INEXTIONTOUCHABLE
 #define __NEONEXTION_INEXTIONTOUCHABLE
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionWidget.h"
 

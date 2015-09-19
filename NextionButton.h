@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_NEXTIONBUTTON
 #define __NEONEXTION_NEXTIONBUTTON
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionTouchable.h"
 #include "INextionColourable.h"

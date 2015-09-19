@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_NEXTIONSLIDER
 #define __NEONEXTION_NEXTIONSLIDER
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionTouchable.h"
 #include "INextionColourable.h"

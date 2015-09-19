@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_INEXTIONSTRINGVALUED
 #define __NEONEXTION_INEXTIONSTRINGVALUED
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionWidget.h"
 #include "NextionTypes.h"

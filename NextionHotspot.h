@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_NEXTIONHOTSPOT
 #define __NEONEXTION_NEXTIONHOTSPOT
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionWidget.h"
 #include "INextionTouchable.h"

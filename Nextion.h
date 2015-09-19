@@ -2,6 +2,7 @@
 #define __NEONEXTION_NEXTION
 
 #include <Arduino.h>
+
 #include "NextionTypes.h"
 
 class INextionTouchable;

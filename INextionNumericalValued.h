@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_INEXTIONNUMERICALVALUED
 #define __NEONEXTION_INEXTIONNUMERICALVALUED
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionWidget.h"
 #include "NextionTypes.h"

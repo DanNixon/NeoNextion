@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_NEXTIONGAUGE
 #define __NEONEXTION_NEXTIONGAUGE
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionTouchable.h"
 #include "INextionColourable.h"

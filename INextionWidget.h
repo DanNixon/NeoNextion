@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_INEXTIONWIDGET
 #define __NEONEXTION_INEXTIONWIDGET
 
-#include <Arduino.h>
 #include "Nextion.h"
 
 class INextionWidget

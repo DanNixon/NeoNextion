@@ -1,7 +1,6 @@
 #ifndef __NEONEXTION_NEXTIONVARIABLESTRING
 #define __NEONEXTION_NEXTIONVARIABLESTRING
 
-#include <Arduino.h>
 #include "Nextion.h"
 #include "INextionWidget.h"
 #include "INextionStringValued.h"
