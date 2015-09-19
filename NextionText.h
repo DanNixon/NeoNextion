@@ -1,5 +1,5 @@
-#ifndef __NEONEXTION_NEXTIONBUTTON
-#define __NEONEXTION_NEXTIONBUTTON
+#ifndef __NEONEXTION_NEXTIONTEXT
+#define __NEONEXTION_NEXTIONTEXT
 
 #include <Arduino.h>
 #include "Nextion.h"
