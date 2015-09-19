@@ -15,9 +15,9 @@ bool NextionWaveform::addValue(uint8_t channel, uint8_t value)
 
   // TODO: This does not seem to be working
   size_t commandLen = 22;
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "add %d,%d,%d", m_componentID, channel,
+  char commandBuffer[commandLen];
+  snprintf(commandBuffer, commandLen, "add %d,%d,%d", m_componentID, channel,
            value);
-  m_nextion.sendCommand(comandBuffer);
+  m_nextion.sendCommand(commandBuffer);
   return m_nextion.checkCommandComplete();
 }

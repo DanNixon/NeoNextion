@@ -22,18 +22,18 @@ uint8_t INextionWidget::getComponentID()
 bool INextionWidget::setNumberProperty(char *propertyName, uint32_t value)
 {
   size_t commandLen = 8 + strlen(m_name) + strlen(propertyName);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.%s=%ld", m_name, propertyName, value);
-  m_nextion.sendCommand(comandBuffer);
+  char commandBuffer[commandLen];
+  snprintf(commandBuffer, commandLen, "%s.%s=%ld", m_name, propertyName, value);
+  m_nextion.sendCommand(commandBuffer);
   return m_nextion.checkCommandComplete();
 }
 
 uint32_t INextionWidget::getNumberProperty(char *propertyName)
 {
   size_t commandLen = 7 + strlen(m_name) + strlen(propertyName);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "get %s.%s", m_name, propertyName); 
-  m_nextion.sendCommand(comandBuffer);
+  char commandBuffer[commandLen];
+  snprintf(commandBuffer, commandLen, "get %s.%s", m_name, propertyName); 
+  m_nextion.sendCommand(commandBuffer);
   uint32_t id;
   if (m_nextion.receiveNumber(&id))
     return id;

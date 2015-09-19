@@ -26,9 +26,9 @@ bool INextionFontStyleable::setHAlignment(NextionFontAlignment align,
 NextionFontAlignment INextionFontStyleable::getHAlignment()
 {
   size_t commandLen = 10 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "get %s.xcen", m_name);
-  m_nextion.sendCommand(comandBuffer);
+  char commandBuffer[commandLen];
+  snprintf(commandBuffer, commandLen, "get %s.xcen", m_name);
+  m_nextion.sendCommand(commandBuffer);
   uint32_t align;
   if (m_nextion.receiveNumber(&align))
     return (NextionFontAlignment)align;
@@ -45,9 +45,9 @@ bool INextionFontStyleable::setVAlignment(NextionFontAlignment align,
 NextionFontAlignment INextionFontStyleable::getVAlignment()
 {
   size_t commandLen = 10 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "get %s.ycen", m_name);
-  m_nextion.sendCommand(comandBuffer);
+  char commandBuffer[commandLen];
+  snprintf(commandBuffer, commandLen, "get %s.ycen", m_name);
+  m_nextion.sendCommand(commandBuffer);
   uint32_t align;
   if (m_nextion.receiveNumber(&align))
     return (NextionFontAlignment)align;

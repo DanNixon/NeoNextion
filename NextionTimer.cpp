@@ -22,9 +22,9 @@ void NextionTimer::detachEvent()
 uint32_t NextionTimer::getCycle()
 {
   size_t commandLen = 9 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "get %s.tim", m_name);
-  m_nextion.sendCommand(comandBuffer);
+  char commandBuffer[commandLen];
+  snprintf(commandBuffer, commandLen, "get %s.tim", m_name);
+  m_nextion.sendCommand(commandBuffer);
   uint32_t id;
   if (m_nextion.receiveNumber(&id))
     return id;
@@ -38,26 +38,26 @@ bool NextionTimer::setCycle(uint32_t cycle)
     return false;
 
   size_t commandLen = 11 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.tim=%d", m_name, cycle);
-  m_nextion.sendCommand(comandBuffer);
+  char commandBuffer[commandLen];
+  snprintf(commandBuffer, commandLen, "%s.tim=%d", m_name, cycle);
+  m_nextion.sendCommand(commandBuffer);
   return m_nextion.checkCommandComplete();
 }
 
 bool NextionTimer::enable()
 {
   size_t commandLen = 6 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.en=1", m_name);
-  m_nextion.sendCommand(comandBuffer);
+  char commandBuffer[commandLen];
+  snprintf(commandBuffer, commandLen, "%s.en=1", m_name);
+  m_nextion.sendCommand(commandBuffer);
   m_nextion.checkCommandComplete();
 }
 
 bool NextionTimer::disable()
 {
   size_t commandLen = 6 + strlen(m_name);
-  char comandBuffer[commandLen];
-  snprintf(comandBuffer, commandLen, "%s.en=0", m_name);
-  m_nextion.sendCommand(comandBuffer);
+  char commandBuffer[commandLen];
+  snprintf(commandBuffer, commandLen, "%s.en=0", m_name);
+  m_nextion.sendCommand(commandBuffer);
   m_nextion.checkCommandComplete();
 }
