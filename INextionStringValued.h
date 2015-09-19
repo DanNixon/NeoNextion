@@ -24,6 +24,26 @@ public:
   {
     return setStringProperty("txt", buffer);
   }
+  
+  bool setTextAsNumber(uint32_t value)
+  {
+    char buffer[8];
+    snprintf(buffer, 8, "%ld", value);
+    return setStringProperty("txt", buffer);
+  }
+  
+  uint32_t getTextAsNumber()
+  {
+    char buffer[8];
+    if (getStringProperty("txt", buffer, 8))
+    {
+      uint32_t value;
+      sscanf(buffer, "%ld", &value);
+      return value;
+    }
+    else
+      return 0;
+  }
 };
 
 #endif
