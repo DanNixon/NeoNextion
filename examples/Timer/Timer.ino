@@ -19,7 +19,7 @@ void setup()
 
   Serial.println(pgTimer.show());
 
-  Serial.println(timer.attachEvent(&timer_callback));
+  //Serial.println(timer.attachEvent(&timer_callback));
   Serial.println(timer.setCycle(1000));
   Serial.println(timer.enable());
 }
