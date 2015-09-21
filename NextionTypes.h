@@ -51,4 +51,11 @@ enum NextionColour
   NEX_COL_YELLOW  = 65504
 };
 
+enum NextionEventType
+{
+  NEX_EVENT_PUSH  = (0x01),
+  NEX_EVENT_POP   = (0x00),
+  NEX_EVENT_BOTH
+};
+
 #endif

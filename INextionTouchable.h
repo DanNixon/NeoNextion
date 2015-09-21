@@ -3,11 +3,7 @@
 
 #include "Nextion.h"
 #include "INextionWidget.h"
-
-#define NEX_EVENT_PUSH (0x01)
-#define NEX_EVENT_POP (0x00)
-
-typedef void (*NextionCallback)(INextionTouchable *);
+#include "INextionCallbackHandler.h"
 
 class INextionTouchable : public virtual INextionWidget
 {
@@ -17,15 +13,17 @@ public:
 
   bool processEvent(uint8_t pageID, uint8_t componentID, uint8_t eventType);
 
-  bool attachPressEvent(NextionCallback cb);
+  bool attachPressEvent(NextionCallbackHandler::NextionFunction cb);
+  bool attachPressEvent(INextionCallback *obj);
   void detachPressEvent();
 
-  bool attachReleaseEvent(NextionCallback cb);
+  bool attachReleaseEvent(NextionCallbackHandler::NextionFunction cb);
+  bool attachReleaseEvent(INextionCallback *obj);
   void detachReleaseEvent();
 
 private:
-  NextionCallback m_pressEvent;
-  NextionCallback m_releaseEvent;
+  NextionCallbackHandler *m_pressEvent;
+  NextionCallbackHandler *m_releaseEvent;
 };
 
 #endif

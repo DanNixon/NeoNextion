@@ -7,18 +7,6 @@ NextionTimer::NextionTimer(Nextion &nex, uint8_t page, uint8_t component,
 {
 }
 
-// TODO: The callbacks are not working
-
-bool NextionTimer::attachEvent(NextionCallback cb)
-{
-  return attachReleaseEvent(cb);
-}
-
-void NextionTimer::detachEvent()
-{
-  detachReleaseEvent();
-}
-
 uint32_t NextionTimer::getCycle()
 {
   size_t commandLen = 9 + strlen(m_name);

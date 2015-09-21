@@ -20,12 +20,12 @@ bool INextionTouchable::processEvent(uint8_t pageID, uint8_t componentID,
   {
   case NEX_EVENT_PUSH:
     if (m_pressEvent)
-      m_pressEvent(this);
+      (*m_pressEvent)(this);
     return true;
 
   case NEX_EVENT_POP:
     if (m_releaseEvent)
-      m_releaseEvent(this);
+      (*m_releaseEvent)(this);
     return true;
 
   default:
@@ -33,30 +33,66 @@ bool INextionTouchable::processEvent(uint8_t pageID, uint8_t componentID,
   }
 }
 
-bool INextionTouchable::attachPressEvent(NextionCallback cb)
+bool INextionTouchable::attachPressEvent(NextionCallbackHandler::NextionFunction cb)
 {
   if (!cb)
     return false;
+  
+  if (m_pressEvent != NULL)
+    detachPressEvent();
 
-  m_pressEvent = cb;
+  m_pressEvent = new NextionCallbackHandler(cb, NEX_EVENT_PUSH);
+  return true;
+}
+
+bool INextionTouchable::attachPressEvent(INextionCallback *obj)
+{
+  if (!obj)
+    return false;
+  
+  if (m_pressEvent != NULL)
+    detachPressEvent();
+
+  m_pressEvent = new NextionCallbackHandler(obj, NEX_EVENT_PUSH);
   return true;
 }
 
 void INextionTouchable::detachPressEvent()
 {
+  if(m_pressEvent != NULL)
+    delete m_pressEvent;
+
   m_pressEvent = NULL;
 }
 
-bool INextionTouchable::attachReleaseEvent(NextionCallback cb)
+bool INextionTouchable::attachReleaseEvent(NextionCallbackHandler::NextionFunction cb)
 {
   if (!cb)
     return false;
+    
+  if (m_releaseEvent != NULL)
+    detachReleaseEvent();
 
-  m_releaseEvent = cb;
+  m_releaseEvent = new NextionCallbackHandler(cb, NEX_EVENT_POP);
+  return true;
+}
+
+bool INextionTouchable::attachReleaseEvent(INextionCallback *obj)
+{
+  if (!obj)
+    return false;
+  
+  if (m_releaseEvent != NULL)
+    detachReleaseEvent();
+
+  m_releaseEvent = new NextionCallbackHandler(obj, NEX_EVENT_POP);
   return true;
 }
 
 void INextionTouchable::detachReleaseEvent()
 {
+  if(m_releaseEvent != NULL)
+    delete m_releaseEvent;
+
   m_releaseEvent = NULL;
 }
