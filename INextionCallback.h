@@ -9,8 +9,9 @@ public:
   INextionCallback()
   {
   }
-  
-  virtual void handleNextionEvent(NextionEventType type, INextionTouchable * widget) = 0;
+
+  virtual void handleNextionEvent(NextionEventType type,
+                                  INextionTouchable *widget) = 0;
 };
 
 #endif

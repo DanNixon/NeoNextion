@@ -2,8 +2,8 @@
 
 INextionTouchable::INextionTouchable(Nextion &nex, uint8_t page,
                                      uint8_t component, const char *name)
-    : INextionWidget(nex, page, component, name),
-    m_callback(NULL)
+    : INextionWidget(nex, page, component, name)
+    , m_callback(NULL)
 {
   nex.registerTouchable(this);
 }
@@ -34,11 +34,12 @@ bool INextionTouchable::processEvent(uint8_t pageID, uint8_t componentID,
   }
 }
 
-bool INextionTouchable::attachCallback(NextionCallbackFunctionHandler::NextionFunction function)
+bool INextionTouchable::attachCallback(
+    NextionCallbackFunctionHandler::NextionFunction function)
 {
   if (!function)
     return false;
-  
+
   if (m_callback != NULL)
     detachCallback();
 
@@ -50,7 +51,7 @@ bool INextionTouchable::attachCallback(INextionCallback *handler)
 {
   if (!handler)
     return false;
-  
+
   if (m_callback != NULL)
     detachCallback();
 
