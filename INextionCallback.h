@@ -1,6 +1,8 @@
 #ifndef __NEONEXTION_INEXTIONCALLBACK
 #define __NEONEXTION_INEXTIONCALLBACK
 
+#include "INextionTouchable.h"
+
 class INextionCallback
 {
 public:

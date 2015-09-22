@@ -19,8 +19,7 @@ void setup()
 
   Serial.println(pgHotspot.show());
 
-  Serial.println(hotspot.attachPressEvent(&press_callback));
-  Serial.println(hotspot.attachReleaseEvent(&release_callback));
+  Serial.println(hotspot.attachCallback(&callback));
 }
 
 void loop()
@@ -28,12 +27,10 @@ void loop()
   nex.poll();
 }
 
-void press_callback(INextionTouchable *widget)
+void callback(NextionEventType type, INextionTouchable *widget)
 {
-  digitalWrite(13, HIGH);
-}
-
-void release_callback(INextionTouchable *widget)
-{
-  digitalWrite(13, LOW);
+	if (type == NEX_EVENT_PUSH)
+		digitalWrite(13, HIGH);
+	else if (type == NEX_EVENT_POP)
+		digitalWrite(13, HIGH);
 }

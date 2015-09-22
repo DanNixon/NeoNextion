@@ -2,7 +2,8 @@
 
 INextionTouchable::INextionTouchable(Nextion &nex, uint8_t page,
                                      uint8_t component, const char *name)
-    : INextionWidget(nex, page, component, name)
+    : INextionWidget(nex, page, component, name),
+    m_callback(NULL)
 {
   nex.registerTouchable(this);
 }
@@ -19,13 +20,13 @@ bool INextionTouchable::processEvent(uint8_t pageID, uint8_t componentID,
   switch (eventType)
   {
   case NEX_EVENT_PUSH:
-    if (m_pressEvent)
-      (*m_pressEvent)(this);
+    if (m_callback)
+      m_callback->handleNextionEvent(NEX_EVENT_POP, this);
     return true;
 
   case NEX_EVENT_POP:
-    if (m_releaseEvent)
-      (*m_releaseEvent)(this);
+    if (m_callback)
+      m_callback->handleNextionEvent(NEX_EVENT_POP, this);
     return true;
 
   default:
@@ -33,66 +34,31 @@ bool INextionTouchable::processEvent(uint8_t pageID, uint8_t componentID,
   }
 }
 
-bool INextionTouchable::attachPressEvent(NextionCallbackHandler::NextionFunction cb)
+bool INextionTouchable::attachCallback(NextionCallbackFunctionHandler::NextionFunction function)
 {
-  if (!cb)
+  if (!function)
     return false;
   
-  if (m_pressEvent != NULL)
-    detachPressEvent();
+  if (m_callback != NULL)
+    detachCallback();
 
-  m_pressEvent = new NextionCallbackHandler(cb, NEX_EVENT_PUSH);
+  m_callback = new NextionCallbackFunctionHandler(function);
   return true;
 }
 
-bool INextionTouchable::attachPressEvent(INextionCallback *obj)
+bool INextionTouchable::attachCallback(INextionCallback *handler)
 {
-  if (!obj)
+  if (!handler)
     return false;
   
-  if (m_pressEvent != NULL)
-    detachPressEvent();
+  if (m_callback != NULL)
+    detachCallback();
 
-  m_pressEvent = new NextionCallbackHandler(obj, NEX_EVENT_PUSH);
+  m_callback = handler;
   return true;
 }
 
-void INextionTouchable::detachPressEvent()
+void INextionTouchable::detachCallback()
 {
-  if(m_pressEvent != NULL)
-    delete m_pressEvent;
-
-  m_pressEvent = NULL;
-}
-
-bool INextionTouchable::attachReleaseEvent(NextionCallbackHandler::NextionFunction cb)
-{
-  if (!cb)
-    return false;
-    
-  if (m_releaseEvent != NULL)
-    detachReleaseEvent();
-
-  m_releaseEvent = new NextionCallbackHandler(cb, NEX_EVENT_POP);
-  return true;
-}
-
-bool INextionTouchable::attachReleaseEvent(INextionCallback *obj)
-{
-  if (!obj)
-    return false;
-  
-  if (m_releaseEvent != NULL)
-    detachReleaseEvent();
-
-  m_releaseEvent = new NextionCallbackHandler(obj, NEX_EVENT_POP);
-  return true;
-}
-
-void INextionTouchable::detachReleaseEvent()
-{
-  if(m_releaseEvent != NULL)
-    delete m_releaseEvent;
-
-  m_releaseEvent = NULL;
+  m_callback = NULL;
 }
