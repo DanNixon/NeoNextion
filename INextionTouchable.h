@@ -3,7 +3,7 @@
 
 #include "Nextion.h"
 #include "INextionWidget.h"
-#include "INextionCallbackHandler.h"
+#include "NextionCallbackHandler.h"
 
 class INextionTouchable : public virtual INextionWidget
 {
