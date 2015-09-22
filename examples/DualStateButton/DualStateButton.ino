@@ -11,8 +11,8 @@ NextionDualStateButton button(nex, 11, 2, "bExDsButton");
 
 void setup()
 {
-	Serial.begin(9600);
-	pinMode(13, OUTPUT);
+  Serial.begin(9600);
+  pinMode(13, OUTPUT);
 
   nextionSerial.begin(9600);
   nex.init();
@@ -21,9 +21,9 @@ void setup()
 
   Serial.println(button.attachCallback(&callback));
 
-	Serial.println(button.isActive());
-	Serial.println(button.setActive(true));
-	Serial.println(button.isActive());
+  Serial.println(button.isActive());
+  Serial.println(button.setActive(true));
+  Serial.println(button.isActive());
 }
 
 void loop()
@@ -33,11 +33,11 @@ void loop()
 
 void callback(NextionEventType type, INextionTouchable *widget)
 {
-	if (type == NEX_EVENT_PUSH)
-		digitalWrite(13, HIGH);
-	if (type == NEX_EVENT_POP)
-	{
-		Serial.println(button.isActive());
-		digitalWrite(13, LOW);
-	}
+  if (type == NEX_EVENT_PUSH)
+    digitalWrite(13, HIGH);
+  else if (type == NEX_EVENT_POP)
+  {
+    Serial.println(button.isActive());
+    digitalWrite(13, LOW);
+  }
 }

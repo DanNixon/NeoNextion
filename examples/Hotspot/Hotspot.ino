@@ -29,8 +29,8 @@ void loop()
 
 void callback(NextionEventType type, INextionTouchable *widget)
 {
-	if (type == NEX_EVENT_PUSH)
-		digitalWrite(13, HIGH);
-	else if (type == NEX_EVENT_POP)
-		digitalWrite(13, HIGH);
+  if (type == NEX_EVENT_PUSH)
+    digitalWrite(13, HIGH);
+  else if (type == NEX_EVENT_POP)
+    digitalWrite(13, LOW);
 }

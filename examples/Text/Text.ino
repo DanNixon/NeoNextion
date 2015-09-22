@@ -11,7 +11,7 @@ NextionText text(nex, 1, 2, "tExText");
 
 void setup()
 {
-	Serial.begin(9600);
+  Serial.begin(9600);
   pinMode(13, OUTPUT);
 
   nextionSerial.begin(9600);
@@ -33,14 +33,14 @@ void loop()
 
 void callback(NextionEventType type, INextionTouchable *widget)
 {
-	if(type == NEX_EVENT_PUSH)
-	{
-		digitalWrite(13, HIGH);
-		text.setText("Hyah!");
-	}
-	else
-	{
-		digitalWrite(13, LOW);
-		text.setText("You pressed me");
-	}
+  if (type == NEX_EVENT_PUSH)
+  {
+    digitalWrite(13, HIGH);
+    text.setText("Hyah!");
+  }
+  else if (type == NEX_EVENT_POP)
+  {
+    digitalWrite(13, LOW);
+    text.setText("You pressed me");
+  }
 }

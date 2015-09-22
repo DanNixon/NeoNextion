@@ -21,12 +21,12 @@ bool INextionTouchable::processEvent(uint8_t pageID, uint8_t componentID,
   {
   case NEX_EVENT_PUSH:
     if (m_callback)
-      m_callback->handleNextionEvent(NEX_EVENT_POP, this);
+      m_callback->handleNextionEvent((NextionEventType) eventType, this);
     return true;
 
   case NEX_EVENT_POP:
     if (m_callback)
-      m_callback->handleNextionEvent(NEX_EVENT_POP, this);
+      m_callback->handleNextionEvent((NextionEventType) eventType, this);
     return true;
 
   default:

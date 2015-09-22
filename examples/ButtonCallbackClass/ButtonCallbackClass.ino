@@ -7,19 +7,18 @@ SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
 NextionPage pgButton(nex, 0, 0, "pgButton");
-NextionButton button(nex, 0, 5, "bEgButton");
+NextionButton button(nex, 0, 1, "bEgButton");
 
-class Handler: public INextionCallback
+class Handler : public INextionCallback
 {
 public:
-  Handler():
-    INextionCallback()
+  Handler()
+      : INextionCallback()
   {
   }
-  
+
   void handleNextionEvent(NextionEventType type, INextionTouchable *widget)
   {
-    Serial.print("event: ");
     if (type == NEX_EVENT_PUSH)
     {
       digitalWrite(13, HIGH);
@@ -37,8 +36,8 @@ Handler handle;
 
 void setup()
 {
-	Serial.begin(9600);
-	pinMode(13, OUTPUT);
+  Serial.begin(9600);
+  pinMode(13, OUTPUT);
 
   nextionSerial.begin(9600);
   nex.init();

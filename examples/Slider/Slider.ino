@@ -11,7 +11,7 @@ NextionSlider slider(nex, 8, 2, "sExSlider");
 
 void setup()
 {
-	Serial.begin(9600);
+  Serial.begin(9600);
   pinMode(13, OUTPUT);
 
   nextionSerial.begin(9600);
@@ -22,7 +22,7 @@ void setup()
   Serial.println(slider.setBackgroundColour(NEX_COL_BLUE));
   Serial.println(slider.setForegroundColour(NEX_COL_YELLOW));
 
-	Serial.println(slider.getBackgroundColour());
+  Serial.println(slider.getBackgroundColour());
   Serial.println(slider.getForegroundColour());
 
   Serial.println(slider.attachCallback(&callback));
@@ -35,11 +35,11 @@ void loop()
 
 void callback(NextionEventType type, INextionTouchable *widget)
 {
-	if (type == NEX_EVENT_PUSH)
-		digitalWrite(13, HIGH);
-	if (type == NEX_EVENT_POP)
-	{
-		Serial.println(slider.getValue());
-		digitalWrite(13, LOW);
-	}
+  if (type == NEX_EVENT_PUSH)
+    digitalWrite(13, HIGH);
+  else if (type == NEX_EVENT_POP)
+  {
+    Serial.println(slider.getValue());
+    digitalWrite(13, LOW);
+  }
 }

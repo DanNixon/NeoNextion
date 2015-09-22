@@ -33,21 +33,21 @@ void loop()
 {
   nex.poll();
 
-  if(millis() - startTime > 500)
+  if (millis() - startTime > 500)
   {
     uint16_t value = progressBar.getValue();
     value += 10;
-    if(value > 100)
+    if (value > 100)
       value = 0;
     progressBar.setValue(value);
-    startTime= millis();
+    startTime = millis();
   }
 }
 
 void callback(NextionEventType type, INextionTouchable *widget)
 {
-	if (type == NEX_EVENT_PUSH)
-		digitalWrite(13, HIGH);
-	if (type == NEX_EVENT_POP)
-		digitalWrite(13, LOW);
+  if (type == NEX_EVENT_PUSH)
+    digitalWrite(13, HIGH);
+  else if (type == NEX_EVENT_POP)
+    digitalWrite(13, LOW);
 }

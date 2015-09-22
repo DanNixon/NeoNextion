@@ -11,7 +11,7 @@ NextionCrop crop(nex, 4, 2, "crExCrop");
 
 void setup()
 {
-	Serial.begin(9600);
+  Serial.begin(9600);
   pinMode(13, OUTPUT);
 
   nextionSerial.begin(9600);
@@ -29,8 +29,8 @@ void loop()
 
 void callback(NextionEventType type, INextionTouchable *widget)
 {
-	if (type == NEX_EVENT_PUSH)
-		digitalWrite(13, HIGH);
-	if (type == NEX_EVENT_POP)
-		digitalWrite(13, LOW);
+  if (type == NEX_EVENT_PUSH)
+    digitalWrite(13, HIGH);
+  else if (type == NEX_EVENT_POP)
+    digitalWrite(13, LOW);
 }

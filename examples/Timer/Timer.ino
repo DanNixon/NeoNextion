@@ -19,7 +19,7 @@ void setup()
 
   Serial.println(pgTimer.show());
 
-  //Serial.println(timer.attachEvent(&timer_callback));
+  // Serial.println(timer.attachEvent(&timer_callback));
   Serial.println(timer.setCycle(1000));
   Serial.println(timer.enable());
 }
@@ -29,7 +29,7 @@ void loop()
   nex.poll();
 }
 
-void timer_callback(INextionTouchable *widget)
+void timer_callback(NextionEventType type, INextionTouchable *widget)
 {
   digitalWrite(13, !digitalRead(13));
 }

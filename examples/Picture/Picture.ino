@@ -11,7 +11,7 @@ NextionPicture picture(nex, 3, 2, "pExPicture");
 
 void setup()
 {
-	Serial.begin(9600);
+  Serial.begin(9600);
   pinMode(13, OUTPUT);
 
   nextionSerial.begin(9600);
@@ -21,9 +21,9 @@ void setup()
 
   Serial.println(picture.attachCallback(&callback));
 
-	Serial.println(picture.getPictureID());
+  Serial.println(picture.getPictureID());
   Serial.println(picture.setPictureID(1));
-	Serial.println(picture.getPictureID());
+  Serial.println(picture.getPictureID());
 }
 
 void loop()
@@ -33,8 +33,8 @@ void loop()
 
 void callback(NextionEventType type, INextionTouchable *widget)
 {
-	if (type == NEX_EVENT_PUSH)
-		digitalWrite(13, HIGH);
-	if (type == NEX_EVENT_POP)
-		digitalWrite(13, LOW);
+  if (type == NEX_EVENT_PUSH)
+    digitalWrite(13, HIGH);
+  else if (type == NEX_EVENT_POP)
+    digitalWrite(13, LOW);
 }

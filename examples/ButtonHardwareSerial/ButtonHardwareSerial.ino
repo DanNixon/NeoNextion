@@ -10,8 +10,8 @@ NextionButton button(nex, 0, 1, "bEgButton");
 
 void setup()
 {
-	Serial.begin(9600);
-	pinMode(13, OUTPUT);
+  Serial.begin(9600);
+  pinMode(13, OUTPUT);
 
   NEXTION_PORT.begin(9600);
   nex.init();
@@ -39,14 +39,14 @@ void loop()
 
 void callback(NextionEventType type, INextionTouchable *widget)
 {
-	if(type == NEX_EVENT_PUSH)
-	{
-		digitalWrite(13, HIGH);
-		button.setText("Hyah!");
-	}
-	else
-	{
-		digitalWrite(13, LOW);
-		button.setText("You pressed me");
-	}
+  if (type == NEX_EVENT_PUSH)
+  {
+    digitalWrite(13, HIGH);
+    button.setText("Hyah!");
+  }
+  else if (type == NEX_EVENT_POP)
+  {
+    digitalWrite(13, LOW);
+    button.setText("You pressed me");
+  }
 }
