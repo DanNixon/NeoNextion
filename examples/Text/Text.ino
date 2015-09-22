@@ -19,8 +19,7 @@ void setup()
 
   Serial.println(pgText.show());
 
-  Serial.println(text.attachPressEvent(&press_callback));
-  Serial.println(text.attachReleaseEvent(&release_callback));
+  Serial.println(text.attachCallback(&callback));
 
   Serial.println(text.setText("Press me!"));
 
@@ -32,14 +31,16 @@ void loop()
   nex.poll();
 }
 
-void press_callback(INextionTouchable *widget)
+void callback(NextionEventType type, INextionTouchable *widget)
 {
-  digitalWrite(13, HIGH);
-  text.setText("Hyah!");
-}
-
-void release_callback(INextionTouchable *widget)
-{
-  digitalWrite(13, LOW);
-  text.setText("You pressed me");
+	if(type == NEX_EVENT_PUSH)
+	{
+		digitalWrite(13, HIGH);
+		button.setText("Hyah!");
+	}
+	else
+	{
+		digitalWrite(13, LOW);
+		button.setText("You pressed me");
+	}
 }

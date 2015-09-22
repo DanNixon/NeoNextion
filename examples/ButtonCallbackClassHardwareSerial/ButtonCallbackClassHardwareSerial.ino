@@ -44,8 +44,7 @@ void setup()
 
   Serial.println(pgButton.show());
 
-  Serial.println(button.attachReleaseEvent(&handle));
-  Serial.println(button.attachReleaseEvent(&handle));
+  Serial.println(button.attachCallback(&handle));
 
   Serial.println(button.setHAlignment(NEX_FA_LEFT_UP));
   Serial.println(button.setVAlignment(NEX_FA_LEFT_UP));

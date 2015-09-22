@@ -25,8 +25,7 @@ void setup()
 	Serial.println(slider.getBackgroundColour());
   Serial.println(slider.getForegroundColour());
 
-  Serial.println(slider.attachPressEvent(&press_callback));
-  Serial.println(slider.attachReleaseEvent(&release_callback));
+  Serial.println(slider.attachCallback(&callback));
 }
 
 void loop()
@@ -34,13 +33,13 @@ void loop()
   nex.poll();
 }
 
-void press_callback(INextionTouchable *widget)
+void callback(NextionEventType type, INextionTouchable *widget)
 {
-  digitalWrite(13, HIGH);
-}
-
-void release_callback(INextionTouchable *widget)
-{
-  digitalWrite(13, LOW);
-  Serial.println(slider.getValue());
+	if (type == NEX_EVENT_PUSH)
+		digitalWrite(13, HIGH);
+	if (type == NEX_EVENT_POP)
+	{
+		Serial.println(slider.getValue());
+		digitalWrite(13, LOW);
+	}
 }

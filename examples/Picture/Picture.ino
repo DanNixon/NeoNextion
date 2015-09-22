@@ -19,8 +19,7 @@ void setup()
 
   Serial.println(pgPicture.show());
 
-  Serial.println(picture.attachPressEvent(&press_callback));
-  Serial.println(picture.attachReleaseEvent(&release_callback));
+  Serial.println(picture.attachCallback(&callback));
 
 	Serial.println(picture.getPictureID());
   Serial.println(picture.setPictureID(1));
@@ -32,12 +31,10 @@ void loop()
   nex.poll();
 }
 
-void press_callback(INextionTouchable *widget)
+void callback(NextionEventType type, INextionTouchable *widget)
 {
-  digitalWrite(13, HIGH);
-}
-
-void release_callback(INextionTouchable *widget)
-{
-  digitalWrite(13, LOW);
+	if (type == NEX_EVENT_PUSH)
+		digitalWrite(13, HIGH);
+	if (type == NEX_EVENT_POP)
+		digitalWrite(13, LOW);
 }

@@ -21,8 +21,7 @@ void setup()
 
   Serial.println(pgGauge.show());
 
-  Serial.println(gauge.attachPressEvent(&press_callback));
-  Serial.println(gauge.attachReleaseEvent(&release_callback));
+  Serial.println(gauge.attachCallback(&callback));
 
   Serial.println(gauge.setBackgroundColour(NEX_COL_BLACK));
   Serial.println(gauge.setForegroundColour(NEX_COL_RED));
@@ -45,12 +44,11 @@ void loop()
   }
 }
 
-void press_callback(INextionTouchable *widget)
+void callback(NextionEventType type, INextionTouchable *widget)
 {
-  digitalWrite(13, HIGH);
+	if (type == NEX_EVENT_PUSH)
+		digitalWrite(13, HIGH);
+	if (type == NEX_EVENT_POP)
+		digitalWrite(13, LOW);
 }
 
-void release_callback(INextionTouchable *widget)
-{
-  digitalWrite(13, LOW);
-}
