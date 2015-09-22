@@ -15,7 +15,7 @@ public:
 
   void handleNextionEvent(NextionEventType type, INextionTouchable *item)
   {
-    if(m_function == NULL)
+    if(m_function != NULL)
       m_function(type, item);
   }
 

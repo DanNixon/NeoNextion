@@ -36,11 +36,11 @@ void callback(NextionEventType type, INextionTouchable *widget)
 	if(type == NEX_EVENT_PUSH)
 	{
 		digitalWrite(13, HIGH);
-		button.setText("Hyah!");
+		text.setText("Hyah!");
 	}
 	else
 	{
 		digitalWrite(13, LOW);
-		button.setText("You pressed me");
+		text.setText("You pressed me");
 	}
 }
