@@ -8,42 +8,52 @@ INextionColourable::INextionColourable(Nextion &nex, uint8_t page,
 
 bool INextionColourable::setForegroundColour(uint32_t colour, bool refresh)
 {
-  return afterSet(setNumberProperty("pco", colour), refresh);
+  return setColour("pco", colour, refresh);
 }
 
 uint32_t INextionColourable::getForegroundColour()
 {
-  return getNumberProperty("pco");
+  return getColour("pco");
 }
 
 bool INextionColourable::setEventForegroundColour(uint32_t colour, bool refresh)
 {
-  return afterSet(setNumberProperty("pco2", colour), refresh);
+  return setColour("pco2", colour, refresh);
 }
 
 uint32_t INextionColourable::getEventForegroundColour()
 {
-  return getNumberProperty("pco2");
+  return getColour("pco2");
 }
 
 bool INextionColourable::setBackgroundColour(uint32_t colour, bool refresh)
 {
-  return afterSet(setNumberProperty("bco", colour), refresh);
+  return setColour("bco", colour, refresh);
 }
 
 uint32_t INextionColourable::getBackgroundColour()
 {
-  return getNumberProperty("bco");
+  return getColour("bco");
 }
 
 bool INextionColourable::setEventBackgroundColour(uint32_t colour, bool refresh)
 {
-  return afterSet(setNumberProperty("bco2", colour), refresh);
+  return setColour("bco2", colour, refresh);
 }
 
 uint32_t INextionColourable::getEventBackgroundColour()
 {
-  return getNumberProperty("bco2");
+  return getColour("bco2");
+}
+
+bool INextionColourable::setColour(char *type, uint32_t colour, bool refresh)
+{
+  return afterSet(setNumberProperty(type, colour), refresh);
+}
+
+uint32_t INextionColourable::getColour(char *type)
+{
+  return getNumberProperty(type);
 }
 
 bool INextionColourable::afterSet(bool result, bool refresh)
