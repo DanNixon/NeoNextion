@@ -5,6 +5,11 @@
 #######################################
 
 Nextion	KEYWORD1
+NextionValue	KEYWORD1
+NextionFontAlignment	KEYWORD1
+NextionBackground	KEYWORD1
+NextionColour	KEYWORD1
+NextionEventType	KEYWORD1
 INextionWidget	KEYWORD1
 INextionColourable	KEYWORD1
 INextionFontStyleable	KEYWORD1
@@ -88,6 +93,17 @@ show	KEYWORD2
 # NextionDualStateButton
 isActive	KEYWORD2
 setActive	KEYWORD2
+
+# NextionWaveform
+addValue	KEYWORD2
+setChannelColour	KEYWORD2
+getChannelColour	KEYWORD2
+setGridColour	KEYWORD2
+getGridColour	KEYWORD2
+setGridWidth	KEYWORD2
+getGridWidth	KEYWORD2
+setGridHeight	KEYWORD2
+getGridHeight	KEYWORD2
 
 #######################################
 # Constants

@@ -22,7 +22,7 @@ public:
 
   bool setEventBackgroundColour(uint32_t colour, bool refresh = true);
   uint32_t getEventBackgroundColour();
-  
+
   bool setColour(char *type, uint32_t colour, bool refresh);
   uint32_t getColour(char *type);
 

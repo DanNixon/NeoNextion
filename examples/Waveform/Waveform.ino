@@ -20,22 +20,22 @@ void setup()
   Serial.println(pgWaveform.show());
 
   Serial.println(waveform.attachCallback(&callback));
-	
-	Serial.println(waveform.setGridWidth(5));
-	Serial.println(waveform.getGridWidth());
-	
-	Serial.println(waveform.setGridHeight(10));
-	Serial.println(waveform.getGridHeight());
-	
-	Serial.println(waveform.setChannelColour(0, NEX_COL_WHITE));
 
-	for(uint16_t i = 0; i < 100; i++)
-	{
-		waveform.addValue(0, i);
-		waveform.addValue(1, i + 10);
-		waveform.addValue(2, i + 20);
-		waveform.addValue(3, i + 30);
-	}
+  Serial.println(waveform.setGridWidth(5));
+  Serial.println(waveform.getGridWidth());
+
+  Serial.println(waveform.setGridHeight(10));
+  Serial.println(waveform.getGridHeight());
+
+  Serial.println(waveform.setChannelColour(0, NEX_COL_WHITE));
+
+  for (uint16_t i = 0; i < 100; i++)
+  {
+    waveform.addValue(0, i);
+    waveform.addValue(1, i + 10);
+    waveform.addValue(2, i + 20);
+    waveform.addValue(3, i + 30);
+  }
 }
 
 void loop()

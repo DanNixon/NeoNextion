@@ -12,16 +12,16 @@ public:
                   const char *name);
 
   bool addValue(uint8_t channel, uint8_t value);
-  
+
   bool setChannelColour(uint8_t channel, uint32_t colour, bool refresh = true);
   uint32_t getChannelColour(uint8_t channel);
-  
+
   bool setGridColour(uint32_t colour, bool refresh = true);
   uint32_t getGridColour();
-  
+
   bool setGridWidth(uint16_t width);
   uint16_t getGridWidth();
-  
+
   bool setGridHeight(uint16_t height);
   uint16_t getGridHeight();
 };
