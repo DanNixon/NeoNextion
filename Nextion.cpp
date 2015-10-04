@@ -3,10 +3,11 @@
 
 Nextion::Nextion(Stream &stream, bool flushSerialBeforeTx)
     : m_serialPort(stream)
-    , m_timeout(500)
+    , m_timeout(1000)
     , m_flushSerialBeforeTx(flushSerialBeforeTx)
     , m_touchableList(NULL)
 {
+  m_serialPort.setTimeout(m_timeout);
 }
 
 bool Nextion::init()
@@ -24,34 +25,14 @@ bool Nextion::init()
 
 void Nextion::poll()
 {
-  while (m_serialPort.available() > 0)
+  while (m_serialPort.available())
   {
-    char c = m_serialPort.read();
-
-    if (c == NEX_RET_EVENT_TOUCH_HEAD)
+    if (m_serialPort.available() && (m_serialPort.peek() == NEX_RET_EVENT_TOUCH_HEAD))
     {
-      delay(10);
+      Serial.println("TOUCH");
 
-      if (m_serialPort.available() >= 6)
-      {
-        static uint8_t buffer[8];
-        buffer[0] = c;
-
-        uint8_t i;
-        for (i = 1; i < 7; i++)
-          buffer[i] = m_serialPort.read();
-        buffer[i] = 0x00;
-
-        if (buffer[4] == 0xFF && buffer[5] == 0xFF && buffer[6] == 0xFF)
-        {
-          ITouchableListItem *item = m_touchableList;
-          while (item != NULL)
-          {
-            item->item->processEvent(buffer[1], buffer[2], buffer[3]);
-            item = item->next;
-          }
-        }
-      }
+      m_serialPort.read();
+      processTouchMessage();
     }
   }
 }
@@ -109,16 +90,13 @@ uint8_t Nextion::getCurrentPage()
 {
   sendCommand("sendme");
 
-  uint8_t temp[5] = {0};
+  uint8_t id[1] = {0};
+  bool ok = waitForMessage(NEX_RET_CURRENT_PAGE_ID_HEAD);
 
-  if (sizeof(temp) != m_serialPort.readBytes((char *)temp, sizeof(temp)))
-    return 0;
+  if (ok)
+    getMessagePayload(id, 1);
 
-  if (temp[0] == NEX_RET_CURRENT_PAGE_ID_HEAD && temp[2] == 0xFF &&
-      temp[3] == 0xFF && temp[4] == 0xFF)
-    return temp[1];
-
-  return 0;
+  return id[0];
 }
 
 bool Nextion::clear(uint32_t colour)
@@ -229,33 +207,23 @@ void Nextion::sendCommand(char *command)
 
 bool Nextion::checkCommandComplete()
 {
-  bool ret = false;
-  uint8_t temp[4] = {0};
+  bool ok = waitForMessage(NEX_RET_CMD_FINISHED);
 
-  if (sizeof(temp) != m_serialPort.readBytes((char *)temp, sizeof(temp)))
-    ret = false;
+  if (ok)
+    getMessagePayload(NULL, 0);
 
-  if (temp[0] == NEX_RET_CMD_FINISHED && temp[1] == 0xFF && temp[2] == 0xFF &&
-      temp[3] == 0xFF)
-    ret = true;
-
-  return ret;
+  return ok;
 }
 
 bool Nextion::receiveNumber(uint32_t *number)
 {
-  uint8_t temp[8] = {0};
+  uint8_t temp[4] = {0};
 
-  if (!number)
-    return false;
+  bool ok = waitForMessage(NEX_RET_NUMBER_HEAD);
 
-  if (sizeof(temp) != m_serialPort.readBytes((char *)temp, sizeof(temp)))
-    return false;
-
-  if (temp[0] == NEX_RET_NUMBER_HEAD && temp[5] == 0xFF && temp[6] == 0xFF &&
-      temp[7] == 0xFF)
+  if (ok && (getMessagePayload(temp, 4) == 4))
   {
-    *number = (temp[4] << 24) | (temp[3] << 16) | (temp[2] << 8) | (temp[1]);
+    *number = (temp[3] << 24) | (temp[2] << 16) | (temp[1] << 8) | (temp[0]);
     return true;
   }
 
@@ -265,45 +233,74 @@ bool Nextion::receiveNumber(uint32_t *number)
 size_t Nextion::receiveString(char *buffer, size_t len)
 {
   memset(buffer, 0, len);
+  size_t read = 0;
 
-  bool have_header_flag = false;
-  uint8_t flag_count = 0;
-  size_t pos = 0;
+  bool ok = waitForMessage(NEX_RET_STRING_HEAD);
 
-  if (!buffer || len == 0)
-    return false;
+  if (ok)
+  {
+    read = getMessagePayload((uint8_t *)buffer, len - 1);
+    buffer[read] = '\0';
+  }
+
+  return read;
+}
+
+bool Nextion::processTouchMessage()
+{
+  uint8_t buffer[3];
+  if (getMessagePayload(buffer, 3) == 3)
+  {
+    ITouchableListItem *item = m_touchableList;
+    while (item != NULL)
+    {
+      item->item->processEvent(buffer[1], buffer[2], buffer[3]);
+      item = item->next;
+    }
+  }
+}
+
+bool Nextion::waitForMessage(uint8_t header, bool pollWhileWait, uint32_t timeout)
+{
+  if (timeout == 0)
+    timeout = m_timeout;
 
   uint32_t start = millis();
-  while (millis() - start <= m_timeout)
+  while (millis() - start < timeout)
   {
-    while (m_serialPort.available())
-    {
-      char c = m_serialPort.read();
-      if (have_header_flag)
-      {
-        if (c == 0xFF || c == 0xFFFFFFFF)
-        {
-          flag_count++;
-          if (flag_count >= 3)
-            break;
-        }
-        else
-        {
-          buffer[pos] = c;
-          pos++;
-          if (pos == len - 1)
-            break;
-        }
-      }
-      else if (c == NEX_RET_STRING_HEAD)
-        have_header_flag = true;
-    }
+    if (pollWhileWait)
+      poll();
 
-    if (flag_count >= 3)
+    if (m_serialPort.available() && (m_serialPort.peek() == header))
+    {
+      m_serialPort.read();
+      return true;
+    }
+  }
+
+  return false;
+}
+
+size_t Nextion::getMessagePayload(uint8_t *buffer, size_t len)
+{
+  size_t read = 0;
+
+  if (buffer && (len > 0))
+    m_serialPort.readBytesUntil(0xFF, buffer, len);
+
+  delay(5);
+
+  while (m_serialPort.available())
+  {
+    uint8_t data = m_serialPort.peek();
+    if (data == 0xFF || data == 0xFFFFFFFF)
+      m_serialPort.read();
+    else
       break;
   }
 
-  pos++;
-  buffer[pos] = '\0';
-  return pos;
+  Serial.print("====");
+  Serial.println(m_serialPort.peek(), HEX);
+
+  return read;
 }

@@ -54,6 +54,10 @@ public:
   size_t receiveString(char *buffer, size_t len);
 
 private:
+  bool processTouchMessage();
+  bool waitForMessage(uint8_t header, bool pollWhileWait = false, uint32_t timeout = 0);
+  size_t getMessagePayload(uint8_t *buffer, size_t len);
+
   Stream &m_serialPort;
   uint32_t m_timeout;
   bool m_flushSerialBeforeTx;
