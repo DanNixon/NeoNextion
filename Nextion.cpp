@@ -225,10 +225,16 @@ bool Nextion::receiveNumber(uint32_t *number)
 
   bool ok = waitForMessage(NEX_RET_NUMBER_HEAD);
 
-  if (ok && (getMessagePayload(temp, 4) == 4))
+  if (ok)
   {
-    *number = (temp[3] << 24) | (temp[2] << 16) | (temp[1] << 8) | (temp[0]);
-    return true;
+    delay(10);
+    ok = getMessagePayload(temp, 4) == 4;
+
+    if (ok)
+    {
+      *number = (temp[3] << 24) | (temp[2] << 16) | (temp[1] << 8) | (temp[0]);
+      return true;
+    }
   }
 
   return false;
@@ -243,6 +249,7 @@ size_t Nextion::receiveString(char *buffer, size_t len)
 
   if (ok)
   {
+    delay(10);
     read = getMessagePayload((uint8_t *)buffer, len - 1);
     buffer[read] = '\0';
   }
@@ -296,13 +303,32 @@ size_t Nextion::getMessagePayload(uint8_t *buffer, size_t len)
 
   if (buffer && (len > 0))
   {
-    while (m_serialPort.peek() != 0xFF && m_serialPort.peek() != 0xFFFFFF)
+    size_t numEOF = 0;
+    uint32_t start = millis();
+    while (millis() - start < m_timeout)
     {
+      uint8_t data = m_serialPort.peek();
+
+      if (numEOF >= 3)
+        break;
+
+      if (data == 0xFF)
+      {
+        numEOF++;
+        continue;
+      }
+
       buffer[i] = m_serialPort.read();
       i++;
 
       if (i >= len)
+      {
+        /* Dump the rest of the payload set from the display */
+        while (m_serialPort.peek() != 0xFF)
+          m_serialPort.read();
+
         break;
+      }
     }
   }
 
