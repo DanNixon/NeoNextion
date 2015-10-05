@@ -27,10 +27,11 @@ void Nextion::poll()
 {
   while (m_serialPort.available())
   {
-    if (m_serialPort.available() && (m_serialPort.peek() == NEX_RET_EVENT_TOUCH_HEAD))
-    {
-      Serial.println("TOUCH");
+    if (m_serialPort.peek() == 0xFF)
+      m_serialPort.read();
 
+    if (m_serialPort.peek() == NEX_RET_EVENT_TOUCH_HEAD)
+    {
       m_serialPort.read();
       processTouchMessage();
     }
@@ -94,9 +95,12 @@ uint8_t Nextion::getCurrentPage()
   bool ok = waitForMessage(NEX_RET_CURRENT_PAGE_ID_HEAD);
 
   if (ok)
-    getMessagePayload(id, 1);
+    ok = getMessagePayload(id, 1) == 1;
 
-  return id[0];
+  if (ok)
+    return id[0];
+  else
+    return 0;
 }
 
 bool Nextion::clear(uint32_t colour)
@@ -254,10 +258,12 @@ bool Nextion::processTouchMessage()
     ITouchableListItem *item = m_touchableList;
     while (item != NULL)
     {
-      item->item->processEvent(buffer[1], buffer[2], buffer[3]);
+      item->item->processEvent(buffer[0], buffer[1], buffer[2]);
       item = item->next;
     }
   }
+
+  delay(10);
 }
 
 bool Nextion::waitForMessage(uint8_t header, bool pollWhileWait, uint32_t timeout)
@@ -271,7 +277,10 @@ bool Nextion::waitForMessage(uint8_t header, bool pollWhileWait, uint32_t timeou
     if (pollWhileWait)
       poll();
 
-    if (m_serialPort.available() && (m_serialPort.peek() == header))
+    if (m_serialPort.peek() == 0xFF)
+      m_serialPort.read();
+
+    if (m_serialPort.peek() == header)
     {
       m_serialPort.read();
       return true;
@@ -283,24 +292,22 @@ bool Nextion::waitForMessage(uint8_t header, bool pollWhileWait, uint32_t timeou
 
 size_t Nextion::getMessagePayload(uint8_t *buffer, size_t len)
 {
-  size_t read = 0;
+  size_t i = 0;
 
   if (buffer && (len > 0))
-    m_serialPort.readBytesUntil(0xFF, buffer, len);
-
-  delay(5);
-
-  while (m_serialPort.available())
   {
-    uint8_t data = m_serialPort.peek();
-    if (data == 0xFF || data == 0xFFFFFFFF)
-      m_serialPort.read();
-    else
-      break;
+    while (m_serialPort.peek() != 0xFF && m_serialPort.peek() != 0xFFFFFF)
+    {
+      buffer[i] = m_serialPort.read();
+      i++;
+
+      if (i >= len)
+        break;
+    }
   }
 
-  Serial.print("====");
-  Serial.println(m_serialPort.peek(), HEX);
+  while (m_serialPort.peek() == 0xFF)
+    m_serialPort.read();
 
-  return read;
+  return i;
 }
