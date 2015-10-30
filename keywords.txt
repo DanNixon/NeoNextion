@@ -20,6 +20,7 @@ NextionButton	KEYWORD1
 NextionCrop	KEYWORD1
 NextionGauge	KEYWORD1
 NextionHotspot	KEYWORD1
+NextionNumber	KEYWORD1
 NextionPage	KEYWORD1
 NextionPicture	KEYWORD1
 NextionProgressBar	KEYWORD1
