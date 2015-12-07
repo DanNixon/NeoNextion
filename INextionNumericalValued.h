@@ -7,6 +7,12 @@
 #include "INextionWidget.h"
 #include "NextionTypes.h"
 
+/*!
+ * \class INextionNumericalValued
+ * \brief Interface for widgets that store a numerical value.
+ *
+ * Assumes that the numerical value is a property named "val".
+ */
 class INextionNumericalValued : public virtual INextionWidget
 {
 public:
@@ -19,11 +25,20 @@ public:
   {
   }
 
+  /*!
+   * \brief Gets the numerical value.
+   * \return Value
+   */
   uint32_t getValue()
   {
     return getNumberProperty("val");
   }
 
+  /*!
+   * \brief Sets the numerical value.
+   * \brief Value
+   * \return True if successful
+   */
   bool setValue(uint32_t value)
   {
     return setNumberProperty("val", value);

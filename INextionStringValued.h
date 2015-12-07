@@ -7,6 +7,12 @@
 #include "INextionWidget.h"
 #include "NextionTypes.h"
 
+/*!
+ * \class INextionStringValued
+ * \brief Interface for widgets that hold a string value.
+ *
+ * Assumes that the string value is a property named "txt".
+ */
 class INextionStringValued : public virtual INextionWidget
 {
 public:
@@ -19,16 +25,32 @@ public:
   {
   }
 
+  /*!
+   * \brief Gets the value of the string.
+   * \param buffer Pointer to storage to strore string in
+   * \param len Maximum length of string
+   * \return Actual length of string
+   */
   size_t getText(char *buffer, size_t len)
   {
     return getStringProperty("txt", buffer, len);
   }
 
+  /*!
+   * \brief Sets the value of the string.
+   * \param buffer Value
+   * \return True if successful
+   */
   bool setText(char *buffer)
   {
     return setStringProperty("txt", buffer);
   }
 
+  /*!
+   * \brief Sets the text by a numercal value.
+   * \param value Numerical value
+   * \return True if successful
+   */
   bool setTextAsNumber(uint32_t value)
   {
     char buffer[8];
@@ -36,6 +58,10 @@ public:
     return setStringProperty("txt", buffer);
   }
 
+  /*!
+   * \brief Gets the text parsed as a number.
+   * \return Numerical value
+   */
   uint32_t getTextAsNumber()
   {
     char buffer[8];

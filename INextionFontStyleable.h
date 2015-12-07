@@ -7,6 +7,10 @@
 #include "INextionWidget.h"
 #include "NextionTypes.h"
 
+/*!
+ * \class INextionFontStyleable
+ * \brief Interface for widgets that can have their fonts styled.
+ */
 class INextionFontStyleable : public virtual INextionWidget
 {
 public:

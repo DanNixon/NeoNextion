@@ -8,6 +8,10 @@
 #include "INextionCallback.h"
 #include "NextionCallbackFunctionHandler.h"
 
+/*!
+ * \class INextionTouchable
+ * \brief Interface for widgets that can be touched.
+ */
 class INextionTouchable : public virtual INextionWidget
 {
 public:

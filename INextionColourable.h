@@ -7,6 +7,10 @@
 #include "INextionWidget.h"
 #include "NextionTypes.h"
 
+/*!
+ * \class INextionColourable
+ * \brief Interface for widgets that can be coloured.
+ */
 class INextionColourable : public virtual INextionWidget
 {
 public:
