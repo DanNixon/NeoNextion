@@ -1,3 +1,5 @@
+/*! \file */
+
 #ifndef __NEONEXTION_NEXTIONSLIDER
 #define __NEONEXTION_NEXTIONSLIDER
 

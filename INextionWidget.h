@@ -1,3 +1,5 @@
+/*! \file */
+
 #ifndef __NEONEXTION_INEXTIONWIDGET
 #define __NEONEXTION_INEXTIONWIDGET
 
@@ -8,7 +10,7 @@ class INextionWidget
 public:
   INextionWidget(Nextion &nex, uint8_t page, uint8_t component,
                  const char *name);
-  
+
   uint8_t getPageID();
   uint8_t getComponentID();
 

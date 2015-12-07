@@ -1,3 +1,5 @@
+/*! \file */
+
 #ifndef __NEONEXTION_NEXTIONWAVEFORM
 #define __NEONEXTION_NEXTIONWAVEFORM
 

@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "NextionPage.h"
 
 NextionPage::NextionPage(Nextion &nex, uint8_t page, uint8_t component,

@@ -1,3 +1,5 @@
+/*! \file */
+
 #ifndef __NEONEXTION_NEXTIONHOTSPOT
 #define __NEONEXTION_NEXTIONHOTSPOT
 

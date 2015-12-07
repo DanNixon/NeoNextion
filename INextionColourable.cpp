@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "INextionColourable.h"
 
 INextionColourable::INextionColourable(Nextion &nex, uint8_t page,

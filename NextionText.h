@@ -1,3 +1,5 @@
+/*! \file */
+
 #ifndef __NEONEXTION_NEXTIONTEXT
 #define __NEONEXTION_NEXTIONTEXT
 

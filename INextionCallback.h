@@ -1,3 +1,5 @@
+/*! \file */
+
 #ifndef __NEONEXTION_INEXTIONCALLBACK
 #define __NEONEXTION_INEXTIONCALLBACK
 

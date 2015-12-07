@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "INextionFontStyleable.h"
 
 INextionFontStyleable::INextionFontStyleable(Nextion &nex, uint8_t page,

@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "NextionTimer.h"
 
 NextionTimer::NextionTimer(Nextion &nex, uint8_t page, uint8_t component,

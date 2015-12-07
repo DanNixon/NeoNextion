@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "NextionPicture.h"
 #include "INextionWidget.h"
 

@@ -1,3 +1,5 @@
+/*! \file */
+
 #ifndef __NEONEXTION_NEXTIONTIMER
 #define __NEONEXTION_NEXTIONTIMER
 

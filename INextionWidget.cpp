@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "INextionWidget.h"
 
 INextionWidget::INextionWidget(Nextion &nex, uint8_t page, uint8_t component,
@@ -32,7 +34,7 @@ uint32_t INextionWidget::getNumberProperty(char *propertyName)
 {
   size_t commandLen = 7 + strlen(m_name) + strlen(propertyName);
   char commandBuffer[commandLen];
-  snprintf(commandBuffer, commandLen, "get %s.%s", m_name, propertyName); 
+  snprintf(commandBuffer, commandLen, "get %s.%s", m_name, propertyName);
   m_nextion.sendCommand(commandBuffer);
   uint32_t id;
   if (m_nextion.receiveNumber(&id))

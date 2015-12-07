@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "Nextion.h"
 #include "INextionTouchable.h"
 

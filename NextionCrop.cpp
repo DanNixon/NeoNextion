@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "NextionCrop.h"
 #include "INextionWidget.h"
 

@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "INextionTouchable.h"
 
 INextionTouchable::INextionTouchable(Nextion &nex, uint8_t page,

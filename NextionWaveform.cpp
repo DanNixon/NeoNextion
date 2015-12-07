@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "NextionWaveform.h"
 #include "INextionWidget.h"
 
