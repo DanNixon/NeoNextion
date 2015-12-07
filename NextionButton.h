@@ -9,12 +9,19 @@
 #include "INextionStringValued.h"
 #include "INextionFontStyleable.h"
 
+/*!
+ * \class NextionButton
+ * \brief Represents a basic button widget.
+ */
 class NextionButton : public INextionTouchable,
                       public INextionColourable,
                       public INextionStringValued,
                       public INextionFontStyleable
 {
 public:
+  /*!
+   * \copydoc INextionWidget::INextionWidget
+   */
   NextionButton(Nextion &nex, uint8_t page, uint8_t component, const char *name)
       : INextionWidget(nex, page, component, name)
       , INextionTouchable(nex, page, component, name)

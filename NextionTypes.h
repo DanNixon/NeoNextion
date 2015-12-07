@@ -3,6 +3,10 @@
 #ifndef __NEONEXTION_NEXTIONTYPES
 #define __NEONEXTION_NEXTIONTYPES
 
+/*!
+ * \enum NextionValue
+ * \brief Values used in messages.
+ */
 enum NextionValue
 {
   NEX_RET_CMD_FINISHED              = (0x01),
@@ -24,22 +28,34 @@ enum NextionValue
   NEX_RET_INVALID_OPERATION         = (0x1B)
 };
 
+/*!
+ * \enum NextionFontAlignment
+ * \brief Font alignment modes.
+ */
 enum NextionFontAlignment
 {
-  NEX_FA_NONE       = -1,
-  NEX_FA_LEFT_UP    = 0,
-  NEX_FA_CENTRE     = 1,
-  NEX_FA_RIGHT_DOWN = 2
+  NEX_FA_NONE       = -1, //!< Undefined
+  NEX_FA_LEFT_UP    = 0, //!< Left (x) or top (y)
+  NEX_FA_CENTRE     = 1, //!< Centre
+  NEX_FA_RIGHT_DOWN = 2 //!< Right (x) or bottom (y)
 };
 
+/*!
+ * \enum NextionBackground
+ * \brief Background modes for widgets/drawables with backgrounds.
+ */
 enum NextionBackground
 {
-  NEX_BG_NONE         = -1,
-  NEX_BG_CROPIMAGE    = 0,
-  NEX_BG_SOLIDCOLOUR  = 1,
-  NEW_BG_IMAGE        = 2
+  NEX_BG_NONE         = -1, //!< Undefined
+  NEX_BG_CROPIMAGE    = 0, //!< Cropped image
+  NEX_BG_SOLIDCOLOUR  = 1, //!< Solid colour
+  NEW_BG_IMAGE        = 2 //!< Full size image
 };
 
+/*!
+ * \enum NextionColour
+ * \brief Several default colour values.
+ */
 enum NextionColour
 {
   NEX_COL_NONE    = -1,
@@ -53,6 +69,10 @@ enum NextionColour
   NEX_COL_YELLOW  = 65504
 };
 
+/*!
+ * \enum NextionEventType
+ * \brief Type of events received from device.
+ */
 enum NextionEventType
 {
   NEX_EVENT_PUSH  = (0x01),

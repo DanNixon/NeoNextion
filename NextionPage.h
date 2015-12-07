@@ -6,6 +6,10 @@
 #include "Nextion.h"
 #include "INextionWidget.h"
 
+/*!
+ * \class NextionPage
+ * \brief Represents a page of widgets.
+ */
 class NextionPage : public INextionWidget
 {
 public:

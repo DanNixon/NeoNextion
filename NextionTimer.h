@@ -6,6 +6,10 @@
 #include "Nextion.h"
 #include "INextionTouchable.h"
 
+/*!
+ * \class NextionTimer
+ * \brief Represents a timer.
+ */
 class NextionTimer : public INextionTouchable
 {
 public:

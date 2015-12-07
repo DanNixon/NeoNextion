@@ -3,6 +3,12 @@
 #include "Nextion.h"
 #include "INextionTouchable.h"
 
+/*!
+ * \brief Creates a new device driver.
+ * \param stream Stream (serial port) the device is connected to
+ * \param flushSerialBeforeTx If the serial port should be flushed before
+ *                            transmission
+ */
 Nextion::Nextion(Stream &stream, bool flushSerialBeforeTx)
     : m_serialPort(stream)
     , m_timeout(500)
@@ -11,6 +17,10 @@ Nextion::Nextion(Stream &stream, bool flushSerialBeforeTx)
 {
 }
 
+/*!
+ * \brief Initialises the device.
+ * \return True if initialisation was successful.
+ */
 bool Nextion::init()
 {
   sendCommand("");
@@ -24,6 +34,9 @@ bool Nextion::init()
   return (result1 && result2);
 }
 
+/*!
+ * \brief Polls for new messages and touch events.
+ */
 void Nextion::poll()
 {
   while (m_serialPort.available() > 0)
@@ -58,12 +71,21 @@ void Nextion::poll()
   }
 }
 
+/*!
+ * \brief Refreshes the entire page.
+ * \return True if successful
+ */
 bool Nextion::refresh()
 {
   sendCommand("ref 0");
   return checkCommandComplete();
 }
 
+/*!
+ * \brief Refreshes a specific object.
+ * \param objectName Name of the object to refresh
+ * \return True if successful
+ */
 bool Nextion::refresh(const char *objectName)
 {
   size_t commandLen = 4 + strlen(objectName);
@@ -73,18 +95,30 @@ bool Nextion::refresh(const char *objectName)
   return checkCommandComplete();
 }
 
+/*!
+ * \brief Puts the device into sleep mode.
+ * \return True if successful
+ */
 bool Nextion::sleep()
 {
   sendCommand("sleep=1");
   return checkCommandComplete();
 }
 
+/*!
+ * \brief Wakes the device from sleep mode.
+ * \return True if successful
+ */
 bool Nextion::wake()
 {
   sendCommand("sleep=0");
   return checkCommandComplete();
 }
 
+/*!
+ * \brief Gets the current backlight brightness.
+ * \return Brightness
+ */
 uint16_t Nextion::getBrightness()
 {
   sendCommand("get dim");
@@ -95,6 +129,12 @@ uint16_t Nextion::getBrightness()
     return 0;
 }
 
+/*!
+ * \brief Sets the backlight brightness.
+ * \param val Brightness value (0-100)
+ * \param persist If set to true value will be set as new power on default
+ * \return True if successful
+ */
 bool Nextion::setBrightness(uint16_t val, bool persist)
 {
   size_t commandLen = 10;
@@ -107,6 +147,10 @@ bool Nextion::setBrightness(uint16_t val, bool persist)
   return checkCommandComplete();
 }
 
+/*!
+ * \brief Gets the ID of the current displayed page.
+ * \return Page ID
+ */
 uint8_t Nextion::getCurrentPage()
 {
   sendCommand("sendme");
@@ -123,6 +167,11 @@ uint8_t Nextion::getCurrentPage()
   return 0;
 }
 
+/*!
+ * \brief Clears the current display.
+ * \param colour Colour to set display to
+ * \return True if successful
+ */
 bool Nextion::clear(uint32_t colour)
 {
   size_t commandLen = 9;
@@ -132,6 +181,13 @@ bool Nextion::clear(uint32_t colour)
   return checkCommandComplete();
 }
 
+/*!
+ * \brief Draws a pre uploaded picture on the display.
+ * \param x X position
+ * \param y Y position
+ * \param id ID of the picture to display
+ * \return True if successful
+ */
 bool Nextion::drawPicture(uint16_t x, uint16_t y, uint8_t id)
 {
   size_t commandLen = 21;
@@ -141,6 +197,15 @@ bool Nextion::drawPicture(uint16_t x, uint16_t y, uint8_t id)
   return checkCommandComplete();
 }
 
+/*!
+ * \brief Draws a cropped pre uplaoded picture on the display.
+ * \param x X position
+ * \param y Y position
+ * \param w Width
+ * \param h Height
+ * \param id ID of the picture to display
+ * \return True if successful
+ */
 bool Nextion::drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
                           uint8_t id)
 {
@@ -151,6 +216,21 @@ bool Nextion::drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
   return checkCommandComplete();
 }
 
+/*!
+ * \brief Draws a string on the display.
+ * \param x X position
+ * \param y Y position
+ * \param w Width
+ * \param h Height
+ * \param fontID ID of the font to use
+ * \param str String to draw
+ * \param bgColour Colour of the background of the bounding box
+ * \param fgColour Colour of the text
+ * \param bgType Background type
+ * \param xCentre X alignment
+ * \param yCentre Y alignment
+ * \return True if successful
+ */
 bool Nextion::drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
                       uint8_t fontID, char *str, uint32_t bgColour,
                       uint32_t fgColour, uint8_t bgType,
@@ -166,6 +246,15 @@ bool Nextion::drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
   return checkCommandComplete();
 }
 
+/*!
+ * \brief Draws a line on the display.
+ * \param x1 X position of first vertex
+ * \param y1 Y position of first vertex
+ * \param x2 X position of second vertex
+ * \param y2 Y position of second vertex
+ * \param colour Colour
+ * \return True if successful
+ */
 bool Nextion::drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2,
                        uint32_t colour)
 {
@@ -177,6 +266,16 @@ bool Nextion::drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2,
   return checkCommandComplete();
 }
 
+/*!
+ * \brief Draws a rectangle on the display.
+ * \param x X position
+ * \param y Y position
+ * \param w Width
+ * \param h Height
+ * \param filled If the rectangle should be filled with a solid colour
+ * \param colour Colour
+ * \return True if successful
+ */
 bool Nextion::drawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
                        bool filled, uint32_t colour)
 {
@@ -192,6 +291,14 @@ bool Nextion::drawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
   return checkCommandComplete();
 }
 
+/*!
+ * \brief Draws a circle on the display.
+ * \param x X position
+ * \param y Y position
+ * \param r Radius
+ * \param colour Colour
+ * \return True if successful
+ */
 bool Nextion::drawCircle(uint16_t x, uint16_t y, uint16_t r, uint32_t colour)
 {
   size_t commandLen = 27;
@@ -201,6 +308,15 @@ bool Nextion::drawCircle(uint16_t x, uint16_t y, uint16_t r, uint32_t colour)
   return checkCommandComplete();
 }
 
+/*!
+ * \brief Adds a INextionTouchable to the list of registered touchable
+ *        elements.
+ * \param touchable Pointer to the INextionTouchable
+ *
+ * Required for touch events from an INextionTouchable to be polled.
+ *
+ * Should be called automatically by INextionTouchable::INextionTouchable.
+ */
 void Nextion::registerTouchable(INextionTouchable *touchable)
 {
   ITouchableListItem *newListItem = new ITouchableListItem;
@@ -218,6 +334,10 @@ void Nextion::registerTouchable(INextionTouchable *touchable)
   }
 }
 
+/*!
+ * \brief Sends a command to the device.
+ * \param command Command to send
+ */
 void Nextion::sendCommand(char *command)
 {
   if (m_flushSerialBeforeTx)
@@ -229,6 +349,10 @@ void Nextion::sendCommand(char *command)
   m_serialPort.write(0xFF);
 }
 
+/*!
+ * \brief Checks if the last command was successful.
+ * \return True if command was successful
+ */
 bool Nextion::checkCommandComplete()
 {
   bool ret = false;
@@ -244,6 +368,11 @@ bool Nextion::checkCommandComplete()
   return ret;
 }
 
+/*!
+ * \brief Receive a number from the device.
+ * \param number Pointer to the number to store received number in
+ * \return True if receive was successful
+ */
 bool Nextion::receiveNumber(uint32_t *number)
 {
   uint8_t temp[8] = {0};
@@ -264,6 +393,12 @@ bool Nextion::receiveNumber(uint32_t *number)
   return false;
 }
 
+/*!
+ * \brief Receive a string from the device.
+ * \param buffer Pointer to buffer to store string in
+ * \param len Maximum length of data to receive
+ * \return Actual length of string received
+ */
 size_t Nextion::receiveString(char *buffer, size_t len)
 {
   memset(buffer, 0, len);

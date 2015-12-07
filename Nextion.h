@@ -9,12 +9,20 @@
 
 class INextionTouchable;
 
+/*!
+ * \struct ITouchableListItem
+ * \brief Linked list node for INextionTouchable objects.
+ */
 struct ITouchableListItem
 {
-  INextionTouchable *item;
-  ITouchableListItem *next;
+  INextionTouchable *item; //!< Pointer to stored INextionTouchable
+  ITouchableListItem *next; //!< Pointer to next list node
 };
 
+/*!
+ * \class Nextion
+ * \brief Driver for a physical Nextion device.
+ */
 class Nextion
 {
 public:
@@ -56,10 +64,10 @@ public:
   size_t receiveString(char *buffer, size_t len);
 
 private:
-  Stream &m_serialPort;
-  uint32_t m_timeout;
-  bool m_flushSerialBeforeTx;
-  ITouchableListItem *m_touchableList;
+  Stream &m_serialPort; //!< Serial port device is attached to
+  uint32_t m_timeout; //!< Serial communication timeout in ms
+  bool m_flushSerialBeforeTx; //!< Flush serial port before transmission
+  ITouchableListItem *m_touchableList; //!< LInked list of INextionTouchable
 };
 
 #endif

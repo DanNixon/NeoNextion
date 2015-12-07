@@ -8,11 +8,18 @@
 #include "INextionColourable.h"
 #include "INextionNumericalValued.h"
 
+/*!
+ * \class NextionDualStateButton
+ * \brief Represents a dual state button widget.
+ */
 class NextionDualStateButton : public INextionTouchable,
                                public INextionColourable,
                                private INextionNumericalValued
 {
 public:
+  /*!
+   * \copydoc INextionWidget::INextionWidget
+   */
   NextionDualStateButton(Nextion &nex, uint8_t page, uint8_t component,
                          const char *name)
       : INextionWidget(nex, page, component, name)

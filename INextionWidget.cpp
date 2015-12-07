@@ -2,6 +2,13 @@
 
 #include "INextionWidget.h"
 
+/*!
+ * \brief Create a new widget adapter.
+ * \param nex Reference to the Nextion driver
+ * \param page ID of page this widget is on
+ * \param component Component ID of this widget
+ * \param name Name of this widget
+ */
 INextionWidget::INextionWidget(Nextion &nex, uint8_t page, uint8_t component,
                                const char *name)
     : m_nextion(nex)
@@ -11,16 +18,30 @@ INextionWidget::INextionWidget(Nextion &nex, uint8_t page, uint8_t component,
 {
 }
 
+/*!
+ * \brief Gets the ID of the page this widget resides on.
+ * \return Page ID
+ */
 uint8_t INextionWidget::getPageID()
 {
   return m_pageID;
 }
 
+/*!
+ * \brief Gets the component ID of this widget.
+ * \return Component ID
+ */
 uint8_t INextionWidget::getComponentID()
 {
   return m_componentID;
 }
 
+/*!
+ * \brief Sets the value of a numerical property of this widget.
+ * \param propertyName Name of the property
+ * \param value Value
+ * \return True if successful
+ */
 bool INextionWidget::setNumberProperty(char *propertyName, uint32_t value)
 {
   size_t commandLen = 8 + strlen(m_name) + strlen(propertyName);
@@ -30,6 +51,11 @@ bool INextionWidget::setNumberProperty(char *propertyName, uint32_t value)
   return m_nextion.checkCommandComplete();
 }
 
+/*!
+ * \brief Gets the value of a numerical property of this widget.
+ * \param propertyName Name of the property
+ * \return Value (may also return 0 in case of error)
+ */
 uint32_t INextionWidget::getNumberProperty(char *propertyName)
 {
   size_t commandLen = 7 + strlen(m_name) + strlen(propertyName);
@@ -43,6 +69,12 @@ uint32_t INextionWidget::getNumberProperty(char *propertyName)
     return 0;
 }
 
+/*!
+ * \brief Sets the value of a string property of this widget.
+ * \param propertyName Name of the property
+ * \param value Value
+ * \return True if successful
+ */
 bool INextionWidget::setStringProperty(char *propertyName, char *value)
 {
   size_t commandLen = 7 + strlen(m_name) + strlen(propertyName) + strlen(value);
@@ -52,6 +84,13 @@ bool INextionWidget::setStringProperty(char *propertyName, char *value)
   return m_nextion.checkCommandComplete();
 }
 
+/*!
+ * \brief Gets the value of a string property of this widget.
+ * \param propertyName Name of the property
+ * \param value Pointer to char array to store result in
+ * \param len Maximum length of value
+ * \return Actual length of value
+ */
 size_t INextionWidget::getStringProperty(char *propertyName, char *value,
                                          size_t len)
 {

@@ -5,6 +5,13 @@
 
 #include "Nextion.h"
 
+/*!
+ * \class INextionWidget
+ * \brief Abstract class for all UI widgets.
+ *
+ * Widget objects act as a adapter/API for the widgets defined in the Nextion
+ * Editor software.
+ */
 class INextionWidget
 {
 public:
@@ -20,10 +27,10 @@ public:
   size_t getStringProperty(char *propertyName, char *value, size_t len);
 
 protected:
-  Nextion &m_nextion;
-  uint8_t m_pageID;
-  uint8_t m_componentID;
-  const char *m_name;
+  Nextion &m_nextion; //!< Reference to the Nextion driver
+  uint8_t m_pageID; //!< ID of page this widget is on
+  uint8_t m_componentID; //!< Component ID of this widget
+  const char *m_name; //!< Name of this widget
 };
 
 #endif

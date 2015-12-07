@@ -6,9 +6,16 @@
 #include "Nextion.h"
 #include "INextionNumericalValued.h"
 
+/*!
+ * \class NextionVariableNumeric
+ * \brief Represents a numeric variable.
+ */
 class NextionVariableNumeric : public INextionNumericalValued
 {
 public:
+  /*!
+   * \copydoc INextionWidget::INextionWidget
+   */
   NextionVariableNumeric(Nextion &nex, uint8_t page, uint8_t component,
                          const char *name)
       : INextionWidget(nex, page, component, name)

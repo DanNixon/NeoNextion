@@ -6,6 +6,10 @@
 #include "Nextion.h"
 #include "INextionTouchable.h"
 
+/*!
+ * \class NextionPicture
+ * \brief Represents a full size picture widget.
+ */
 class NextionPicture : public INextionTouchable
 {
 public:

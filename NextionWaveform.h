@@ -7,6 +7,10 @@
 #include "INextionTouchable.h"
 #include "INextionColourable.h"
 
+/*!
+ * \class NextionWaveform
+ * \brief Represents a waveform widget.
+ */
 class NextionWaveform : public INextionTouchable, public INextionColourable
 {
 public:

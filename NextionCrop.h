@@ -6,6 +6,10 @@
 #include "Nextion.h"
 #include "INextionTouchable.h"
 
+/*!
+ * \class NextionCrop
+ * \brief Represents a cropped picture widget.
+ */
 class NextionCrop : public INextionTouchable
 {
 public:

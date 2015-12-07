@@ -3,6 +3,9 @@
 #include "NextionWaveform.h"
 #include "INextionWidget.h"
 
+/*!
+ * \copydoc INextionWidget::INextionWidget
+ */
 NextionWaveform::NextionWaveform(Nextion &nex, uint8_t page, uint8_t component,
                                  const char *name)
     : INextionWidget(nex, page, component, name)
