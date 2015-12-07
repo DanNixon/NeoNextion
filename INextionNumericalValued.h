@@ -28,6 +28,7 @@ public:
   /*!
    * \brief Gets the numerical value.
    * \return Value
+   * \see INextionNumericalValued::setValue
    */
   uint32_t getValue()
   {
@@ -36,8 +37,9 @@ public:
 
   /*!
    * \brief Sets the numerical value.
-   * \brief Value
+   * \param value Value
    * \return True if successful
+   * \see INextionNumericalValued::getValue
    */
   bool setValue(uint32_t value)
   {

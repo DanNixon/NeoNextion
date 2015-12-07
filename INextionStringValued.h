@@ -30,6 +30,7 @@ public:
    * \param buffer Pointer to storage to strore string in
    * \param len Maximum length of string
    * \return Actual length of string
+   * \see INextionStringValued::setText
    */
   size_t getText(char *buffer, size_t len)
   {
@@ -40,6 +41,7 @@ public:
    * \brief Sets the value of the string.
    * \param buffer Value
    * \return True if successful
+   * \see INextionStringValued::getText
    */
   bool setText(char *buffer)
   {
@@ -50,6 +52,7 @@ public:
    * \brief Sets the text by a numercal value.
    * \param value Numerical value
    * \return True if successful
+   * \see INextionStringValued::getTextAsNumber
    */
   bool setTextAsNumber(uint32_t value)
   {
@@ -61,6 +64,7 @@ public:
   /*!
    * \brief Gets the text parsed as a number.
    * \return Numerical value
+   * \see INextionStringValued::setTextAsNumber
    */
   uint32_t getTextAsNumber()
   {

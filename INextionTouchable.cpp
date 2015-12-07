@@ -13,6 +13,13 @@ INextionTouchable::INextionTouchable(Nextion &nex, uint8_t page,
   nex.registerTouchable(this);
 }
 
+/*!
+ * \brief Processes a touch event.
+ * \param pageID Page ID of touch event
+ * \param componentID Component ID of touch event
+ * \param eventType Type of touch event
+ * \return True if the event effects this widget
+ */
 bool INextionTouchable::processEvent(uint8_t pageID, uint8_t componentID,
                                      uint8_t eventType)
 {
@@ -39,6 +46,12 @@ bool INextionTouchable::processEvent(uint8_t pageID, uint8_t componentID,
   }
 }
 
+/*!
+ * \brief Attaches a callback function to this widget.
+ * \param function Pointer to callback function
+ * \return True if successful
+ * \see INextionTouchable::detachCallback
+ */
 bool INextionTouchable::attachCallback(
     NextionCallbackFunctionHandler::NextionFunction function)
 {
@@ -52,6 +65,12 @@ bool INextionTouchable::attachCallback(
   return true;
 }
 
+/*!
+ * \brief Attaches a callback handler to this widget.
+ * \param handler Pointer to handler
+ * \return True if successful
+ * \see INextionTouchable::detachCallback
+ */
 bool INextionTouchable::attachCallback(INextionCallback *handler)
 {
   if (!handler)
@@ -64,6 +83,11 @@ bool INextionTouchable::attachCallback(INextionCallback *handler)
   return true;
 }
 
+/*!
+ * \brief Removes the callback handler from this widget
+ *
+ * Memory is not freed.
+ */
 void INextionTouchable::detachCallback()
 {
   m_callback = NULL;

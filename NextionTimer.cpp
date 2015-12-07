@@ -12,6 +12,10 @@ NextionTimer::NextionTimer(Nextion &nex, uint8_t page, uint8_t component,
 {
 }
 
+/*!
+ * \brief Gets the cycle time of the timer.
+ * \return Time in ms (may also return 0 in case of error)
+ */
 uint32_t NextionTimer::getCycle()
 {
   size_t commandLen = 9 + strlen(m_name);
@@ -25,6 +29,11 @@ uint32_t NextionTimer::getCycle()
     return 0;
 }
 
+/*!
+ * \brief Sets the cycle time of the timer.
+ * \param cycle TIme in ms
+ * \return True if successful
+ */
 bool NextionTimer::setCycle(uint32_t cycle)
 {
   if (cycle < 50)
@@ -37,6 +46,10 @@ bool NextionTimer::setCycle(uint32_t cycle)
   return m_nextion.checkCommandComplete();
 }
 
+/*!
+ * \brief Enable/start the timer.
+ * \return True if successful
+ */
 bool NextionTimer::enable()
 {
   size_t commandLen = 6 + strlen(m_name);
@@ -46,6 +59,10 @@ bool NextionTimer::enable()
   m_nextion.checkCommandComplete();
 }
 
+/*!
+ * \brief Disable/stop the timer.
+ * \return True if successful
+ */
 bool NextionTimer::disable()
 {
   size_t commandLen = 6 + strlen(m_name);
