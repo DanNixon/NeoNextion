@@ -13,7 +13,6 @@ before_install:
 script:
   - build_platform uno
   - build_platform leonardo
-  - build_platform arduino:avr:mega
   - build_platform esp8266
   - doxygen
 
