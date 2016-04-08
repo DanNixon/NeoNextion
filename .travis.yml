@@ -1,13 +1,16 @@
 language: c
 
-sudo: false
+sudo: required
+dist: trusty
 
-addons:
-  apt:
-    packages:
-      - doxygen
+env:
+  global:
+    - GH_REF: github.com/DanNixon/NeoNextion.git
+    - secure: "ey1GaNkQ5E5W4ulpb7yaiwbO1A1sVTxHVtRZaIK24zOQn3yWpOqh4CIeXkop6JvhRiF0O+oQTlU67SUUDzgPwlFzLBVvRFhfkhSRatwfB6+9DXIG9QcRsEwcII1aIDxU68qqK9ddeyBHqUc5on3WUH2iLlnvRChRkCIn6/5eViUTu6TmBpE/NYsGiuMmYiu99bzdyrHuYEZ6lgiY3v2rD7lSeYBZhF1blZvMC4Y2x0640JR+BK+qxcn5LQ8vp/4eOR2/Qi1xcJEpgrcjgQEmKkpDwUKTFFqB+RtQSRUdIVfamKjBqZsxm/ueGV/xwzGAkBW1jDCbux1iYeXAOs09/LcTOcUQBAZlA/g88Uq6Du9Vb1Qmzr0B1iNk0OckhnU2PoUrzbAhu8ww02SSUR+TB/zmEPaNkzqKGZaaKC7jBJxg9OlWNFBTTIbzMGFplnzDQUiZ1u7a7kCjiUHm//hZLMdxkKysLNqUIaHBHMViVMNOmx8F+I4kuxZ075dxjDg7zOZwlJgCt87Cw+fqOeSLXLMoIhvBppz70EfOGgNWiCxUHQHg/EWtoJv84UpYN+pJi6VST+YVQgtWmDeArLYY04M81wUsrhz/Fq3vxsqPoK+U90XoHDj8805bnDTyUm4pHshEYbMky6LGiA/SMMa4RLKbai7XkpF0V+9hzPrrNNE="
 
 before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y doxygen graphviz
   - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
 
 script:
@@ -15,6 +18,7 @@ script:
   - build_platform leonardo
   - build_platform esp8266
   - doxygen
+  - ./.travis_deploy_docs.sh
 
 notifications:
   email:
