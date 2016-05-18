@@ -88,7 +88,7 @@ bool Nextion::refresh()
  */
 bool Nextion::refresh(const char *objectName)
 {
-  size_t commandLen = 4 + strlen(objectName);
+  size_t commandLen = 5 + strlen(objectName);
   char commandBuffer[commandLen];
   snprintf(commandBuffer, commandLen, "ref %s", objectName);
   sendCommand(commandBuffer);
