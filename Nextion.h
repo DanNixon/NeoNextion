@@ -3,7 +3,12 @@
 #ifndef __NEONEXTION_NEXTION
 #define __NEONEXTION_NEXTION
 
-#include <Arduino.h>
+#if defined(SPARK) || defined(PLATFORM_ID)
+  #include "application.h"
+  extern char* itoa(int a, char* buffer, unsigned char radix);
+#else
+  #include <Arduino.h>
+#endif
 
 #include "NextionTypes.h"
 
