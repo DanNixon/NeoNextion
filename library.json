@@ -2,10 +2,17 @@
   "name": "NeoNextion",
   "keywords": "neonextion, nextion, hmi, display",
   "description": "Arduino library for controlling Nextion displays",
+  "url": "http://www.dan-nixon.com/NeoNextion",
   "repository":
   {
     "type": "git",
     "url": "https://github.com/DanNixon/NeoNextion.git"
+  },
+  "authors":
+  {
+    "name": "Dan Nixon",
+    "email": "dan@dan-nixon.com",
+    "url": "http://www.dan-nixon.com"
   },
   "frameworks": "arduino",
   "platforms": ["atmelavr", "atmelsam", "espressif"]
