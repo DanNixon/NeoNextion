@@ -9,6 +9,9 @@ fi
 git config --global user.email "nobody@nobody.org"
 git config --global user.name "Travis CI"
 
+# Publish the PlatformIO library.json
+cp library.json docs/html
+
 cd docs/html
 git init
 
