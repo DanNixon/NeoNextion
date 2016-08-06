@@ -15,4 +15,4 @@ Avaliable through the library manager of the Arduio IDE as `NeoNextion`.
 
 - Repository: https://github.com/DanNixon/NeoNextion
 - Travis CI: https://travis-ci.org/DanNixon/NeoNextion
-- Documentation: http://dannixon.github.io/NeoNextion
+- Documentation: https://dannixon.github.io/NeoNextion
