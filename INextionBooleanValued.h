@@ -13,7 +13,7 @@
  *
  * Assumes that the boolean value is a property named "val".
  */
-class INextionBooleanValued : private virtual INextionNumericalValued
+class INextionBooleanValued : private INextionNumericalValued
 {
 public:
   /*!
@@ -21,7 +21,8 @@ public:
    */
   INextionBooleanValued(Nextion &nex, uint8_t page, uint8_t component,
                           const char *name)
-      : INextionNumericalValued(nex, page, component, name)
+      : INextionWidget(nex, page, component, name)
+      , INextionNumericalValued(nex, page, component, name)
   {
   }
 

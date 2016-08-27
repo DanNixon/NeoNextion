@@ -6,7 +6,7 @@
 #include "Nextion.h"
 #include "INextionTouchable.h"
 #include "INextionColourable.h"
-#include "INextionBooleanValued"
+#include "INextionBooleanValued.h"
 
 /*!
  * \class NextionCheckbox

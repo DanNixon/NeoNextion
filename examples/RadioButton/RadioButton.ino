@@ -1,13 +1,13 @@
 #include <Nextion.h>
 #include <NextionPage.h>
-#include <NextionDualStateButton.h>
+#include <NextionRadioButton.h>
 #include <SoftwareSerial.h>
 
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgDsButton(nex, 11, 0, "pgDsButton");
-NextionDualStateButton button(nex, 11, 2, "bExDsButton");
+NextionPage pgRadioButton(nex, 11, 0, "pgRadioButton"); //TODO
+NextionRadioButton radioButton(nex, 11, 2, "rbExRadioButton"); //TODO
 
 void setup()
 {
@@ -17,13 +17,13 @@ void setup()
   nextionSerial.begin(9600);
   nex.init();
 
-  Serial.println(pgDsButton.show());
+  Serial.println(pgRadioButton.show());
 
-  Serial.println(button.attachCallback(&callback));
+  Serial.println(radioButton.attachCallback(&callback));
 
-  Serial.println(button.isActive());
-  Serial.println(button.setActive(true));
-  Serial.println(button.isActive());
+  Serial.println(radioButton.isActive());
+  Serial.println(radioButton.setActive(true));
+  Serial.println(radioButton.isActive());
 }
 
 void loop()
@@ -39,7 +39,7 @@ void callback(NextionEventType type, INextionTouchable *widget)
   }
   else if (type == NEX_EVENT_POP)
   {
-    Serial.println(button.isActive());
+    Serial.println(radioButton.isActive());
     digitalWrite(13, LOW);
   }
 }

@@ -1,13 +1,13 @@
 #include <Nextion.h>
 #include <NextionPage.h>
-#include <NextionDualStateButton.h>
+#include <NextionCheckbox.h>
 #include <SoftwareSerial.h>
 
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgDsButton(nex, 11, 0, "pgDsButton");
-NextionDualStateButton button(nex, 11, 2, "bExDsButton");
+NextionPage pgCheckbox(nex, 11, 0, "pgCheckbox"); //TODO
+NextionCheckbox checkbox(nex, 11, 2, "cbExCheckbox"); //TODO
 
 void setup()
 {
@@ -17,13 +17,13 @@ void setup()
   nextionSerial.begin(9600);
   nex.init();
 
-  Serial.println(pgDsButton.show());
+  Serial.println(pgCheckbox.show());
 
-  Serial.println(button.attachCallback(&callback));
+  Serial.println(checkbox.attachCallback(&callback));
 
-  Serial.println(button.isActive());
-  Serial.println(button.setActive(true));
-  Serial.println(button.isActive());
+  Serial.println(checkbox.isActive());
+  Serial.println(checkbox.setActive(true));
+  Serial.println(checkbox.isActive());
 }
 
 void loop()
@@ -39,7 +39,7 @@ void callback(NextionEventType type, INextionTouchable *widget)
   }
   else if (type == NEX_EVENT_POP)
   {
-    Serial.println(button.isActive());
+    Serial.println(checkbox.isActive());
     digitalWrite(13, LOW);
   }
 }
