@@ -6,8 +6,8 @@
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgRadioButton(nex, 11, 0, "pgRadioButton"); //TODO
-NextionRadioButton radioButton(nex, 11, 2, "rbExRadioButton"); //TODO
+NextionPage pgRadioButton(nex, 14, 0, "pgRadioButton");
+NextionRadioButton radioButton(nex, 14, 2, "rbExRadButton");
 
 void setup()
 {

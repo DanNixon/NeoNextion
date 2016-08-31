@@ -6,8 +6,8 @@
 SoftwareSerial nextionSerial(10, 11); // RX, TX
 
 Nextion nex(nextionSerial);
-NextionPage pgCheckbox(nex, 11, 0, "pgCheckbox"); //TODO
-NextionCheckbox checkbox(nex, 11, 2, "cbExCheckbox"); //TODO
+NextionPage pgCheckbox(nex, 13, 0, "pgCheckbox");
+NextionCheckbox checkbox(nex, 13, 2, "cbExCheckbox");
 
 void setup()
 {
