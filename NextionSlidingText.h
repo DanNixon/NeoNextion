@@ -30,7 +30,7 @@ public:
 
   bool setScrollDirection(NextionScrollDirection direction);
   NextionScrollDirection getScrollDirection();
-  
+
   bool setScrollDistance(uint32_t distance);
   uint32_t getScrollDistance();
 

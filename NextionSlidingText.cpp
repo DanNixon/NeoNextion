@@ -5,8 +5,8 @@
 /*!
  * \copydoc INextionWidget::INextionWidget
  */
-NextionSlidingText::NextionSlidingText(Nextion &nex, uint8_t page, uint8_t component,
-                           const char *name)
+NextionSlidingText::NextionSlidingText(Nextion &nex, uint8_t page,
+                                       uint8_t component, const char *name)
     : INextionWidget(nex, page, component, name)
     , INextionTouchable(nex, page, component, name)
     , INextionColourable(nex, page, component, name)
@@ -14,7 +14,6 @@ NextionSlidingText::NextionSlidingText(Nextion &nex, uint8_t page, uint8_t compo
     , INextionFontStyleable(nex, page, component, name)
 {
 }
-
 
 bool NextionSlidingText::setScrolling(bool scroll)
 {
@@ -57,7 +56,7 @@ NextionScrollDirection NextionSlidingText::getScrollDirection()
   else
     return NEX_SCROLL_NONE;
 }
-  
+
 bool NextionSlidingText::setScrollDistance(uint32_t distance)
 {
   size_t commandLen = 11 + strlen(m_name);

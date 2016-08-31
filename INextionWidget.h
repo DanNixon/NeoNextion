@@ -27,13 +27,13 @@ public:
   size_t getStringProperty(char *propertyName, char *value, size_t len);
 
 protected:
-  bool sendCommand(char * commandStr, bool checkComplete = true);
+  bool sendCommand(char *commandStr, bool checkComplete = true);
 
 protected:
-  Nextion &m_nextion; //!< Reference to the Nextion driver
-  uint8_t m_pageID; //!< ID of page this widget is on
+  Nextion &m_nextion;    //!< Reference to the Nextion driver
+  uint8_t m_pageID;      //!< ID of page this widget is on
   uint8_t m_componentID; //!< Component ID of this widget
-  const char *m_name; //!< Name of this widget
+  const char *m_name;    //!< Name of this widget
 };
 
 #endif

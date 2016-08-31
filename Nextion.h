@@ -4,10 +4,10 @@
 #define __NEONEXTION_NEXTION
 
 #if defined(SPARK) || defined(PLATFORM_ID)
-  #include "application.h"
-  extern char* itoa(int a, char* buffer, unsigned char radix);
+#include "application.h"
+extern char *itoa(int a, char *buffer, unsigned char radix);
 #else
-  #include <Arduino.h>
+#include <Arduino.h>
 #endif
 
 #include "NextionTypes.h"
@@ -20,7 +20,7 @@ class INextionTouchable;
  */
 struct ITouchableListItem
 {
-  INextionTouchable *item; //!< Pointer to stored INextionTouchable
+  INextionTouchable *item;  //!< Pointer to stored INextionTouchable
   ITouchableListItem *next; //!< Pointer to next list node
 };
 
@@ -69,8 +69,8 @@ public:
   size_t receiveString(char *buffer, size_t len);
 
 private:
-  Stream &m_serialPort; //!< Serial port device is attached to
-  uint32_t m_timeout; //!< Serial communication timeout in ms
+  Stream &m_serialPort;       //!< Serial port device is attached to
+  uint32_t m_timeout;         //!< Serial communication timeout in ms
   bool m_flushSerialBeforeTx; //!< Flush serial port before transmission
   ITouchableListItem *m_touchableList; //!< LInked list of INextionTouchable
 };
