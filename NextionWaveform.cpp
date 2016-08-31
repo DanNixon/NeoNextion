@@ -29,7 +29,7 @@ bool NextionWaveform::addValue(uint8_t channel, uint8_t value)
   char commandBuffer[commandLen];
   snprintf(commandBuffer, commandLen, "add %d,%d,%d", m_componentID, channel,
            value);
-  m_nextion.sendCommand(commandBuffer);
+  sendCommand(commandBuffer, false);
 
   /* TODO: this check still fails but the command does actually work */
   /* return m_nextion.checkCommandComplete(); */

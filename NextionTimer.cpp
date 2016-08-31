@@ -21,7 +21,7 @@ uint32_t NextionTimer::getCycle()
   size_t commandLen = 9 + strlen(m_name);
   char commandBuffer[commandLen];
   snprintf(commandBuffer, commandLen, "get %s.tim", m_name);
-  m_nextion.sendCommand(commandBuffer);
+  sendCommand(commandBuffer, false);
   uint32_t id;
   if (m_nextion.receiveNumber(&id))
     return id;
@@ -31,7 +31,7 @@ uint32_t NextionTimer::getCycle()
 
 /*!
  * \brief Sets the cycle time of the timer.
- * \param cycle TIme in ms
+ * \param cycle Time in ms
  * \return True if successful
  */
 bool NextionTimer::setCycle(uint32_t cycle)
@@ -42,8 +42,7 @@ bool NextionTimer::setCycle(uint32_t cycle)
   size_t commandLen = 11 + strlen(m_name);
   char commandBuffer[commandLen];
   snprintf(commandBuffer, commandLen, "%s.tim=%d", m_name, cycle);
-  m_nextion.sendCommand(commandBuffer);
-  return m_nextion.checkCommandComplete();
+  return sendCommand(commandBuffer);
 }
 
 /*!
@@ -55,8 +54,7 @@ bool NextionTimer::enable()
   size_t commandLen = 6 + strlen(m_name);
   char commandBuffer[commandLen];
   snprintf(commandBuffer, commandLen, "%s.en=1", m_name);
-  m_nextion.sendCommand(commandBuffer);
-  m_nextion.checkCommandComplete();
+  return sendCommand(commandBuffer);
 }
 
 /*!
@@ -68,6 +66,5 @@ bool NextionTimer::disable()
   size_t commandLen = 6 + strlen(m_name);
   char commandBuffer[commandLen];
   snprintf(commandBuffer, commandLen, "%s.en=0", m_name);
-  m_nextion.sendCommand(commandBuffer);
-  m_nextion.checkCommandComplete();
+  return sendCommand(commandBuffer);
 }

@@ -47,8 +47,7 @@ bool INextionWidget::setNumberProperty(char *propertyName, uint32_t value)
   size_t commandLen = 8 + strlen(m_name) + strlen(propertyName);
   char commandBuffer[commandLen];
   snprintf(commandBuffer, commandLen, "%s.%s=%ld", m_name, propertyName, value);
-  m_nextion.sendCommand(commandBuffer);
-  return m_nextion.checkCommandComplete();
+  return sendCommand(commandBuffer);
 }
 
 /*!
@@ -61,7 +60,7 @@ uint32_t INextionWidget::getNumberProperty(char *propertyName)
   size_t commandLen = 7 + strlen(m_name) + strlen(propertyName);
   char commandBuffer[commandLen];
   snprintf(commandBuffer, commandLen, "get %s.%s", m_name, propertyName);
-  m_nextion.sendCommand(commandBuffer);
+  sendCommand(commandBuffer, false);
   uint32_t id;
   if (m_nextion.receiveNumber(&id))
     return id;
@@ -80,8 +79,7 @@ bool INextionWidget::setStringProperty(char *propertyName, char *value)
   size_t commandLen = 7 + strlen(m_name) + strlen(propertyName) + strlen(value);
   char command[commandLen];
   snprintf(command, commandLen, "%s.%s=\"%s\"", m_name, propertyName, value);
-  m_nextion.sendCommand(command);
-  return m_nextion.checkCommandComplete();
+  return sendCommand(command);
 }
 
 /*!
@@ -97,6 +95,19 @@ size_t INextionWidget::getStringProperty(char *propertyName, char *value,
   size_t commandLen = 6 + strlen(m_name) + strlen(propertyName);
   char command[commandLen];
   snprintf(command, commandLen, "get %s.%s", m_name, propertyName);
-  m_nextion.sendCommand(command);
+  sendCommand(command, false);
   return m_nextion.receiveString(value, len);
+}
+
+bool INextionWidget::sendCommand(char *commandStr, bool checkComplete)
+{
+  if(m_pageID != m_nextion.getCurrentPage())
+    return false;
+
+  m_nextion.sendCommand(commandStr);
+
+  if(checkComplete)
+    return m_nextion.checkCommandComplete();
+  else
+    return true;
 }

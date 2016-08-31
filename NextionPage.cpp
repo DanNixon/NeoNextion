@@ -20,8 +20,7 @@ bool NextionPage::show()
   size_t commandLen = 6 + strlen(m_name);
   char command[commandLen];
   snprintf(command, commandLen, "page %s", m_name);
-  m_nextion.sendCommand(command);
-  return m_nextion.checkCommandComplete();
+  return sendCommand(command);
 }
 
 /*!
