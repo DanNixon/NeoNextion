@@ -80,4 +80,17 @@ enum NextionEventType
   NEX_EVENT_BOTH
 };
 
+/*!
+ * \enum NextionScrollDirection
+ * \brief Directions for scolling.
+ */
+enum NextionScrollDirection
+{
+  NEX_SCROLL_NONE = -1,
+  NEX_SCROLL_LEFT = 1,
+  NEX_SCROLL_RIGHT = 0,
+  NEX_SCROLL_UP = 3,
+  NEX_SCROLL_DOWN = 2
+};
+
 #endif

@@ -23,18 +23,14 @@ public:
    * \copydoc INextionWidget::INextionWidget
    */
   NextionSlidingText(Nextion &nex, uint8_t page, uint8_t component,
-                     const char *name)
-      : INextionWidget(nex, page, component, name)
-      , INextionTouchable(nex, page, component, name)
-      , INextionColourable(nex, page, component, name)
-      , INextionStringValued(nex, page, component, name)
-      , INextionFontStyleable(nex, page, component, name)
-  {
-  }
+                     const char *name);
 
   bool setScrolling(bool scroll);
   bool isScrolling();
 
+  bool setScrollDirection(NextionScrollDirection direction);
+  NextionScrollDirection getScrollDirection();
+  
   bool setScrollDistance(uint32_t distance);
   uint32_t getScrollDistance();
 
