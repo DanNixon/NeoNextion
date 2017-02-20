@@ -101,8 +101,9 @@ size_t INextionWidget::getStringProperty(char *propertyName, char *value,
 
 bool INextionWidget::sendCommand(char *commandStr, bool checkComplete)
 {
-  if (m_pageID != m_nextion.getCurrentPage())
-    return false;
+  // Removed: this prevent to send commands to objects in other pages
+  //if (m_pageID != m_nextion.getCurrentPage()) 
+  //  return false;
 
   m_nextion.sendCommand(commandStr);
 
