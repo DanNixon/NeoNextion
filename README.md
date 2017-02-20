@@ -13,6 +13,11 @@ Avaliable through the library manager of the Arduio IDE as `NeoNextion`.
 
 ## New features
 
+Added by Viktor1970: removed a check in sendMessage method, that prevents to control objects in other pages.
+                     Now the page's show() method it's working.
+
+
+
 I don't use Nextion displays in my projects anymore so this library may not
 allow all the features in the latest display firmware to be used. However
 I still own a few of them and am happy to work on adding new functionality
