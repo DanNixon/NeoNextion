@@ -101,9 +101,6 @@ size_t INextionWidget::getStringProperty(char *propertyName, char *value,
 
 bool INextionWidget::sendCommand(char *commandStr, bool checkComplete)
 {
-  if (m_pageID != m_nextion.getCurrentPage())
-    return false;
-
   m_nextion.sendCommand(commandStr);
 
   if (checkComplete)
