@@ -58,7 +58,7 @@ void Nextion::poll()
         for (i = 1; i < 7; i++)
           buffer[i] = m_serialPort.read();
         buffer[i] = 0x00;
-		Serial.println(String(buffer[0])+" "+String(buffer[1])+" "+String(buffer[2])+" "+String(buffer[3])+" "+String(buffer[4])+" "+String(buffer[5])+" "+String(buffer[6]));
+		//Serial.println(String(buffer[0])+" "+String(buffer[1])+" "+String(buffer[2])+" "+String(buffer[3])+" "+String(buffer[4])+" "+String(buffer[5])+" "+String(buffer[6]));
         if (buffer[4] == 0xFF && buffer[5] == 0xFF && buffer[6] == 0xFF)
         {
           ITouchableListItem *item = m_touchableList;
