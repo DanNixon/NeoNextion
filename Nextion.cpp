@@ -70,6 +70,7 @@ void Nextion::poll()
         }
       }
     }
+#ifdef NEX_SS	
 	else if(c == NEX_RET_EVENT_SLEEP_POSITION_HEAD)
 	{
 	 delay(10);	
@@ -81,6 +82,7 @@ void Nextion::poll()
       else item = item->next;
      }
 	}
+#endif
   }
 }
 
