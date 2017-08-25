@@ -14,7 +14,6 @@ Avaliable through the library manager of the Arduio IDE as `NeoNextion`.
 ## New features
 
 Added by Viktor1970: 
-- added the capability of managing a wake event in a defined page and component ID, so a callback function can be called.
 - removed a check in sendMessage method, that prevents to control objects in other pages.  Now the page's show() method it's working.
 
 
