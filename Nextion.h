@@ -67,12 +67,17 @@ public:
   bool checkCommandComplete();
   bool receiveNumber(uint32_t *number);
   size_t receiveString(char *buffer, size_t len);
+  
+  void ActivateWakeEvent(uint8_t page_id, uint8_t component_id);
+  void DeActivateWakeEvent();
 
 private:
   Stream &m_serialPort;       //!< Serial port device is attached to
   uint32_t m_timeout;         //!< Serial communication timeout in ms
   bool m_flushSerialBeforeTx; //!< Flush serial port before transmission
   ITouchableListItem *m_touchableList; //!< LInked list of INextionTouchable
+  bool WakeEvent;
+  uint8_t WakePageID, WakeComponentID;
 };
 
 #endif
