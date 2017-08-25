@@ -16,7 +16,7 @@ Avaliable through the library manager of the Arduio IDE as `NeoNextion`.
 Added by Viktor1970: 
 1. Removed a check in sendMessage method, that prevents to control objects in other pages.  Now the page's show() method it's working.
 
-2.I added 2 methods to Nextion.h/.cpp:
+2. Added 2 methods to Nextion.h/.cpp:
 
 `ActivateWakeEvent(uint8_t page_id, uint8_t component_id);`
 This method permits to execute a callback handler attached to **component_id** in **page_id** when the display wakes up after sleep.
