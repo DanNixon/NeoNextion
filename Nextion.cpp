@@ -43,7 +43,9 @@ void Nextion::poll()
   {
     char c = m_serialPort.read();
 
-    if (c == NEX_RET_EVENT_TOUCH_HEAD)
+	//Serial.print("Ret:"); Serial.println((byte)c);
+	
+    if (c == NEX_RET_EVENT_TOUCH_HEAD )
     {
       delay(10);
 
@@ -56,7 +58,7 @@ void Nextion::poll()
         for (i = 1; i < 7; i++)
           buffer[i] = m_serialPort.read();
         buffer[i] = 0x00;
-
+		Serial.println(String(buffer[0])+" "+String(buffer[1])+" "+String(buffer[2])+" "+String(buffer[3])+" "+String(buffer[4])+" "+String(buffer[5])+" "+String(buffer[6]));
         if (buffer[4] == 0xFF && buffer[5] == 0xFF && buffer[6] == 0xFF)
         {
           ITouchableListItem *item = m_touchableList;
@@ -68,6 +70,17 @@ void Nextion::poll()
         }
       }
     }
+	else if(c == NEX_RET_EVENT_SLEEP_POSITION_HEAD)
+	{
+	 delay(10);	
+     ITouchableListItem *item = m_touchableList;
+     while (item != NULL)
+     {
+      //item->item->processEvent(buffer[1], buffer[2], buffer[3]);
+      if(item->item->m_componentID==NEX_SS_COMP&&item->item->m_pageID==NEX_SS_PAGE) {item->item->processEvent(NEX_SS_PAGE,NEX_SS_COMP,NEX_EVENT_POP); break;}
+      else item = item->next;
+     }
+	}
   }
 }
 
@@ -239,9 +252,10 @@ bool Nextion::drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
 {
   size_t commandLen = 65 + strlen(str);
   char commandBuffer[commandLen];
-  snprintf(commandBuffer, commandLen, "xstr %d,%d,%d,%d,%d,%ld,%ld,%d,%d,%d,%s",
+  snprintf(commandBuffer, commandLen, "xstr %d,%d,%d,%d,%d,%ld,%ld,%d,%d,%d,\"%s\"",
            x, y, w, h, fontID, fgColour, bgColour, xCentre, yCentre, bgType,
            str);
+  //Serial.println(commandBuffer);
   sendCommand(commandBuffer);
   return checkCommandComplete();
 }

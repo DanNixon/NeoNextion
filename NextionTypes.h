@@ -7,6 +7,11 @@
  * \enum NextionValue
  * \brief Values used in messages.
  */
+ 
+ #define NEX_SS_PAGE 0
+ #define NEX_SS_COMP 1
+  
+ 
 enum NextionValue
 {
   NEX_RET_CMD_FINISHED = (0x01),
