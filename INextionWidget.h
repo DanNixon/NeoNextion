@@ -26,8 +26,6 @@ public:
   bool setStringProperty(char *propertyName, char *value);
   size_t getStringProperty(char *propertyName, char *value, size_t len);
 
-  uint8_t m_componentID; //!< Component ID of this widget
-  uint8_t m_pageID;      //!< ID of page this widget is on
   
   protected:
   bool sendCommand(char *commandStr, bool checkComplete = true);
@@ -35,6 +33,8 @@ public:
 protected:
   Nextion &m_nextion;    //!< Reference to the Nextion driver
   const char *m_name;    //!< Name of this widget
+  uint8_t m_componentID; //!< Component ID of this widget
+  uint8_t m_pageID;      //!< ID of page this widget is on
 };
 
 #endif

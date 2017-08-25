@@ -23,6 +23,7 @@ Nextion::Nextion(Stream &stream, bool flushSerialBeforeTx)
  */
 bool Nextion::init()
 {
+  WakeEvent=false;
   sendCommand("");
 
   sendCommand("bkcmd=1");
@@ -70,20 +71,41 @@ void Nextion::poll()
         }
       }
     }
-#ifdef NEX_SS	
-	else if(c == NEX_RET_EVENT_SLEEP_POSITION_HEAD)
-	{
-	 delay(10);	
-     ITouchableListItem *item = m_touchableList;
-     while (item != NULL)
-     {
-      //item->item->processEvent(buffer[1], buffer[2], buffer[3]);
-      if(item->item->m_componentID==NEX_SS_COMP&&item->item->m_pageID==NEX_SS_PAGE) {item->item->processEvent(NEX_SS_PAGE,NEX_SS_COMP,NEX_EVENT_POP); break;}
-      else item = item->next;
-     }
-	}
-#endif
+
+	if(WakeEvent)
+  	 if(c == NEX_RET_EVENT_SLEEP_POSITION_HEAD)
+	 {
+ 	  delay(10);	
+      ITouchableListItem *item = m_touchableList;
+      while (item != NULL)
+      {
+      // Serial.println(item->item->getComponentID());
+	   if(item->item->getComponentID()==WakeComponentID&&item->item->getPageID()==WakePageID) {item->item->processEvent(WakePageID, WakeComponentID, NEX_EVENT_POP); break;}
+        else item = item->next;
+      }
+	 }
+
   }
+}
+
+/*!
+ * \brief Do not handle Wake event.
+ */
+void Nextion::DeActivateWakeEvent()
+{
+  WakeEvent=false;
+}
+
+/*!
+ * \brief Set the callback to call when Wake event occours (the component needs a callback attached).
+ * \param page_id In which page the component is
+ * \param component_id The component ID 
+ */
+void Nextion::ActivateWakeEvent(uint8_t page_id, uint8_t component_id)
+{
+  WakeEvent=true;
+  WakePageID=page_id;
+  WakeComponentID=component_id;
 }
 
 /*!

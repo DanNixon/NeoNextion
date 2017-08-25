@@ -4,10 +4,6 @@
 #define __NEONEXTION_NEXTIONTYPES
 
 
-#define NEX_SS true		//The code supports Screen Saver (using sleep) mode?
-#define NEX_SS_COMP 1	//Touching that component ID will activare event to exit Screen Saver mode (event attached will be called)
-#define NEX_SS_PAGE 0	//The page in which component is
-
 
 /*!
  * \enum NextionValue
