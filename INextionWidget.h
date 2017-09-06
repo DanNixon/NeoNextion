@@ -15,7 +15,7 @@
 class INextionWidget
 {
 public:
-  INextionWidget(Nextion &nex, uint8_t page, uint8_t component,
+  INextionWidget(NeoNextion &nex, uint8_t page, uint8_t component,
                  const char *name);
 
   uint8_t getPageID();

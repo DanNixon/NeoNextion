@@ -25,13 +25,13 @@ struct ITouchableListItem
 };
 
 /*!
- * \class Nextion
+ * \class NeoNextion
  * \brief Driver for a physical Nextion device.
  */
-class Nextion
+class NeoNextion
 {
 public:
-  Nextion(Stream &stream, bool flushSerialBeforeTx = true);
+  NeoNextion(Stream &stream, bool flushSerialBeforeTx = true);
 
   bool init();
   void poll();

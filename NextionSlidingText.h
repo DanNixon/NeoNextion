@@ -22,7 +22,7 @@ public:
   /*!
    * \copydoc INextionWidget::INextionWidget
    */
-  NextionSlidingText(Nextion &nex, uint8_t page, uint8_t component,
+  NextionSlidingText(NeoNextion &nex, uint8_t page, uint8_t component,
                      const char *name);
 
   bool setScrolling(bool scroll);

@@ -14,7 +14,7 @@
 class INextionFontStyleable : public virtual INextionWidget
 {
 public:
-  INextionFontStyleable(Nextion &nex, uint8_t page, uint8_t component,
+  INextionFontStyleable(NeoNextion &nex, uint8_t page, uint8_t component,
                         const char *name);
 
   bool setFont(uint8_t id, bool refresh = true);

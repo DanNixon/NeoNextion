@@ -9,7 +9,7 @@
  * \param component Component ID of this widget
  * \param name Name of this widget
  */
-INextionWidget::INextionWidget(Nextion &nex, uint8_t page, uint8_t component,
+INextionWidget::INextionWidget(NeoNextion &nex, uint8_t page, uint8_t component,
                                const char *name)
     : m_nextion(nex)
     , m_pageID(page)

@@ -6,7 +6,7 @@
 /*!
  * \copydoc INextionWidget::INextionWidget
  */
-NextionCrop::NextionCrop(Nextion &nex, uint8_t page, uint8_t component,
+NextionCrop::NextionCrop(NeoNextion &nex, uint8_t page, uint8_t component,
                          const char *name)
     : INextionWidget(nex, page, component, name)
     , INextionTouchable(nex, page, component, name)

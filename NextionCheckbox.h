@@ -20,7 +20,7 @@ public:
   /*!
    * \copydoc INextionWidget::INextionWidget
    */
-  NextionCheckbox(Nextion &nex, uint8_t page, uint8_t component,
+  NextionCheckbox(NeoNextion &nex, uint8_t page, uint8_t component,
                   const char *name)
       : INextionWidget(nex, page, component, name)
       , INextionTouchable(nex, page, component, name)

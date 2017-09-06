@@ -1,6 +1,6 @@
 /*! \file */
 
-#include "Nextion.h"
+#include "NeoNextion.h"
 #include "INextionTouchable.h"
 
 /*!
@@ -9,7 +9,7 @@
  * \param flushSerialBeforeTx If the serial port should be flushed before
  *                            transmission
  */
-Nextion::Nextion(Stream &stream, bool flushSerialBeforeTx)
+NeoNextion::NeoNextion(Stream &stream, bool flushSerialBeforeTx)
     : m_serialPort(stream)
     , m_timeout(500)
     , m_flushSerialBeforeTx(flushSerialBeforeTx)
@@ -21,7 +21,7 @@ Nextion::Nextion(Stream &stream, bool flushSerialBeforeTx)
  * \brief Initialises the device.
  * \return True if initialisation was successful.
  */
-bool Nextion::init()
+bool NeoNextion::init()
 {
   sendCommand("");
 
@@ -37,7 +37,7 @@ bool Nextion::init()
 /*!
  * \brief Polls for new messages and touch events.
  */
-void Nextion::poll()
+void NeoNextion::poll()
 {
   while (m_serialPort.available() > 0)
   {
@@ -75,7 +75,7 @@ void Nextion::poll()
  * \brief Refreshes the entire page.
  * \return True if successful
  */
-bool Nextion::refresh()
+bool NeoNextion::refresh()
 {
   sendCommand("ref 0");
   return checkCommandComplete();
@@ -86,7 +86,7 @@ bool Nextion::refresh()
  * \param objectName Name of the object to refresh
  * \return True if successful
  */
-bool Nextion::refresh(const char *objectName)
+bool NeoNextion::refresh(const char *objectName)
 {
   size_t commandLen = 5 + strlen(objectName);
   char commandBuffer[commandLen];
@@ -99,7 +99,7 @@ bool Nextion::refresh(const char *objectName)
  * \brief Puts the device into sleep mode.
  * \return True if successful
  */
-bool Nextion::sleep()
+bool NeoNextion::sleep()
 {
   sendCommand("sleep=1");
   return checkCommandComplete();
@@ -109,7 +109,7 @@ bool Nextion::sleep()
  * \brief Wakes the device from sleep mode.
  * \return True if successful
  */
-bool Nextion::wake()
+bool NeoNextion::wake()
 {
   sendCommand("sleep=0");
   return checkCommandComplete();
@@ -119,7 +119,7 @@ bool Nextion::wake()
  * \brief Gets the current backlight brightness.
  * \return Brightness
  */
-uint16_t Nextion::getBrightness()
+uint16_t NeoNextion::getBrightness()
 {
   sendCommand("get dim");
   uint32_t val;
@@ -135,7 +135,7 @@ uint16_t Nextion::getBrightness()
  * \param persist If set to true value will be set as new power on default
  * \return True if successful
  */
-bool Nextion::setBrightness(uint16_t val, bool persist)
+bool NeoNextion::setBrightness(uint16_t val, bool persist)
 {
   size_t commandLen = 10;
   char commandBuffer[commandLen];
@@ -151,7 +151,7 @@ bool Nextion::setBrightness(uint16_t val, bool persist)
  * \brief Gets the ID of the current displayed page.
  * \return Page ID
  */
-uint8_t Nextion::getCurrentPage()
+uint8_t NeoNextion::getCurrentPage()
 {
   sendCommand("sendme");
 
@@ -172,7 +172,7 @@ uint8_t Nextion::getCurrentPage()
  * \param colour Colour to set display to
  * \return True if successful
  */
-bool Nextion::clear(uint32_t colour)
+bool NeoNextion::clear(uint32_t colour)
 {
   size_t commandLen = 9;
   char commandBuffer[commandLen];
@@ -188,7 +188,7 @@ bool Nextion::clear(uint32_t colour)
  * \param id ID of the picture to display
  * \return True if successful
  */
-bool Nextion::drawPicture(uint16_t x, uint16_t y, uint8_t id)
+bool NeoNextion::drawPicture(uint16_t x, uint16_t y, uint8_t id)
 {
   size_t commandLen = 21;
   char commandBuffer[commandLen];
@@ -206,8 +206,8 @@ bool Nextion::drawPicture(uint16_t x, uint16_t y, uint8_t id)
  * \param id ID of the picture to display
  * \return True if successful
  */
-bool Nextion::drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
-                          uint8_t id)
+bool NeoNextion::drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
+                             uint8_t id)
 {
   size_t commandLen = 35;
   char commandBuffer[commandLen];
@@ -231,11 +231,11 @@ bool Nextion::drawPicture(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
  * \param yCentre Y alignment
  * \return True if successful
  */
-bool Nextion::drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
-                      uint8_t fontID, char *str, uint32_t bgColour,
-                      uint32_t fgColour, uint8_t bgType,
-                      NextionFontAlignment xCentre,
-                      NextionFontAlignment yCentre)
+bool NeoNextion::drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
+                         uint8_t fontID, char *str, uint32_t bgColour,
+                         uint32_t fgColour, uint8_t bgType,
+                         NextionFontAlignment xCentre,
+                         NextionFontAlignment yCentre)
 {
   size_t commandLen = 65 + strlen(str);
   char commandBuffer[commandLen];
@@ -255,8 +255,8 @@ bool Nextion::drawStr(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
  * \param colour Colour
  * \return True if successful
  */
-bool Nextion::drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2,
-                       uint32_t colour)
+bool NeoNextion::drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2,
+                          uint32_t colour)
 {
   size_t commandLen = 35;
   char commandBuffer[commandLen];
@@ -276,8 +276,8 @@ bool Nextion::drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2,
  * \param colour Colour
  * \return True if successful
  */
-bool Nextion::drawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
-                       bool filled, uint32_t colour)
+bool NeoNextion::drawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
+                          bool filled, uint32_t colour)
 {
   size_t commandLen = 35;
   char commandBuffer[commandLen];
@@ -299,7 +299,7 @@ bool Nextion::drawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
  * \param colour Colour
  * \return True if successful
  */
-bool Nextion::drawCircle(uint16_t x, uint16_t y, uint16_t r, uint32_t colour)
+bool NeoNextion::drawCircle(uint16_t x, uint16_t y, uint16_t r, uint32_t colour)
 {
   size_t commandLen = 27;
   char commandBuffer[commandLen];
@@ -317,7 +317,7 @@ bool Nextion::drawCircle(uint16_t x, uint16_t y, uint16_t r, uint32_t colour)
  *
  * Should be called automatically by INextionTouchable::INextionTouchable.
  */
-void Nextion::registerTouchable(INextionTouchable *touchable)
+void NeoNextion::registerTouchable(INextionTouchable *touchable)
 {
   ITouchableListItem *newListItem = new ITouchableListItem;
   newListItem->item = touchable;
@@ -338,7 +338,7 @@ void Nextion::registerTouchable(INextionTouchable *touchable)
  * \brief Sends a command to the device.
  * \param command Command to send
  */
-void Nextion::sendCommand(char *command)
+void NeoNextion::sendCommand(char *command)
 {
   if (m_flushSerialBeforeTx)
     m_serialPort.flush();
@@ -353,7 +353,7 @@ void Nextion::sendCommand(char *command)
  * \brief Checks if the last command was successful.
  * \return True if command was successful
  */
-bool Nextion::checkCommandComplete()
+bool NeoNextion::checkCommandComplete()
 {
   bool ret = false;
   uint8_t temp[4] = {0};
@@ -373,7 +373,7 @@ bool Nextion::checkCommandComplete()
  * \param number Pointer to the number to store received number in
  * \return True if receive was successful
  */
-bool Nextion::receiveNumber(uint32_t *number)
+bool NeoNextion::receiveNumber(uint32_t *number)
 {
   uint8_t temp[8] = {0};
 
@@ -399,7 +399,7 @@ bool Nextion::receiveNumber(uint32_t *number)
  * \param len Maximum length of data to receive
  * \return Actual length of string received
  */
-size_t Nextion::receiveString(char *buffer, size_t len)
+size_t NeoNextion::receiveString(char *buffer, size_t len)
 {
   memset(buffer, 0, len);
 

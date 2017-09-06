@@ -5,7 +5,7 @@
 /*!
  * \copydoc INextionWidget::INextionWidget
  */
-INextionFontStyleable::INextionFontStyleable(Nextion &nex, uint8_t page,
+INextionFontStyleable::INextionFontStyleable(NeoNextion &nex, uint8_t page,
                                              uint8_t component,
                                              const char *name)
     : INextionWidget(nex, page, component, name)
