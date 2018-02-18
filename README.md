@@ -9,7 +9,7 @@ The code is heavily based on the [official
 library](https://github.com/itead/ITEADLIB_Arduino_Nextion) but aims to be
 cleaner, more user friendly and with a bit of luck, faster.
 
-Avaliable through the library manager of the Arduio IDE as `NeoNextion`.
+Available through the library manager of the Arduio IDE as `NeoNextion`.
 
 ## New features
 
