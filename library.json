@@ -20,5 +20,5 @@
     "url": "http://www.dan-nixon.com"
   },
   "frameworks": "arduino",
-  "platforms": ["atmelavr", "atmelsam", "espressif"]
+  "platforms": ["atmelavr", "atmelsam", "espressif", "espressif32"]
 }
