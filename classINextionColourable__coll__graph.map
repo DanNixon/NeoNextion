@@ -1,0 +1,4 @@
+<map id="INextionColourable" name="INextionColourable">
+<area shape="rect" id="node2" href="$classINextionWidget.html" title="Abstract class for all UI widgets. " alt="" coords="16,96,127,123"/>
+<area shape="rect" id="node3" href="$classNextion.html" title="Driver for a physical Nextion device. " alt="" coords="39,5,105,32"/>
+</map>

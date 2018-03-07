@@ -1,0 +1,12 @@
+<map id="INextionNumericalValued" name="INextionNumericalValued">
+<area shape="rect" id="node3" href="$classINextionBooleanValued.html" title="Interface for widgets that store a boolean value. " alt="" coords="386,56,545,83"/>
+<area shape="rect" id="node7" href="$classNextionGauge.html" title="Represents a gauge widget/. " alt="" coords="413,107,518,133"/>
+<area shape="rect" id="node8" href="$classNextionNumber.html" title="Represents a number widget. " alt="" coords="409,157,522,184"/>
+<area shape="rect" id="node9" href="$classNextionProgressBar.html" title="Represents a progress bar widget. " alt="" coords="396,208,535,235"/>
+<area shape="rect" id="node10" href="$classNextionSlider.html" title="Represents a slider widget. " alt="" coords="415,259,515,285"/>
+<area shape="rect" id="node11" href="$classNextionVariableNumeric.html" title="Represents a numeric variable. " alt="" coords="384,309,547,336"/>
+<area shape="rect" id="node2" href="$classINextionWidget.html" title="Abstract class for all UI widgets. " alt="" coords="5,183,117,209"/>
+<area shape="rect" id="node4" href="$classNextionCheckbox.html" title="Represents a checkbox. " alt="" coords="613,5,739,32"/>
+<area shape="rect" id="node5" href="$classNextionDualStateButton.html" title="Represents a dual state button widget. " alt="" coords="595,56,757,83"/>
+<area shape="rect" id="node6" href="$classNextionRadioButton.html" title="Represents a basic button widget. " alt="" coords="607,107,745,133"/>
+</map>

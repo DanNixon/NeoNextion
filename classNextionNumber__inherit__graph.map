@@ -1,0 +1,7 @@
+<map id="NextionNumber" name="NextionNumber">
+<area shape="rect" id="node2" href="$classINextionTouchable.html" title="Interface for widgets that can be touched. " alt="" coords="5,80,135,107"/>
+<area shape="rect" id="node3" href="$classINextionWidget.html" title="Abstract class for all UI widgets. " alt="" coords="259,5,369,32"/>
+<area shape="rect" id="node4" href="$classINextionColourable.html" title="Interface for widgets that can be coloured. " alt="" coords="160,80,293,107"/>
+<area shape="rect" id="node5" href="$classINextionNumericalValued.html" title="Interface for widgets that store a numerical value. " alt="" coords="317,80,488,107"/>
+<area shape="rect" id="node6" href="$classINextionFontStyleable.html" title="Interface for widgets that can have their fonts styled. " alt="" coords="513,80,663,107"/>
+</map>

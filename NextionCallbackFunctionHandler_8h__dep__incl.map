@@ -1,0 +1,26 @@
+<map id="NextionCallbackFunctionHandler.h" name="NextionCallbackFunctionHandler.h">
+<area shape="rect" id="node2" href="$INextionTouchable_8h.html" title="INextionTouchable.h" alt="" coords="1150,80,1292,107"/>
+<area shape="rect" id="node3" href="$INextionCallback_8h.html" title="INextionCallback.h" alt="" coords="5,155,139,181"/>
+<area shape="rect" id="node4" href="$INextionTouchable_8cpp.html" title="INextionTouchable.cpp" alt="" coords="163,155,319,181"/>
+<area shape="rect" id="node5" href="$Nextion_8cpp.html" title="Nextion.cpp" alt="" coords="343,155,435,181"/>
+<area shape="rect" id="node6" href="$NextionButton_8h.html" title="NextionButton.h" alt="" coords="459,155,575,181"/>
+<area shape="rect" id="node7" href="$NextionCheckbox_8h.html" title="NextionCheckbox.h" alt="" coords="599,155,736,181"/>
+<area shape="rect" id="node8" href="$NextionCrop_8h.html" title="NextionCrop.h" alt="" coords="761,155,868,181"/>
+<area shape="rect" id="node10" href="$NextionDualStateButton_8h.html" title="NextionDualStateButton.h" alt="" coords="893,155,1067,181"/>
+<area shape="rect" id="node11" href="$NextionGauge_8h.html" title="NextionGauge.h" alt="" coords="1091,155,1207,181"/>
+<area shape="rect" id="node12" href="$NextionHotspot_8h.html" title="NextionHotspot.h" alt="" coords="1231,155,1355,181"/>
+<area shape="rect" id="node13" href="$NextionNumber_8h.html" title="NextionNumber.h" alt="" coords="1379,155,1503,181"/>
+<area shape="rect" id="node14" href="$NextionPicture_8h.html" title="NextionPicture.h" alt="" coords="1527,155,1645,181"/>
+<area shape="rect" id="node16" href="$NextionProgressBar_8h.html" title="NextionProgressBar.h" alt="" coords="1670,155,1820,181"/>
+<area shape="rect" id="node17" href="$NextionRadioButton_8h.html" title="NextionRadioButton.h" alt="" coords="1845,155,1995,181"/>
+<area shape="rect" id="node18" href="$NextionSlider_8h.html" title="NextionSlider.h" alt="" coords="2019,155,2129,181"/>
+<area shape="rect" id="node19" href="$NextionSlidingText_8h.html" title="NextionSlidingText.h" alt="" coords="2154,155,2296,181"/>
+<area shape="rect" id="node21" href="$NextionText_8h.html" title="NextionText.h" alt="" coords="2321,155,2425,181"/>
+<area shape="rect" id="node22" href="$NextionTimer_8h.html" title="NextionTimer.h" alt="" coords="2450,155,2560,181"/>
+<area shape="rect" id="node24" href="$NextionWaveform_8h.html" title="NextionWaveform.h" alt="" coords="2588,155,2727,181"/>
+<area shape="rect" id="node9" href="$NextionCrop_8cpp.html" title="NextionCrop.cpp" alt="" coords="755,229,875,256"/>
+<area shape="rect" id="node15" href="$NextionPicture_8cpp.html" title="NextionPicture.cpp" alt="" coords="1520,229,1653,256"/>
+<area shape="rect" id="node20" href="$NextionSlidingText_8cpp.html" title="NextionSlidingText.cpp" alt="" coords="2147,229,2304,256"/>
+<area shape="rect" id="node23" href="$NextionTimer_8cpp.html" title="NextionTimer.cpp" alt="" coords="2439,229,2564,256"/>
+<area shape="rect" id="node25" href="$NextionWaveform_8cpp.html" title="NextionWaveform.cpp" alt="" coords="2588,229,2740,256"/>
+</map>

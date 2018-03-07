@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['getbackgroundcolour',['getBackgroundColour',['../classINextionColourable.html#a9024c2bab35fd2ee8577104da8045469',1,'INextionColourable']]],
+  ['getbrightness',['getBrightness',['../classNextion.html#a40e88e2f0742de26f6b23a80db0203cd',1,'Nextion']]],
+  ['getchannelcolour',['getChannelColour',['../classNextionWaveform.html#a0bcfc7e11c34843392b738622bcb3f59',1,'NextionWaveform']]],
+  ['getcolour',['getColour',['../classINextionColourable.html#a681e4f630bc690263f3ade86767dd241',1,'INextionColourable']]],
+  ['getcomponentid',['getComponentID',['../classINextionWidget.html#aaf32a37324c5f9c4bcae689b9f451595',1,'INextionWidget']]],
+  ['getcurrentpage',['getCurrentPage',['../classNextion.html#a580c2f0dca2f4e0b5ad40f92843c6e65',1,'Nextion']]],
+  ['getcycle',['getCycle',['../classNextionTimer.html#a796dd5578ffbe9fd25912b99ede4980e',1,'NextionTimer']]],
+  ['geteventbackgroundcolour',['getEventBackgroundColour',['../classINextionColourable.html#ad34c75bc941fa0f813a8610d6df720fc',1,'INextionColourable']]],
+  ['geteventforegroundcolour',['getEventForegroundColour',['../classINextionColourable.html#aa1dfb4ae38678ecac5e74b70c3af5294',1,'INextionColourable']]],
+  ['getfont',['getFont',['../classINextionFontStyleable.html#a04311289ae49e3df166a6ef8ee17506e',1,'INextionFontStyleable']]],
+  ['getforegroundcolour',['getForegroundColour',['../classINextionColourable.html#a6738bfa3d41bd318d3729cdfbf6c4436',1,'INextionColourable']]],
+  ['getgridcolour',['getGridColour',['../classNextionWaveform.html#a08a0c4b1b4e857ae2077aa99c784f0f1',1,'NextionWaveform']]],
+  ['getgridheight',['getGridHeight',['../classNextionWaveform.html#af7950d0ec480ed7dbf7cc6776967fa1c',1,'NextionWaveform']]],
+  ['getgridwidth',['getGridWidth',['../classNextionWaveform.html#a369e540d7c0b09c390db3ff00075f3c7',1,'NextionWaveform']]],
+  ['gethalignment',['getHAlignment',['../classINextionFontStyleable.html#a1e4f8d8fc9ab1540f0dd470265416e0e',1,'INextionFontStyleable']]],
+  ['getnumberproperty',['getNumberProperty',['../classINextionWidget.html#a96f9069c87fe5a2f610eb7c4d8589109',1,'INextionWidget']]],
+  ['getpageid',['getPageID',['../classINextionWidget.html#aaaa403fc7af5b02c3a110fe1703d9bb2',1,'INextionWidget']]],
+  ['getpictureid',['getPictureID',['../classNextionCrop.html#ab8f48fe87aad7d030b7d7da1481c4f31',1,'NextionCrop::getPictureID()'],['../classNextionPicture.html#a0ea27c331e964e0a2bc37eb92de2667e',1,'NextionPicture::getPictureID()']]],
+  ['getstringproperty',['getStringProperty',['../classINextionWidget.html#a495883a69e56e8976a0affd4b5f152b7',1,'INextionWidget']]],
+  ['gettext',['getText',['../classINextionStringValued.html#a6c3da4f682989dad520b39229ef8af83',1,'INextionStringValued']]],
+  ['gettextasnumber',['getTextAsNumber',['../classINextionStringValued.html#a31b7a2ae91f788c6a56193a66df90f04',1,'INextionStringValued']]],
+  ['getvalignment',['getVAlignment',['../classINextionFontStyleable.html#a417a9a6d0c6a6d689a240d5195120f5f',1,'INextionFontStyleable']]],
+  ['getvalue',['getValue',['../classINextionNumericalValued.html#ae15e72e76508b37db659fb9b1514ae4d',1,'INextionNumericalValued']]]
+];

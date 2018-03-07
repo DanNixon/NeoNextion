@@ -1,0 +1,4 @@
+<map id="NextionHotspot" name="NextionHotspot">
+<area shape="rect" id="node2" href="$classINextionTouchable.html" title="Interface for widgets that can be touched. " alt="" coords="4,80,133,107"/>
+<area shape="rect" id="node3" href="$classINextionWidget.html" title="Abstract class for all UI widgets. " alt="" coords="13,5,124,32"/>
+</map>

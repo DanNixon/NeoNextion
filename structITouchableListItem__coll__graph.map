@@ -1,0 +1,5 @@
+<map id="ITouchableListItem" name="ITouchableListItem">
+<area shape="rect" id="node2" href="$classINextionTouchable.html" title="Interface for widgets that can be touched. " alt="" coords="7,173,136,200"/>
+<area shape="rect" id="node3" href="$classINextionWidget.html" title="Abstract class for all UI widgets. " alt="" coords="16,96,127,123"/>
+<area shape="rect" id="node4" href="$classNextion.html" title="Driver for a physical Nextion device. " alt="" coords="39,5,105,32"/>
+</map>

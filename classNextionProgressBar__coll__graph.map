@@ -1,0 +1,7 @@
+<map id="NextionProgressBar" name="NextionProgressBar">
+<area shape="rect" id="node2" href="$classINextionTouchable.html" title="Interface for widgets that can be touched. " alt="" coords="5,173,135,200"/>
+<area shape="rect" id="node3" href="$classINextionWidget.html" title="Abstract class for all UI widgets. " alt="" coords="171,96,281,123"/>
+<area shape="rect" id="node5" href="$classINextionColourable.html" title="Interface for widgets that can be coloured. " alt="" coords="160,173,293,200"/>
+<area shape="rect" id="node6" href="$classINextionNumericalValued.html" title="Interface for widgets that store a numerical value. " alt="" coords="317,173,488,200"/>
+<area shape="rect" id="node4" href="$classNextion.html" title="Driver for a physical Nextion device. " alt="" coords="193,5,260,32"/>
+</map>

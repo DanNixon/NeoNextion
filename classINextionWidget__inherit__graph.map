@@ -1,0 +1,26 @@
+<map id="INextionWidget" name="INextionWidget">
+<area shape="rect" id="node2" href="$classINextionColourable.html" title="Interface for widgets that can be coloured. " alt="" coords="184,335,317,361"/>
+<area shape="rect" id="node14" href="$classINextionFontStyleable.html" title="Interface for widgets that can have their fonts styled. " alt="" coords="175,157,326,184"/>
+<area shape="rect" id="node15" href="$classINextionNumericalValued.html" title="Interface for widgets that store a numerical value. " alt="" coords="165,461,336,488"/>
+<area shape="rect" id="node18" href="$classINextionStringValued.html" title="Interface for widgets that hold a string value. " alt="" coords="178,107,323,133"/>
+<area shape="rect" id="node20" href="$classINextionTouchable.html" title="Interface for widgets that can be touched. " alt="" coords="185,563,316,589"/>
+<area shape="rect" id="node25" href="$classNextionPage.html" title="Represents a page of widgets. " alt="" coords="202,613,299,640"/>
+<area shape="rect" id="node3" href="$classNextionButton.html" title="Represents a basic button widget. " alt="" coords="413,157,518,184"/>
+<area shape="rect" id="node4" href="$classNextionCheckbox.html" title="Represents a checkbox. " alt="" coords="613,411,739,437"/>
+<area shape="rect" id="node5" href="$classNextionDualStateButton.html" title="Represents a dual state button widget. " alt="" coords="595,461,757,488"/>
+<area shape="rect" id="node6" href="$classNextionGauge.html" title="Represents a gauge widget/. " alt="" coords="413,563,518,589"/>
+<area shape="rect" id="node7" href="$classNextionNumber.html" title="Represents a number widget. " alt="" coords="409,360,522,387"/>
+<area shape="rect" id="node8" href="$classNextionProgressBar.html" title="Represents a progress bar widget. " alt="" coords="396,411,535,437"/>
+<area shape="rect" id="node9" href="$classNextionRadioButton.html" title="Represents a basic button widget. " alt="" coords="607,512,745,539"/>
+<area shape="rect" id="node10" href="$classNextionSlider.html" title="Represents a slider widget. " alt="" coords="415,613,515,640"/>
+<area shape="rect" id="node11" href="$classNextionSlidingText.html" title="Represents a sliding text widget. " alt="" coords="399,56,531,83"/>
+<area shape="rect" id="node12" href="$classNextionText.html" title="Represents a text widget. " alt="" coords="419,107,512,133"/>
+<area shape="rect" id="node13" href="$classNextionWaveform.html" title="Represents a waveform widget. " alt="" coords="402,512,529,539"/>
+<area shape="rect" id="node16" href="$classINextionBooleanValued.html" title="Interface for widgets that store a boolean value. " alt="" coords="386,461,545,488"/>
+<area shape="rect" id="node17" href="$classNextionVariableNumeric.html" title="Represents a numeric variable. " alt="" coords="384,664,547,691"/>
+<area shape="rect" id="node19" href="$classNextionVariableString.html" title="Represents a string variable. " alt="" coords="391,5,539,32"/>
+<area shape="rect" id="node21" href="$classNextionCrop.html" title="Represents a cropped picture widget. " alt="" coords="418,816,513,843"/>
+<area shape="rect" id="node22" href="$classNextionHotspot.html" title="Represents a hotspot widget. " alt="" coords="409,867,522,893"/>
+<area shape="rect" id="node23" href="$classNextionPicture.html" title="Represents a full size picture widget. " alt="" coords="411,917,519,944"/>
+<area shape="rect" id="node24" href="$classNextionTimer.html" title="Represents a timer. " alt="" coords="415,968,515,995"/>
+</map>

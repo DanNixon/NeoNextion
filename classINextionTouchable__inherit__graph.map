@@ -1,0 +1,18 @@
+<map id="INextionTouchable" name="INextionTouchable">
+<area shape="rect" id="node3" href="$classNextionButton.html" title="Represents a basic button widget. " alt="" coords="373,5,478,32"/>
+<area shape="rect" id="node4" href="$classNextionCheckbox.html" title="Represents a checkbox. " alt="" coords="362,56,489,83"/>
+<area shape="rect" id="node5" href="$classNextionCrop.html" title="Represents a cropped picture widget. " alt="" coords="378,107,473,133"/>
+<area shape="rect" id="node6" href="$classNextionDualStateButton.html" title="Represents a dual state button widget. " alt="" coords="344,157,507,184"/>
+<area shape="rect" id="node7" href="$classNextionGauge.html" title="Represents a gauge widget/. " alt="" coords="373,208,478,235"/>
+<area shape="rect" id="node8" href="$classNextionHotspot.html" title="Represents a hotspot widget. " alt="" coords="369,259,482,285"/>
+<area shape="rect" id="node9" href="$classNextionNumber.html" title="Represents a number widget. " alt="" coords="369,309,482,336"/>
+<area shape="rect" id="node10" href="$classNextionPicture.html" title="Represents a full size picture widget. " alt="" coords="371,360,479,387"/>
+<area shape="rect" id="node11" href="$classNextionProgressBar.html" title="Represents a progress bar widget. " alt="" coords="356,411,495,437"/>
+<area shape="rect" id="node12" href="$classNextionRadioButton.html" title="Represents a basic button widget. " alt="" coords="356,461,495,488"/>
+<area shape="rect" id="node13" href="$classNextionSlider.html" title="Represents a slider widget. " alt="" coords="375,512,475,539"/>
+<area shape="rect" id="node14" href="$classNextionSlidingText.html" title="Represents a sliding text widget. " alt="" coords="359,563,491,589"/>
+<area shape="rect" id="node15" href="$classNextionText.html" title="Represents a text widget. " alt="" coords="379,613,472,640"/>
+<area shape="rect" id="node16" href="$classNextionTimer.html" title="Represents a timer. " alt="" coords="375,664,475,691"/>
+<area shape="rect" id="node17" href="$classNextionWaveform.html" title="Represents a waveform widget. " alt="" coords="362,715,489,741"/>
+<area shape="rect" id="node2" href="$classINextionWidget.html" title="Abstract class for all UI widgets. " alt="" coords="5,360,117,387"/>
+</map>

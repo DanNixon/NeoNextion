@@ -1,0 +1,7 @@
+<map id="INextionStringValued" name="INextionStringValued">
+<area shape="rect" id="node3" href="$classNextionButton.html" title="Represents a basic button widget. " alt="" coords="5,155,109,181"/>
+<area shape="rect" id="node4" href="$classNextionSlidingText.html" title="Represents a sliding text widget. " alt="" coords="134,155,265,181"/>
+<area shape="rect" id="node5" href="$classNextionText.html" title="Represents a text widget. " alt="" coords="291,155,384,181"/>
+<area shape="rect" id="node6" href="$classNextionVariableString.html" title="Represents a string variable. " alt="" coords="409,155,556,181"/>
+<area shape="rect" id="node2" href="$classINextionWidget.html" title="Abstract class for all UI widgets. " alt="" coords="212,5,323,32"/>
+</map>

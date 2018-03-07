@@ -1,0 +1,7 @@
+<map id="INextionBooleanValued" name="INextionBooleanValued">
+<area shape="rect" id="node4" href="$classNextionCheckbox.html" title="Represents a checkbox. " alt="" coords="5,229,131,256"/>
+<area shape="rect" id="node5" href="$classNextionDualStateButton.html" title="Represents a dual state button widget. " alt="" coords="156,229,319,256"/>
+<area shape="rect" id="node6" href="$classNextionRadioButton.html" title="Represents a basic button widget. " alt="" coords="343,229,481,256"/>
+<area shape="rect" id="node2" href="$classINextionNumericalValued.html" title="Interface for widgets that store a numerical value. " alt="" coords="152,80,323,107"/>
+<area shape="rect" id="node3" href="$classINextionWidget.html" title="Abstract class for all UI widgets. " alt="" coords="181,5,292,32"/>
+</map>

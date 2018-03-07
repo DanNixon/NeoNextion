@@ -1,0 +1,5 @@
+<map id="NextionVariableNumeric" name="NextionVariableNumeric">
+<area shape="rect" id="node2" href="$classINextionNumericalValued.html" title="Interface for widgets that store a numerical value. " alt="" coords="5,173,176,200"/>
+<area shape="rect" id="node3" href="$classINextionWidget.html" title="Abstract class for all UI widgets. " alt="" coords="35,96,145,123"/>
+<area shape="rect" id="node4" href="$classNextion.html" title="Driver for a physical Nextion device. " alt="" coords="57,5,124,32"/>
+</map>

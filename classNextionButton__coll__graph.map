@@ -1,0 +1,8 @@
+<map id="NextionButton" name="NextionButton">
+<area shape="rect" id="node2" href="$classINextionTouchable.html" title="Interface for widgets that can be touched. " alt="" coords="5,173,135,200"/>
+<area shape="rect" id="node3" href="$classINextionWidget.html" title="Abstract class for all UI widgets. " alt="" coords="252,96,363,123"/>
+<area shape="rect" id="node5" href="$classINextionColourable.html" title="Interface for widgets that can be coloured. " alt="" coords="160,173,293,200"/>
+<area shape="rect" id="node6" href="$classINextionStringValued.html" title="Interface for widgets that hold a string value. " alt="" coords="318,173,463,200"/>
+<area shape="rect" id="node7" href="$classINextionFontStyleable.html" title="Interface for widgets that can have their fonts styled. " alt="" coords="487,173,637,200"/>
+<area shape="rect" id="node4" href="$classNextion.html" title="Driver for a physical Nextion device. " alt="" coords="275,5,341,32"/>
+</map>

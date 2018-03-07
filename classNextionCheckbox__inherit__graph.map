@@ -1,0 +1,7 @@
+<map id="NextionCheckbox" name="NextionCheckbox">
+<area shape="rect" id="node2" href="$classINextionTouchable.html" title="Interface for widgets that can be touched. " alt="" coords="5,155,135,181"/>
+<area shape="rect" id="node3" href="$classINextionWidget.html" title="Abstract class for all UI widgets. " alt="" coords="119,5,229,32"/>
+<area shape="rect" id="node4" href="$classINextionColourable.html" title="Interface for widgets that can be coloured. " alt="" coords="108,80,241,107"/>
+<area shape="rect" id="node6" href="$classINextionNumericalValued.html" title="Interface for widgets that store a numerical value. " alt="" coords="265,80,436,107"/>
+<area shape="rect" id="node5" href="$classINextionBooleanValued.html" title="Interface for widgets that store a boolean value. " alt="" coords="242,155,400,181"/>
+</map>
