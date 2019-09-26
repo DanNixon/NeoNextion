@@ -4,13 +4,13 @@
 #define __NEONEXTION_NEXTIONPAGE
 
 #include "Nextion.h"
-#include "INextionWidget.h"
+#include "INextionTouchable.h"
 
 /*!
  * \class NextionPage
  * \brief Represents a page of widgets.
  */
-class NextionPage : public INextionWidget
+class NextionPage : public INextionTouchable
 {
 public:
   NextionPage(Nextion &nex, uint8_t page, uint8_t component, const char *name);
