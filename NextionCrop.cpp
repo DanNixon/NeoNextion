@@ -18,7 +18,7 @@ NextionCrop::NextionCrop(Nextion &nex, uint8_t page, uint8_t component,
  */
 uint16_t NextionCrop::getPictureID()
 {
-  return getNumberProperty("pic");
+  return getNumberProperty("picc");
 }
 
 /*!
@@ -26,5 +26,5 @@ uint16_t NextionCrop::getPictureID()
  */
 bool NextionCrop::setPictureID(uint16_t id)
 {
-  return setNumberProperty("pic", id);
+  return setNumberProperty("picc", id);
 }
